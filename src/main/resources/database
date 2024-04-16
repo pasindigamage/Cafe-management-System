@@ -1,0 +1,101 @@
+create database buddiescafe;
+
+use buddiescafe;
+
+create table Employee(
+                         id varchar(10) primary key,
+                         name varchar(50),
+                         position varchar(50),
+                         address varchar(100),
+                         email varchar(50) unique,
+                         contact int(10) not null
+);
+
+create table User(
+                     id varchar(10) primary key,
+                     employeeId varchar(10),
+                     userName varchar(50) not null,
+                     password varchar(50) unique,
+                     foreign key(employeeId) references Employee(id) on update cascade on delete cascade
+);
+
+create table Orders(
+                       id int auto_increment primary key,
+                       userId varchar(10),
+                       date date not null,
+                       foreign key(userId) references User(id) on update cascade on delete cascade
+);
+
+create table Payment(
+                        orderId int,
+                        time time not null,
+                        foreign key(orderId) references Orders(id) on update cascade on delete cascade
+);
+
+create table FoodItems(
+                          id varchar(20) primary key,
+                          description varchar(20),
+                          amount decimal(20,2)
+);
+
+create table orderDetails(
+                             orderId int,
+                             foodItemId varchar(10),
+                             qty int(10),
+                             foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade,
+                             foreign key(orderId) references Orders(id) on update cascade on delete cascade
+);
+
+create table Inventory(
+                          id varchar(20) primary key,
+                          description varchar(20)
+);
+
+create table IngrediansDetail(
+                                 inventoryId varchar(20),
+                                 foodItemId varchar(20),
+                                 qty int(10),
+                                 foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade,
+                                 foreign key(inventoryId) references Inventory(id) on update cascade on delete cascade
+);
+
+create table Supplier(
+                         id varchar(20) primary key,
+                         nic varchar(25) unique,
+                         name varchar(50),
+                         companyAddress varchar(50),
+                         email varchar(50) unique,
+                         contact int(20)
+);
+
+create table inventorySupplier(
+                                  supplierId varchar(20),
+                                  inventoryId varchar(20),
+                                  date date not null,
+                                  unitPrice decimal(10,2),
+                                  qty int(10),
+                                  foreign key(supplierId) references Supplier(id) on update cascade on delete cascade,
+                                  foreign key(inventoryId) references Inventory(id) on update cascade on delete cascade
+);
+
+create table KitchenWare(
+                            id varchar(20) primary key,
+                            description varchar(25),
+                            qty int(20)
+);
+
+create table kitchenWareMaintain(
+                                    id varchar(20) primary key,
+                                    kitchenWareId varchar(20),
+                                    description varchar(50),
+                                    date date,
+                                    amount decimal(10,2),
+                                    foreign key(kitchenWareId) references KitchenWare(id) on update cascade on delete cascade
+);
+
+create table otherMaintain(
+                              id varchar(20) primary key,
+                              description varchar(50),
+                              date date,
+                              amount decimal(10,2)
+);

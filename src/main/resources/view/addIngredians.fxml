@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngredians">
+   <children>
+      <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-4.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="515.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="21.0" layoutY="18.0" text="INGREDIANS DETAILS" textFill="#2c3e50">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fID" layoutX="37.0" layoutY="131.0" onAction="#IdSearchOnAction" prefHeight="33.0" prefWidth="230.0" />
+      <Label layoutX="37.0" layoutY="113.0" text="Food Item ID" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="247.0" text="Inventory ID" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fDescription" layoutX="286.0" layoutY="131.0" prefHeight="33.0" prefWidth="230.0" />
+      <Label layoutX="286.0" layoutY="113.0" text="Description" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="deleteIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="620.0" layoutY="463.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="updateIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="472.0" layoutY="463.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="addIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="321.0" layoutY="463.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Group layoutX="606.0" layoutY="1.0" />
+      <TableView fx:id="tblMenu" layoutX="532.0" layoutY="55.0" prefHeight="379.0" prefWidth="351.0">
+         <columns>
+            <TableColumn fx:id="colDescription" prefWidth="216.0" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="134.0" text="Qty" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="816.0" layoutY="553.0" onAction="#btnBackOnAction" prefHeight="23.0" prefWidth="73.0" style="-fx-background-color: #ffffff;" text="   back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="822.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/back.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="760.0" layoutY="463.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbIngrediansID" layoutX="37.0" layoutY="270.0" onAction="#cmbIngrediansOnAction" prefHeight="33.0" prefWidth="230.0" />
+      <Label layoutX="330.0" layoutY="247.0" text="Qty:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="qty" layoutX="347.0" layoutY="276.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="91.0" />
+      <TextField fx:id="qtyG" layoutX="347.0" layoutY="330.0" onAction="#qtyGOnAction" prefHeight="33.0" prefWidth="91.0" />
+      <TextField fx:id="qtyMl" layoutX="347.0" layoutY="384.0" onAction="#qtyMlOnAction" prefHeight="33.0" prefWidth="91.0" />
+      <Label layoutX="443.0" layoutY="345.0" text="g" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="395.0" text="ml" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
