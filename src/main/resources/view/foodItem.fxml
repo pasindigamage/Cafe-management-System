@@ -79,14 +79,6 @@
             <TableColumn fx:id="colAmount" prefWidth="178.0" text="Amount (Rs.)" />
          </columns>
       </TableView>
-      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="815.0" layoutY="555.0" onAction="#btnBackOnAction" prefHeight="23.0" prefWidth="73.0" style="-fx-background-color: #ffffff;" text="   back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="821.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/back.png" />
@@ -103,6 +95,14 @@
       <JFXButton fx:id="addIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="36.0" layoutY="342.0" onAction="#btnAnchorpaneChnageOnAction" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: FFF3CD;" text="Add Ingridians" textFill="#2a2a2a">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="810.0" layoutY="553.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="   back">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -3,21 +3,17 @@ package lk.ijse.buddiescafe.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class LoginFromController {
 
     @FXML
-    private Hyperlink changepassword;
-
-    @FXML
-    private Label login;
-
-    @FXML
     private PasswordField password;
+
+    @FXML
+    private AnchorPane rootNode;
 
     @FXML
     private JFXButton signIn;
@@ -26,17 +22,12 @@ public class LoginFromController {
     private TextField userName;
 
     @FXML
-    void getPasswordOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void getUserNameOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void letsSignInOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void linkFogotPasswordOnAction(ActionEvent event) {
 
     }
 
