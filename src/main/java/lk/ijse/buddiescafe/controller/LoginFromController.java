@@ -41,7 +41,7 @@ public class LoginFromController {
     }
 
     private void checkCredential(TextField userName, String passwordText) throws SQLException, IOException {
-        String sql = "SELECT user_id, password FROM users WHERE user_id = ?";
+        String sql = "SELECT userName, password FROM User WHERE userName = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class LoginFromController {
                 new Alert(Alert.AlertType.ERROR, "Password is incorrect!").show();
             }
         } else {
-            new Alert(Alert.AlertType.INFORMATION, "user id not found!").show();
+            new Alert(Alert.AlertType.INFORMATION, "user name not found!").show();
         }
     }
 
