@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" mouseTransparent="true" pickOnBounds="false" prefHeight="502.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.LoginFromController">
+<AnchorPane fx:id="rootNode" mouseTransparent="false" pickOnBounds="true" prefHeight="502.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.LoginFromController">
    <children>
       <ImageView fitHeight="508.0" fitWidth="906.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,7 +19,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91979e" height="433.0" layoutX="293.0" layoutY="51.0" opacity="0.78" stroke="BLACK" strokeType="INSIDE" width="340.0" />
-      <JFXButton fx:id="signIn" alignment="CENTER" buttonType="RAISED" layoutX="357.0" layoutY="340.0" mouseTransparent="false" onAction="#letsSignInOnAction" prefHeight="40.0" prefWidth="204.0" style="-fx-background-color: #4D3E3E;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="signIn" alignment="CENTER" buttonType="RAISED" layoutX="357.0" layoutY="340.0" onAction="#letsSignInOnAction" prefHeight="40.0" prefWidth="204.0" style="-fx-background-color: #4D3E3E;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

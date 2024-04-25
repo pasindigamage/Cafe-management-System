@@ -16,18 +16,18 @@
             <Image url="@../images/underbg.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="17.0" layoutY="22.0" text="Change Password" textFill="#636e72">
+      <Label alignment="CENTER" layoutX="17.0" layoutY="22.0" text="REGISTER" textFill="#636e72">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="81.0" text="User Name" />
-      <TextField fx:id="userName" layoutX="39.0" layoutY="108.0" prefHeight="34.0" prefWidth="271.0" promptText="Input Your User Name Here" />
-      <Label layoutX="41.0" layoutY="164.0" text="Employee ID" />
-      <TextField fx:id="employeeId" layoutX="39.0" layoutY="191.0" prefHeight="34.0" prefWidth="271.0" promptText="Input Your Employee Id Here" />
-      <Label layoutX="41.0" layoutY="247.0" text="Current Password" />
-      <TextField fx:id="oldPassword" layoutX="39.0" layoutY="274.0" prefHeight="34.0" prefWidth="271.0" promptText="Input Your Old Password Here" />
-      <JFXButton fx:id="save" alignment="CENTER" buttonType="RAISED" layoutX="170.0" layoutY="446.0" mouseTransparent="true" onAction="#saveOnAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: FFC38B;" text="Save" textAlignment="CENTER" textFill="#4d3e3e">
+      <Label layoutX="41.0" layoutY="81.0" text="Employee ID" />
+      <TextField fx:id="employeeID" layoutX="39.0" layoutY="108.0" prefHeight="34.0" prefWidth="271.0" promptText="Input Your Employee Id Here" />
+      <Label layoutX="41.0" layoutY="164.0" text="User ID" />
+      <TextField fx:id="userId" layoutX="39.0" layoutY="191.0" prefHeight="34.0" prefWidth="271.0" promptText="Create a User Id" />
+      <Label layoutX="41.0" layoutY="247.0" text="User Name" />
+      <TextField fx:id="userName" layoutX="39.0" layoutY="274.0" prefHeight="34.0" prefWidth="271.0" promptText="Create a User Name" />
+      <JFXButton fx:id="register" alignment="CENTER" buttonType="RAISED" layoutX="170.0" layoutY="446.0" mouseTransparent="true" onAction="#registerOnAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: FFC38B;" text="Register" textAlignment="CENTER" textFill="#4d3e3e">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="40.0" layoutY="335.0" text="New Password" />
-      <TextField fx:id="newPassword" layoutX="38.0" layoutY="362.0" prefHeight="34.0" prefWidth="271.0" promptText="Input Your New Password Here" />
+      <Label layoutX="40.0" layoutY="335.0" text="Password" />
+      <TextField fx:id="password" layoutX="38.0" layoutY="362.0" prefHeight="34.0" prefWidth="271.0" promptText="Create a Password" />
    </children>
 </AnchorPane>

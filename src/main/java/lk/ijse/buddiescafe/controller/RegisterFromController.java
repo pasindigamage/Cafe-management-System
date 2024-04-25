@@ -5,22 +5,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class ChangePasswordFromController {
+public class RegisterFromController {
 
     @FXML
     private JFXButton cancel;
 
     @FXML
-    private TextField employeeId;
+    private TextField employeeID;
 
     @FXML
-    private TextField newPassword;
+    private TextField password;
 
     @FXML
-    private TextField oldPassword;
+    private JFXButton register;
 
     @FXML
-    private JFXButton save;
+    private TextField userId;
 
     @FXML
     private TextField userName;
@@ -31,7 +31,7 @@ public class ChangePasswordFromController {
     }
 
     @FXML
-    void saveOnAction(ActionEvent event) {
+    void registerOnAction(ActionEvent event) {
 
     }
 
