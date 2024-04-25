@@ -57,13 +57,13 @@ public class InventorySupplingDetails {
     private Label lblOrderDate;
 
     @FXML
-    private Label lblUnitPrice;
-
-    @FXML
     private TableView<?> tblOrderCart;
 
     @FXML
     private TextField txtQty;
+
+    @FXML
+    private TextField txtUnitPrice;
 
     @FXML
     private JFXButton updateInventroySupplier;
