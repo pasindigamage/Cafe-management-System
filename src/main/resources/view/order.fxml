@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.OrderFromController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.InventorySupplingDetails">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -67,12 +67,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblUserName" layoutX="142.0" layoutY="96.0" text="a" textFill="#278d7f">
+      <Label fx:id="lblUserName" layoutX="142.0" layoutY="96.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="359.0" layoutY="93.0" text="Order Id:">
+      <Label layoutX="359.0" layoutY="93.0" text="Order ID:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -92,7 +92,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="149.0" text="Code:">
+      <Label layoutX="58.0" layoutY="149.0" text="Menu Item Code:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

@@ -12,7 +12,7 @@ public class Launcher extends Application {
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/login.fxml"))));
 
-        stage.setTitle("Login Form");
+        stage.setTitle("Buddies Cafe");
         stage.centerOnScreen();
         stage.show();
     }
