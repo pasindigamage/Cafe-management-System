@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -61,7 +62,7 @@ public class LoginFromController {
                 new Alert(Alert.AlertType.ERROR, "Password is incorrect!").show();
             }
         } else {
-            new Alert(Alert.AlertType.INFORMATION, "user id not found!").show();
+            new Alert(Alert.AlertType.INFORMATION, "User Name is not found!").show();
         }
     }
 
@@ -76,12 +77,26 @@ public class LoginFromController {
     }
 
     @FXML
-    void linkForgotPasswordOnAction(ActionEvent event) {
+    void linkForgotPasswordOnAction(ActionEvent event) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/changePassword.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        stage.show();
 
     }
 
     @FXML
-    void linkRegistrationOnAction(ActionEvent event) {
+    void linkRegistrationOnAction(ActionEvent event) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/register.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        stage.show();
 
     }
 
