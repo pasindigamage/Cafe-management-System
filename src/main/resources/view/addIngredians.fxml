@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngredians">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngredians">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-4.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="247.0" text="Inventory ID" textFill="#363232">
+      <Label layoutX="37.0" layoutY="297.0" text="Inventory ID" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -91,25 +91,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXComboBox fx:id="cmbIngrediansID" layoutX="37.0" layoutY="270.0" onAction="#cmbIngrediansOnAction" prefHeight="33.0" prefWidth="230.0" />
-      <Label layoutX="330.0" layoutY="247.0" text="Qty:" textFill="#363232">
+      <JFXComboBox fx:id="cmbIngrediansID" layoutX="37.0" layoutY="320.0" onAction="#cmbIngrediansOnAction" prefHeight="33.0" prefWidth="230.0" />
+      <Label layoutX="330.0" layoutY="297.0" text="Qty:" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="qty" layoutX="347.0" layoutY="276.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="91.0" />
-      <TextField fx:id="qtyG" layoutX="347.0" layoutY="330.0" onAction="#qtyGOnAction" prefHeight="33.0" prefWidth="91.0" />
-      <TextField fx:id="qtyMl" layoutX="347.0" layoutY="384.0" onAction="#qtyMlOnAction" prefHeight="33.0" prefWidth="91.0" />
-      <Label layoutX="443.0" layoutY="345.0" text="g" textFill="#363232">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="445.0" layoutY="395.0" text="ml" textFill="#363232">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
+      <TextField fx:id="qty" layoutX="347.0" layoutY="326.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="91.0" />
       <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="809.0" layoutY="550.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="   back">
          <font>
             <Font name="System Bold" size="12.0" />
