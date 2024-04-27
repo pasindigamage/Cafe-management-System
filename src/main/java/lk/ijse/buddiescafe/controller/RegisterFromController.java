@@ -3,8 +3,6 @@ package lk.ijse.buddiescafe.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -14,6 +12,7 @@ import lk.ijse.buddiescafe.db.DbConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterFromController {
@@ -41,8 +40,8 @@ public class RegisterFromController {
 
     @FXML
     void cancelOnAction(ActionEvent event) throws IOException {
-
-
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -53,7 +52,11 @@ public class RegisterFromController {
         String uname = userName.getText();
         String pw = password.getText();
 
-        saveUser(eid,uid,uname,pw);
+       // if(credential(eid)) {
+            saveUser(eid, uid, uname, pw);
+       // } else{
+       //     new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
+       // }
 
     }
 
@@ -73,7 +76,7 @@ public class RegisterFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
