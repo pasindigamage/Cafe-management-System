@@ -42,6 +42,7 @@ public class RegisterFromController {
     @FXML
     void cancelOnAction(ActionEvent event) throws IOException {
 
+
     }
 
 
@@ -62,16 +63,17 @@ public class RegisterFromController {
 
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
+
             pstm.setObject(1, uid);
             pstm.setObject(2, eid);
             pstm.setObject(3, uname);
             pstm.setObject(4, pw);
 
             if(pstm.executeUpdate() > 0) {
-                new Alert(Alert.AlertType.CONFIRMATION, "user saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "something happend!").show();
+            new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
         }
     }
 

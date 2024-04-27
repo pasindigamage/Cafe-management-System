@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.InventorySupplingDetails">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.InventorySupplingDetails">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
          <image>
