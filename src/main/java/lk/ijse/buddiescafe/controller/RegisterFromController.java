@@ -27,9 +27,6 @@ public class RegisterFromController {
     private TextField password;
 
     @FXML
-    private JFXButton register;
-
-    @FXML
     private TextField userId;
 
     @FXML
@@ -40,7 +37,6 @@ public class RegisterFromController {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     void registerOnAction(ActionEvent event) {
