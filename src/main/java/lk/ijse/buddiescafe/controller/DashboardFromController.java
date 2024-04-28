@@ -33,6 +33,7 @@ public class DashboardFromController {
     @FXML
     private JFXButton btnUserSet;
 
+
     @FXML
     void IncomeCostOnAction(ActionEvent event) {
 

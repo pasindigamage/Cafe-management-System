@@ -1,104 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="541.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.DashboardFromController">
-   <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="-1.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image>
-               <url>@../../../../../PROJECT%20FOR%20BUDDIES/7777777.jpeg</url>
-            </Image>
-         </image>
-      </ImageView>
-      <Label layoutX="273.0" layoutY="14.0" text="HOME" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="42.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="71.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/employe.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="262.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/supplier.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="329.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/settings.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="70.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/orders.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="262.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/menu.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="455.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/maintains.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="471.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/logout.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="454.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/inventory.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="81.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image>
-               <url>@../images/income%20cost.png</url>
-            </Image>
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="263.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cardinality.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnEmp" layoutX="73.0" layoutY="206.0" text="EMPLOYEE" textFill="WHITE" >
-         <onAction>#employeeOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnOrd" layoutX="77.0" layoutY="383.0" text="ORDERS" textFill="WHITE" >
-         <onAction>#ordersOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnInCos" layoutX="32.0" layoutY="542.0" text="DAILY INCOME AND COST" textFill="WHITE" >
-         <onAction>#IncomeCostOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnSup" layoutX="260.0" layoutY="220.0" text="SUPPLIERS" textFill="WHITE" >
-         <onAction>#supplierOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnInv" layoutX="261.0" layoutY="387.0" text="INVENTORY" textFill="WHITE" >
-         <onAction>#inventoryOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnUserSet" layoutX="253.0" layoutY="542.0" text="USER SETTINGS" textFill="WHITE" >
-         <onAction>#userSettingsOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnMen" layoutX="469.0" layoutY="210.0" text="MENU" textFill="WHITE" >
-         <onAction>#menuOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnMain" layoutX="456.0" layoutY="383.0" text="MAINTAINS" textFill="WHITE" >
-         <onAction>#maintainsOnAction</onAction>
-      </JFXButton>
-      <JFXButton fx:id="btnLogout" layoutX="465.0" layoutY="536.0" text="LOGOUT" textFill="WHITE" >
-         <onAction>#logoutOnAction</onAction>
-      </JFXButton>
-   </children>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="lk.ijse.buddiescafe.controller.DashboardFromController"
+            prefHeight="400.0" prefWidth="600.0">
+
 </AnchorPane>

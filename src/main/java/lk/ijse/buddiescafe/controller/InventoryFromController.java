@@ -1,8 +1,10 @@
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -10,7 +12,10 @@ import javafx.scene.control.TextField;
 public class InventoryFromController {
 
     @FXML
-    private JFXButton addInventory;
+    private TextField Description;
+
+    @FXML
+    private JFXButton addInventorySupplier;
 
     @FXML
     private JFXButton back;
@@ -19,30 +24,49 @@ public class InventoryFromController {
     private JFXButton clear;
 
     @FXML
-    private TableColumn<?, ?> colDescription;
+    private JFXComboBox<?> cmbISupplierId;
 
     @FXML
-    private TableColumn<?, ?> colId;
+    private TableColumn<?, ?> colAction;
 
     @FXML
-    private JFXButton deleteInventory;
+    private TableColumn<?, ?> colInventroyCode;
 
     @FXML
-    private TextField inventoryDescription;
+    private TableColumn<?, ?> colQty;
 
     @FXML
-    private TextField inventoryID;
+    private TableColumn<?, ?> colSupplierId;
 
     @FXML
-    private TableView<?> tblInventory;
+    private TableColumn<?, ?> colTotal;
 
     @FXML
-    private JFXButton updateInventroy;
+    private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    void IdSearchOnAction(ActionEvent event) {
+    private JFXButton deleteInventorySupplier;
 
-    }
+    @FXML
+    private Label lblInventorySupplierId;
+
+    @FXML
+    private Label lblNetTotal;
+
+    @FXML
+    private Label lblOrderDate;
+
+    @FXML
+    private TextField qty;
+
+    @FXML
+    private TableView<?> tblOrderCart;
+
+    @FXML
+    private TextField unitPrice;
+
+    @FXML
+    private JFXButton updateInventroySupplier;
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -66,6 +90,11 @@ public class InventoryFromController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbSupOnAction(ActionEvent event) {
 
     }
 

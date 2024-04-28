@@ -10,7 +10,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/login.fxml"))));
 
         stage.setTitle("Buddies Cafe Management System");
         stage.centerOnScreen();
