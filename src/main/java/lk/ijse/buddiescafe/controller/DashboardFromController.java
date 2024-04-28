@@ -1,9 +1,37 @@
 package lk.ijse.buddiescafe.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class DashboardFromController {
+
+    @FXML
+    private JFXButton btnEmp;
+
+    @FXML
+    private JFXButton btnInCos;
+
+    @FXML
+    private JFXButton btnInv;
+
+    @FXML
+    private JFXButton btnLogout;
+
+    @FXML
+    private JFXButton btnMain;
+
+    @FXML
+    private JFXButton btnMen;
+
+    @FXML
+    private JFXButton btnOrd;
+
+    @FXML
+    private JFXButton btnSup;
+
+    @FXML
+    private JFXButton btnUserSet;
 
     @FXML
     void IncomeCostOnAction(ActionEvent event) {

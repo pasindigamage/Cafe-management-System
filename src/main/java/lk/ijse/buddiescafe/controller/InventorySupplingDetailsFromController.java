@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class InventorySupplingDetails {
+public class InventorySupplingDetailsFromController {
 
     @FXML
     private JFXButton addInventorySupplier;

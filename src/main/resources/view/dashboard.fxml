@@ -7,11 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="541.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.FoodItemFromController">
+<AnchorPane prefHeight="541.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.DashboardFromController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="-1.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../PROJECT%20FOR%20BUDDIES/7777777.jpeg" />
+            <Image>
+               <url>@../../../../../PROJECT%20FOR%20BUDDIES/7777777.jpeg</url>
+            </Image>
          </image>
       </ImageView>
       <Label layoutX="273.0" layoutY="14.0" text="HOME" textFill="WHITE">
@@ -61,7 +63,9 @@
       </ImageView>
       <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="81.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/income%20cost.png" />
+            <Image>
+               <url>@../images/income%20cost.png</url>
+            </Image>
          </image>
       </ImageView>
       <ImageView fitHeight="94.0" fitWidth="91.0" layoutX="263.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
@@ -69,14 +73,32 @@
             <Image url="@../images/cardinality.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="73.0" layoutY="206.0" onAction="#employeeOnAction" text="EMPLOYEE" textFill="WHITE" />
-      <JFXButton layoutX="77.0" layoutY="383.0" onAction="#ordersOnAction" text="ORDERS" textFill="WHITE" />
-      <JFXButton layoutX="32.0" layoutY="542.0" onAction="#IncomeCostOnAction" text="DAILY INCOME AND COST" textFill="WHITE" />
-      <JFXButton layoutX="260.0" layoutY="220.0" onAction="#supplierOnAction" text="SUPPLIERS" textFill="WHITE" />
-      <JFXButton layoutX="261.0" layoutY="387.0" onAction="#inventoryOnAction" text="INVENTORY" textFill="WHITE" />
-      <JFXButton layoutX="253.0" layoutY="542.0" onAction="#userSettingsOnAction" text="USER SETTINGS" textFill="WHITE" />
-      <JFXButton layoutX="469.0" layoutY="210.0" onAction="#menuOnAction" text="MENU" textFill="WHITE" />
-      <JFXButton layoutX="456.0" layoutY="383.0" onAction="#maintainsOnAction" text="MAINTAINS" textFill="WHITE" />
-      <JFXButton layoutX="465.0" layoutY="536.0" onAction="#logoutOnAction" text="LOGOUT" textFill="WHITE" />
+      <JFXButton fx:id="btnEmp" layoutX="73.0" layoutY="206.0" text="EMPLOYEE" textFill="WHITE" >
+         <onAction>#employeeOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnOrd" layoutX="77.0" layoutY="383.0" text="ORDERS" textFill="WHITE" >
+         <onAction>#ordersOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnInCos" layoutX="32.0" layoutY="542.0" text="DAILY INCOME AND COST" textFill="WHITE" >
+         <onAction>#IncomeCostOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnSup" layoutX="260.0" layoutY="220.0" text="SUPPLIERS" textFill="WHITE" >
+         <onAction>#supplierOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnInv" layoutX="261.0" layoutY="387.0" text="INVENTORY" textFill="WHITE" >
+         <onAction>#inventoryOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnUserSet" layoutX="253.0" layoutY="542.0" text="USER SETTINGS" textFill="WHITE" >
+         <onAction>#userSettingsOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnMen" layoutX="469.0" layoutY="210.0" text="MENU" textFill="WHITE" >
+         <onAction>#menuOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnMain" layoutX="456.0" layoutY="383.0" text="MAINTAINS" textFill="WHITE" >
+         <onAction>#maintainsOnAction</onAction>
+      </JFXButton>
+      <JFXButton fx:id="btnLogout" layoutX="465.0" layoutY="536.0" text="LOGOUT" textFill="WHITE" >
+         <onAction>#logoutOnAction</onAction>
+      </JFXButton>
    </children>
 </AnchorPane>
