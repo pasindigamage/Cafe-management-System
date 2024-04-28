@@ -34,7 +34,7 @@ public class LoginFromController {
     private TextField userName;
 
     @FXML
-    void letsSignInOnAction (ActionEvent event) throws IOException {
+    void letsSignInOnAction (ActionEvent event) throws IOException, SQLException {
         String un = userName.getText();
         String pw = password.getText();
         try {
