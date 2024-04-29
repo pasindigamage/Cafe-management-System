@@ -83,8 +83,9 @@ public class EmployeeFromController {
     private AnchorPane rootNode;
     
     private List<Employee> employeeList = new ArrayList<>();
-    
-    private void initialize(){
+/*
+    public void initialize(){
+
         this.employeeList = getAllEmployee();
         setCellValueFactory();
         loadEmployeeTable();
@@ -119,6 +120,7 @@ public class EmployeeFromController {
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
     }
 
+
     private List<Employee> getAllEmployee() {
         List<Employee> employeeList = null;
         try {
@@ -128,7 +130,7 @@ public class EmployeeFromController {
         }
         return employeeList;
     }
-
+*/
     @FXML
     void IdSearchOnAction(ActionEvent event) {
             String id = eID.getText();
