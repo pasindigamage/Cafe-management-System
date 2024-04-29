@@ -4,12 +4,21 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class KitchenWareMaintainsFromController {
+
+    @FXML
+    private AnchorPane rootNode;
 
     @FXML
     private JFXButton addKitchenWareMaintains;
@@ -68,8 +77,14 @@ public class KitchenWareMaintainsFromController {
     }
 
     @FXML
-    void btnBackOnAction(ActionEvent event) {
+    void btnBackOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/maintains.fxml"));
 
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) this.rootNode.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
     @FXML

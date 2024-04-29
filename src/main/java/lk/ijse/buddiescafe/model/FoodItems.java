@@ -8,6 +8,6 @@ import lombok.*;
 public class FoodItems {
     private String id;
     private String description;
-    private Double amount;
+    private String amount;
 
 }

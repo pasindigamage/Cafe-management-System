@@ -9,5 +9,5 @@ public class Supplier {
     private String name;
     private String companyAddress;
     private String email;
-    private Integer contact;
+    private String contact;
 }

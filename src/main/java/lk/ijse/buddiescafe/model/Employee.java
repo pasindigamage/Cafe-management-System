@@ -9,5 +9,5 @@ public class Employee {
     private String position;
     private String address;
     private String email;
-    private Integer contact;
+    private String contact;
 }

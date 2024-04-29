@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.buddiescafe.controller.DashboardFromController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="rootNode" mouseTransparent="false" pickOnBounds="true" prefHeight="502.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.DashboardFromController">
+   <children>
+      <ImageView fitHeight="508.0" fitWidth="906.0" layoutY="-1.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loginbackground.jpeg" />
+         </image>
+      </ImageView>
+      <Label fx:id="welcome" layoutX="56.0" layoutY="29.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="45.0" text="Hi," textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="203.0" fitWidth="190.0" layoutX="175.0" layoutY="282.0" opacity="0.23" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/watermark.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="uName" layoutX="103.0" layoutY="29.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="49.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/employe.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="49.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/menu.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="49.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/income%20cost.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="392.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/supplier.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="392.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/inventory.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="392.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/maintains.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="726.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/orders.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="726.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/kitchenWare.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="726.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logout.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="employee" layoutX="117.0" layoutY="164.0" onAction="#employeeOnAction" style="-fx-background-color: #ffffff;" text="EMPLOYEE" />
+      <JFXButton fx:id="inventory" layoutX="115.0" layoutY="290.0" onAction="#inventoryOnAction" style="-fx-background-color: #ffffff;" text="INVENTORY" />
+      <JFXButton fx:id="incost" layoutX="117.0" layoutY="432.0" onAction="#incostOnAction" style="-fx-background-color: #ffffff;" text="DAILY INCOME COST" />
+      <JFXButton fx:id="supplier" layoutX="466.0" layoutY="158.0" onAction="#supplierOnAction" style="-fx-background-color: #ffffff;" text="SUPPLIER" />
+      <JFXButton fx:id="menu" layoutX="457.0" layoutY="289.0" onAction="#menuOnAction" style="-fx-background-color: #ffffff;" text="MENU" />
+      <JFXButton fx:id="kitchenware" layoutX="784.0" layoutY="291.0" onAction="#kitchenwareOnAction" style="-fx-background-color: #ffffff;" text="KITCHEN WARE" />
+      <JFXButton fx:id="order" layoutX="795.0" layoutY="153.0" onAction="#orderOnAction" style="-fx-background-color: #ffffff;" text="ORDERS" />
+      <JFXButton fx:id="maintain" layoutX="463.0" layoutY="432.0" onAction="#maintainOnAction" style="-fx-background-color: #ffffff;" text="MAINTAINS" />
+      <JFXButton fx:id="logout" layoutX="792.0" layoutY="430.0" onAction="#logoutOnAction" style="-fx-background-color: #ffffff;" text="LOGOUT" />
+   </children>
 </AnchorPane>
