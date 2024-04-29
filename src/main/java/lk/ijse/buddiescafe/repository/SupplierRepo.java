@@ -34,4 +34,15 @@ public class SupplierRepo {
 
         return pstm.executeUpdate() > 0;
     }
+
+    public static boolean delete(String id) throws SQLException {
+        String sql = "DELETE FROM Supplier WHERE id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, id);
+
+        return pstm.executeUpdate() > 0;
+
+    }
 }

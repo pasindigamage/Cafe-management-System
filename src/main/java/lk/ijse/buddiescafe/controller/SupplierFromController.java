@@ -15,6 +15,7 @@ import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
+import lk.ijse.buddiescafe.repository.otherMaintainRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -132,7 +133,16 @@ public class SupplierFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = sID.getText();
 
+        try {
+            boolean isDeleted = SupplierRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
