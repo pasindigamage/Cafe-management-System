@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.Employee;
+import lk.ijse.buddiescafe.model.TM.EmployeeTm;
 import lk.ijse.buddiescafe.repository.EmployeeRepo;
 
 import java.io.IOException;
@@ -71,7 +74,7 @@ public class EmployeeFromController {
     private TextField ePossition;
 
     @FXML
-    private TableView<?> tblEmployee;
+    private TableView<EmployeeTm> tblEmployee;
 
     @FXML
     private JFXButton updateEmployee;
@@ -88,6 +91,23 @@ public class EmployeeFromController {
     }
 
     private void loadEmployeeTable() {
+        ObservableList<EmployeeTm> tmList = FXCollections.observableArrayList();
+
+        for (Employee employee : employeeList) {
+            EmployeeTm customerTm = new EmployeeTm(
+                    employee.getId(),
+                    employee.getName(),
+                    employee.getPosition(),
+                    employee.getAddress(),
+                    employee.getEmail(),
+                    employee.getContact()
+            );
+
+            tmList.add(customerTm);
+        }
+        tblEmployee.setItems(tmList);
+        EmployeeTm selectedItem = tblEmployee.getSelectionModel().getSelectedItem();
+        System.out.println("selectedItem = " + selectedItem);
     }
 
     private void setCellValueFactory() {
@@ -101,13 +121,32 @@ public class EmployeeFromController {
 
     private List<Employee> getAllEmployee() {
         List<Employee> employeeList = null;
-       
+        try {
+            employeeList = EmployeeRepo.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return employeeList;
     }
 
     @FXML
     void IdSearchOnAction(ActionEvent event) {
+            String id = eID.getText();
 
+            try {
+                Employee employee = EmployeeRepo.searchById(id);
+
+                if (employee != null) {
+                    eID.setText(employee.getId());
+                    ePossition.setText(employee.getPosition());
+                    eName.setText(employee.getName());
+                    eAddress.setText(employee.getAddress());
+                    eEmail.setText(employee.getEmail());
+                    eContact.setText(employee.getContact());
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
     }
 
     @FXML
