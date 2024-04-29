@@ -19,18 +19,18 @@ create table User(
 	foreign key(employeeId) references Employee(id) on update cascade on delete cascade
 	);
 
+create table Payment(
+    id int auto_increment primary key,
+	amount decimal(10,2)
+);
+
 create table Orders(
 	id int auto_increment primary key,
 	userId varchar(10),
+	paymentId int,
 	date date not null,
-	foreign key(userId) references User(id) on update cascade on delete cascade
-	);
-
-create table Payment(
-    id int auto_increment primary key,
-	orderId int,
-	time time not null,
-	foreign key(orderId) references Orders(id) on update cascade on delete cascade
+	foreign key(userId) references User(id) on update cascade on delete cascade,
+	foreign key(paymentId) references Payment(id) on update cascade on delete cascade
 	);
 
 create table FoodItems(
@@ -63,7 +63,7 @@ create table Inventory(
     unitPrice decimal(10,2),
     qty int(10),
     date Date,
-	foreign key(supplierId) references Supplier(id) on update cascade on delete cascade,
+	foreign key(supplierId) references Supplier(id) on update cascade on delete cascade
 	);
 
 create table IngrediansDetail(
