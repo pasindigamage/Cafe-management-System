@@ -8,8 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.OtherMaintains;
 import lk.ijse.buddiescafe.model.Supplier;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
+import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 import lk.ijse.buddiescafe.repository.otherMaintainRepo;
 
@@ -78,7 +81,7 @@ public class OtherMaintainsFromController {
         try {
             boolean isSaved = otherMaintainRepo.save(otherMaintains);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Saved!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -102,19 +105,43 @@ public class OtherMaintainsFromController {
     }
 
     private void clearFields() {
-        colOtherMaintainId.setText("");
-        colDescription.setText("");
-        colDate.setText("");
-        colAmount.setText("");
+        omId.setText("");
+        omDescription.setText("");
+        date.setText("");
+        amount.setText("");
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = omId.getText();
 
+        try {
+            boolean isDeleted = otherMaintainRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Removed!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String idText = omId.getText();
+        String descriptionText = omDescription.getText();
+        String dateText= date.getText();
+        String amountText = amount.getText();
+
+        OtherMaintains otherMaintains = new OtherMaintains(idText,descriptionText,dateText,amountText);
+
+        try {
+            boolean isUpdated = otherMaintainRepo.update(otherMaintains);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 

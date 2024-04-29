@@ -137,7 +137,23 @@ public class SupplierFromController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String idText = sID.getText();
+        String nicText = sNIC.getText();
+        String nameText = sName.getText();
+        String addressText = sAddress.getText();
+        String emailText = sEmail.getText();
+        String contactText = sContact.getText();
 
+        Supplier supplier = new Supplier(idText,nicText,nameText,addressText,emailText,contactText);
+
+        try {
+            boolean isUpdated = SupplierRepo.update(supplier);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }

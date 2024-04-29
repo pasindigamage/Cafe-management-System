@@ -158,22 +158,33 @@ public class EmployeeFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = eID.getText();
 
+        try {
+            boolean isDeleted = EmployeeRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String idText = eID.getText();
         String nameText= eName.getText();
-        String addressText = ePossition.getText();
-        String tel = eAddress.getText();
+        String possitionText = ePossition.getText();
+        String addressText = eAddress.getText();
+        String emailText = eEmail.getText();
+        String contactText = eContact.getText();
 
-        Customer customer = new Customer(id, name, address, tel);
+        Employee employee = new Employee(idText,nameText,possitionText,addressText,emailText,contactText);
 
         try {
-            boolean isUpdated = CustomerRepo.update(customer);
+            boolean isUpdated = EmployeeRepo.update(employee);
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee Updated!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -17,4 +17,26 @@ public class FoodItemsRepo {
 
         return pstm.executeUpdate() > 0;
     }
+
+    public static boolean update(FoodItems foodItems) throws SQLException {
+        String sql ="UPDATE FoodItems set description = ?, amount = ? where id =? ";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        pstm.setObject(1, foodItems.getDescription());
+        pstm.setObject(2, foodItems.getAmount());
+        pstm.setObject(3, foodItems.getId());
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public static boolean delete(String id) throws SQLException {
+        String sql = "DELETE FROM FoodItems WHERE id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, id);
+
+        return pstm.executeUpdate() > 0;
+
+    }
 }

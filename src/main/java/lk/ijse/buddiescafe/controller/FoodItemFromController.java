@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Supplier;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
@@ -121,12 +122,34 @@ public class FoodItemFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = fID.getText();
 
+        try {
+            boolean isDeleted = FoodItemsRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String idText = fID.getText();
+        String descriptionText = fDescription.getText();
+        String amountText = fAmount.getText();
 
+        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText);
+
+        try {
+            boolean isUpdated = FoodItemsRepo.update(foodItems);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }
