@@ -1,5 +1,4 @@
 package lk.ijse.buddiescafe.controller;
-
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,41 +73,45 @@ public class EmployeeFromController {
     private TextField ePossition;
 
     @FXML
-    private TableView<EmployeeTm> tblEmployee;
+    private TableView<Employee> tblEmployee;
 
     @FXML
     private JFXButton updateEmployee;
 
     @FXML
     private AnchorPane rootNode;
-    
+
     private List<Employee> employeeList = new ArrayList<>();
-/*
+
     public void initialize(){
 
-        this.employeeList = getAllEmployee();
+        //   this.employeeList = getAllEmployee();
         setCellValueFactory();
         loadEmployeeTable();
     }
 
     private void loadEmployeeTable() {
-        ObservableList<EmployeeTm> tmList = FXCollections.observableArrayList();
+        ObservableList<Employee> obList = FXCollections.observableArrayList();
 
-        for (Employee employee : employeeList) {
-            EmployeeTm customerTm = new EmployeeTm(
-                    employee.getId(),
-                    employee.getName(),
-                    employee.getPosition(),
-                    employee.getAddress(),
-                    employee.getEmail(),
-                    employee.getContact()
-            );
+        try {
+            List<Employee> employeeList = EmployeeRepo.getAll();
+            for (Employee employee : employeeList) {
+                Employee tm = new Employee(
+                        employee.getId(),
+                        employee.getName(),
+                        employee.getPosition(),
+                        employee.getAddress(),
+                        employee.getEmail(),
+                        employee.getContact()
+                );
 
-            tmList.add(customerTm);
+                obList.add(tm);
+            }
+
+            tblEmployee.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        tblEmployee.setItems(tmList);
-        EmployeeTm selectedItem = tblEmployee.getSelectionModel().getSelectedItem();
-        System.out.println("selectedItem = " + selectedItem);
     }
 
     private void setCellValueFactory() {
@@ -130,25 +133,25 @@ public class EmployeeFromController {
         }
         return employeeList;
     }
-*/
+
     @FXML
     void IdSearchOnAction(ActionEvent event) {
-            String id = eID.getText();
+        String id = eID.getText();
 
-            try {
-                Employee employee = EmployeeRepo.searchById(id);
+        try {
+            Employee employee = EmployeeRepo.searchById(id);
 
-                if (employee != null) {
-                    eID.setText(employee.getId());
-                    ePossition.setText(employee.getPosition());
-                    eName.setText(employee.getName());
-                    eAddress.setText(employee.getAddress());
-                    eEmail.setText(employee.getEmail());
-                    eContact.setText(employee.getContact());
-                }
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            if (employee != null) {
+                eID.setText(employee.getId());
+                ePossition.setText(employee.getPosition());
+                eName.setText(employee.getName());
+                eAddress.setText(employee.getAddress());
+                eEmail.setText(employee.getEmail());
+                eContact.setText(employee.getContact());
             }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML

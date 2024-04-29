@@ -72,8 +72,8 @@ public class EmployeeRepo {
         return employee;
     }
 
-   /* public static List<Employee> getAll() throws SQLException {
-        String sql = "SELECT * FROM customers";
+    public static List<Employee> getAll() throws SQLException {
+        String sql = "SELECT * FROM Employee";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -106,5 +106,5 @@ public class EmployeeRepo {
             idList.add(resultSet.getString(1));
         }
         return idList;
-    }*/
+    }
 }
