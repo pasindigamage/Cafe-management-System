@@ -163,7 +163,21 @@ public class EmployeeFromController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String idText = eID.getText();
+        String nameText= eName.getText();
+        String addressText = ePossition.getText();
+        String tel = eAddress.getText();
 
+        Customer customer = new Customer(id, name, address, tel);
+
+        try {
+            boolean isUpdated = CustomerRepo.update(customer);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }

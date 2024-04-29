@@ -144,5 +144,16 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="343.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
+      <Label layoutX="359.0" layoutY="564.0" text="Payment ID:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPayId" layoutX="467.0" layoutY="564.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

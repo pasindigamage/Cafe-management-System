@@ -75,6 +75,9 @@ public class OrderFromController {
     private AnchorPane rootNode;
 
     @FXML
+    private Label lblPayId;
+
+    @FXML
     void btnAddToCartOnAction(ActionEvent event) {
 
     }
