@@ -45,6 +45,9 @@ public class DashboardFromController {
     private JFXButton supplier;
 
     @FXML
+    private JFXButton topPer;
+
+    @FXML
     private Label uName;
 
     @FXML
@@ -62,7 +65,7 @@ public class DashboardFromController {
     }
 
     @FXML
-    void incostOnAction(ActionEvent event) {
+    void topPerOnAction(ActionEvent event) {
         new Alert(Alert.AlertType.CONFIRMATION, "Under The Development").show();
     }
 

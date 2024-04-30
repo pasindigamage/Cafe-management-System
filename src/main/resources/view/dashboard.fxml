@@ -76,7 +76,7 @@
       </ImageView>
       <JFXButton fx:id="employee" layoutX="117.0" layoutY="164.0" onAction="#employeeOnAction" style="-fx-background-color: #ffffff;" text="EMPLOYEE" />
       <JFXButton fx:id="inventory" layoutX="115.0" layoutY="290.0" onAction="#inventoryOnAction" style="-fx-background-color: #ffffff;" text="INVENTORY" />
-      <JFXButton fx:id="incost" layoutX="117.0" layoutY="432.0" onAction="#incostOnAction" style="-fx-background-color: #ffffff;" text="DAILY INCOME COST" />
+      <JFXButton fx:id="topPer" layoutX="117.0" layoutY="432.0" onAction="#topPerOnAction" style="-fx-background-color: #ffffff;" text="TOP PERFORMANCE" />
       <JFXButton fx:id="supplier" layoutX="466.0" layoutY="158.0" onAction="#supplierOnAction" style="-fx-background-color: #ffffff;" text="SUPPLIER" />
       <JFXButton fx:id="menu" layoutX="457.0" layoutY="289.0" onAction="#menuOnAction" style="-fx-background-color: #ffffff;" text="MENU" />
       <JFXButton fx:id="kitchenware" layoutX="784.0" layoutY="291.0" onAction="#kitchenwareOnAction" style="-fx-background-color: #ffffff;" text="KITCHEN WARE" />

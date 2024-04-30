@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.Employee;
-import lk.ijse.buddiescafe.model.TM.EmployeeTm;
 import lk.ijse.buddiescafe.repository.EmployeeRepo;
 
 import java.io.IOException;
@@ -85,7 +84,7 @@ public class EmployeeFromController {
 
     public void initialize(){
 
-        //   this.employeeList = getAllEmployee();
+        //this.employeeList = getAllEmployee();
         setCellValueFactory();
         loadEmployeeTable();
     }

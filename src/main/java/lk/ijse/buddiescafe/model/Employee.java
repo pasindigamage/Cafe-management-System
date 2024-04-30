@@ -3,7 +3,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Employee {
+public class Employee extends Supplier {
     private String id;
     private String name;
     private String position;

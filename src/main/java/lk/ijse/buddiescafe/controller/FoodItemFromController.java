@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,16 +11,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Supplier;
-import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
-import lk.ijse.buddiescafe.repository.SupplierRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class FoodItemFromController {
 
@@ -59,14 +60,59 @@ public class FoodItemFromController {
     private AnchorPane rootNode;
 
     @FXML
-    private TableView<?> tblMenu;
+    private TableView<FoodItems> tblMenu;
 
     @FXML
     private JFXButton updateMenu;
 
+    public void initialize(){
+
+        setCellValueFactory();
+        loadEmployeeTable();
+    }
+
+    private void loadEmployeeTable() {
+        ObservableList<FoodItems> obList = FXCollections.observableArrayList();
+
+        try {
+            List<FoodItems> foodItemsList = FoodItemsRepo.getAll();
+            for (FoodItems foodItems : foodItemsList) {
+                FoodItems tm = new FoodItems(
+                        foodItems.getId(),
+                        foodItems.getDescription(),
+                        foodItems.getAmount()
+                );
+
+                obList.add(tm);
+            }
+
+            tblMenu.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    }
+
     @FXML
     void IdSearchOnAction(ActionEvent event) {
+        String id = fID.getText();
 
+        try {
+            FoodItems foodItems = FoodItemsRepo.searchById(id);
+
+            if (foodItems != null) {
+                fID.setText(foodItems.getId());
+                fDescription.setText(foodItems.getDescription());
+                fAmount.setText(foodItems.getAmount());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML

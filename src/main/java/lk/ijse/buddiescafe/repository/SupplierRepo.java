@@ -5,7 +5,10 @@ import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.model.Supplier;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SupplierRepo {
     public static boolean save(Supplier supplier) throws SQLException {
@@ -43,6 +46,53 @@ public class SupplierRepo {
         pstm.setObject(1, id);
 
         return pstm.executeUpdate() > 0;
+
+    }
+
+    public static Supplier searchById(String id) throws SQLException {
+        String sql = "SELECT * FROM Supplier WHERE id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, id);
+        ResultSet resultSet = pstm.executeQuery();
+
+        Supplier supplier = null;
+
+        if (resultSet.next()) {
+            String sid = resultSet.getString(1);
+            String snic = resultSet.getString(2);
+            String name = resultSet.getString(3);
+            String companyAddress = resultSet.getString(4);
+            String email = resultSet.getString(5);
+            String contact = resultSet.getString(6);
+
+
+            supplier = new Supplier(sid,snic,name,companyAddress,email,contact);
+        }
+        return supplier;
+    }
+
+    public static List<Supplier> getAll() throws SQLException {
+        String sql = "SELECT * FROM Supplier";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<Supplier> supplierList = new ArrayList<>();
+        while (resultSet.next()) {
+            String sId = resultSet.getString(1);
+            String sNic = resultSet.getString(2);
+            String name = resultSet.getString(3);
+            String copmanyAddress = resultSet.getString(4);
+            String email = resultSet.getString(5);
+            String contact = resultSet.getString(6);
+
+            Supplier supplier = new Supplier(sId,sNic,name,copmanyAddress,email,contact);
+            supplierList.add(supplier);
+        }
+        return supplierList;
 
     }
 }
