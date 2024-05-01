@@ -93,7 +93,7 @@ public class SupplierFromController {
         try {
             List<Supplier> supplierList = SupplierRepo.getAll();
             for (Supplier supplier : supplierList) {
-                Employee tm = new Employee(
+                Supplier tm = new Supplier(
                         supplier.getId(),
                         supplier.getNic(),
                         supplier.getName(),

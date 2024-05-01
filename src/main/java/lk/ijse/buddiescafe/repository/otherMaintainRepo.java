@@ -5,7 +5,10 @@ import lk.ijse.buddiescafe.model.OtherMaintains;
 import lk.ijse.buddiescafe.model.Supplier;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class otherMaintainRepo {
     public static boolean save(OtherMaintains otherMaintains) throws SQLException {
@@ -40,6 +43,27 @@ public class otherMaintainRepo {
         pstm.setObject(1, id);
 
         return pstm.executeUpdate() > 0;
+
+    }
+
+    public static List<OtherMaintains> getAll() throws SQLException {
+        String sql = "SELECT * FROM otherMaintain";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<OtherMaintains> otherMaintainsList = new ArrayList<>();
+        while (resultSet.next()) {
+            String omid = resultSet.getString(1);
+            String omdescription = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            String amount = resultSet.getString(4);
+
+            OtherMaintains otherMaintains = new OtherMaintains(omid,omdescription,date,amount);
+            otherMaintainsList.add(otherMaintains);
+        }
+        return otherMaintainsList;
 
     }
 }

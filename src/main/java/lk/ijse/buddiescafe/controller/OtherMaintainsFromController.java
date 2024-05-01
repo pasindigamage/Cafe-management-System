@@ -1,23 +1,22 @@
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.OtherMaintains;
-import lk.ijse.buddiescafe.model.Supplier;
-import lk.ijse.buddiescafe.repository.EmployeeRepo;
-import lk.ijse.buddiescafe.repository.FoodItemsRepo;
-import lk.ijse.buddiescafe.repository.SupplierRepo;
 import lk.ijse.buddiescafe.repository.otherMaintainRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class OtherMaintainsFromController {
 
@@ -64,10 +63,45 @@ public class OtherMaintainsFromController {
     private TextField omId;
 
     @FXML
-    private TableView<?> tblOrderCart;
+    private TableView<OtherMaintains> tblOrderCart;
 
     @FXML
     private JFXButton updateOtherMaintains;
+
+    public void initialize() {
+        setCellValueFactory();
+        loadCustomerTable();
+    }
+
+    private void loadCustomerTable() {
+        ObservableList<OtherMaintains> obList = FXCollections.observableArrayList();
+
+        try {
+            List<OtherMaintains> otherMaintainsList = otherMaintainRepo.getAll();
+            for (OtherMaintains otherMaintains : otherMaintainsList) {
+                OtherMaintains tm = new OtherMaintains(
+                        otherMaintains.getId(),
+                        otherMaintains.getDescription(),
+                        otherMaintains.getDate(),
+                        otherMaintains.getAmount()
+                );
+
+                obList.add(tm);
+            }
+
+            tblOrderCart.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colOtherMaintainId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
