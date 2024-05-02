@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.buddiescafe.controller.MainDashboardFromController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="650.0" prefWidth="1275.0" style="-fx-background-color: #D5CEA3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.MainDashboardFromController">
+   <children>
+      <AnchorPane layoutX="313.0" layoutY="25.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a120b" height="650.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+   </children>
 </AnchorPane>

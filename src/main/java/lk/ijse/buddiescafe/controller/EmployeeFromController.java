@@ -75,6 +75,9 @@ public class EmployeeFromController {
     private TableView<Employee> tblEmployee;
 
     @FXML
+    private TextField eIDSearch;
+
+    @FXML
     private JFXButton updateEmployee;
 
     @FXML
@@ -88,6 +91,7 @@ public class EmployeeFromController {
         setCellValueFactory();
         loadEmployeeTable();
     }
+
 
     private void loadEmployeeTable() {
         ObservableList<Employee> obList = FXCollections.observableArrayList();
@@ -116,7 +120,7 @@ public class EmployeeFromController {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        //colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
@@ -135,7 +139,7 @@ public class EmployeeFromController {
 
     @FXML
     void IdSearchOnAction(ActionEvent event) {
-        String id = eID.getText();
+        String id = eIDSearch.getText();
 
         try {
             Employee employee = EmployeeRepo.searchById(id);
@@ -174,7 +178,7 @@ public class EmployeeFromController {
         }
     }
 
-    @FXML
+   /* @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
 
@@ -184,7 +188,7 @@ public class EmployeeFromController {
         stage.setScene(scene);
         stage.centerOnScreen();
     }
-
+*/
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();

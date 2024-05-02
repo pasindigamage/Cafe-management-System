@@ -12,7 +12,7 @@ import java.util.List;
 
 public class EmployeeRepo {
     public static boolean save(Employee employee) throws SQLException {
-        String sql ="INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
         pstm.setObject(1, employee.getId());
         pstm.setObject(2, employee.getName());
@@ -25,7 +25,7 @@ public class EmployeeRepo {
     }
 
     public static boolean update(Employee employee) throws SQLException {
-        String sql ="UPDATE Employee set name = ?, position = ?, address = ?, email = ?, contact = ? where id =? ";
+        String sql = "UPDATE Employee set name = ?, position = ?, address = ?, email = ?, contact = ? where id =? ";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
         pstm.setObject(1, employee.getName());
@@ -67,7 +67,7 @@ public class EmployeeRepo {
             String contact = resultSet.getString(6);
 
 
-            employee = new Employee(eid,position,name,address,email,contact);
+            employee = new Employee(eid, position, name, address, email, contact);
         }
         return employee;
     }
@@ -88,7 +88,7 @@ public class EmployeeRepo {
             String email = resultSet.getString(5);
             String contact = resultSet.getString(6);
 
-            Employee employee = new Employee(eid,position,name,address,email,contact);
+            Employee employee = new Employee(eid, position, name, address, email, contact);
             employeeList.add(employee);
         }
         return employeeList;

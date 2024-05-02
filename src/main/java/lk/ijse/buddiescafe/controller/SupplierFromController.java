@@ -82,7 +82,6 @@ public class SupplierFromController {
     private JFXButton updateSuppler;
 
     public void initialize(){
-
         setCellValueFactory();
         loadEmployeeTable();
     }
