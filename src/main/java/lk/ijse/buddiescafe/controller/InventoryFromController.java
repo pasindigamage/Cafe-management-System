@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
@@ -39,7 +40,7 @@ public class InventoryFromController {
     private TableColumn<?, ?> colDescription;
 
     @FXML
-    private TableColumn<?, ?> colInventroyCode;
+    private TableColumn<?, ?> colInventoryId;
 
     @FXML
     private TableColumn<?, ?> colQty;
@@ -109,12 +110,11 @@ public class InventoryFromController {
     }
 
     private void setCellValueFactory() {
-        colInventroyCode.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     private void setDate() {
