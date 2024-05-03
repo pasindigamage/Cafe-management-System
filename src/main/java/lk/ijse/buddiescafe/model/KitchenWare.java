@@ -5,7 +5,8 @@ import lombok.*;
 @Data
 public class KitchenWare {
     private String id;
+    private String supplierId;
     private String description;
-    private Integer qty;
+    private String qty;
 
 }
