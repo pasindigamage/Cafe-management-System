@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
@@ -82,6 +83,8 @@ public class InventoryFromController {
        // loadInventoryTable();
        // setCellValueFactory();
     }
+    @FXML
+    private Label lblsId;
 
     /*private void loadInventoryTable() {
         ObservableList<Inventory> obList = FXCollections.observableArrayList();
@@ -140,7 +143,7 @@ public class InventoryFromController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String idText = inventoryId.getText();
-        String supplierIdValue = cmbISupplierId.getValue();
+        String supplierIdValue = lblsId.getText();
         String descriptionText = Description.getText();
         String unitPriceText = unitPrice.getText();
         String qtyText = qty.getText();
@@ -172,7 +175,7 @@ public class InventoryFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = inventoryId.getText();
+        String id = lblsId.getText();
 
         try {
             boolean isDeleted = InventoryRepo.delete(id);
@@ -186,7 +189,7 @@ public class InventoryFromController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String idText = inventoryId.getText();
+        String idText = lblsId.getText();
         String supplierIdValue = cmbISupplierId.getValue();
         String descriptionText = Description.getText();
         String unitPriceText = unitPrice.getText();
@@ -207,7 +210,15 @@ public class InventoryFromController {
 
     @FXML
     void cmbSupOnAction(ActionEvent event) {
-
+        String sid = cmbISupplierId.getValue();
+        try {
+            Supplier supplier = SupplierRepo.searchByCode(sid);
+            if (supplier != null) {
+                lblsId.setText(supplier.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

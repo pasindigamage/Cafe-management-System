@@ -112,4 +112,24 @@ public class SupplierRepo {
         return IdList;
     }
 
+    public static Supplier searchByCode(String sid) throws SQLException {
+        String sql = "SELECT * FROM Supplier WHERE name = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, sid);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Supplier(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            );
+        }
+        return null;
+    }
 }
