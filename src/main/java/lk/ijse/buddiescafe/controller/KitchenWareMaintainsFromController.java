@@ -18,6 +18,9 @@ import java.io.IOException;
 public class KitchenWareMaintainsFromController {
 
     @FXML
+    private Label lblDate;
+
+    @FXML
     private AnchorPane rootNode;
 
     @FXML
