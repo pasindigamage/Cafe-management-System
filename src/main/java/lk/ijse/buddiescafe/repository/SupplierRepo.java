@@ -93,7 +93,6 @@ public class SupplierRepo {
             supplierList.add(supplier);
         }
         return supplierList;
-
     }
 
 

@@ -1,5 +1,4 @@
 package lk.ijse.buddiescafe.controller;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
@@ -7,9 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
@@ -68,7 +67,7 @@ public class InventoryFromController {
     private AnchorPane rootNode;
 
     @FXML
-    private TableView<?> tblOrderCart;
+    private TableView<Inventory> tblOrderCart;
 
     @FXML
     private TextField unitPrice;
@@ -79,7 +78,42 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
+       // loadInventoryTable();
+       // setCellValueFactory();
     }
+
+    /*private void loadInventoryTable() {
+        ObservableList<Inventory> obList = FXCollections.observableArrayList();
+
+        try {
+            List<Inventory> inventoryList = InventoryRepo.getAll();
+            for (Inventory inventory : inventoryList) {
+                Inventory tm = new Inventory(
+                        inventory.getId(),
+                        inventory.getSupplierId(),
+                        inventory.getDescription(),
+                        inventory.getUnitPrice(),
+                        inventory.getQty(),
+                        inventory.getDate()
+                );
+
+                obList.add(tm);
+            }
+
+            tblOrderCart.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colInventroyCode.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+    }*/
 
     private void setDate() {
         LocalDate now = LocalDate.now();
