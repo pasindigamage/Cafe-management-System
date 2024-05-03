@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.KitchenWare;
+import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
@@ -96,7 +97,7 @@ public class KitchenWareFromController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String idText = kId.getText();
-        String cmbISupplierIdValue = cmbISupplierId.getValue();
+        String cmbISupplierIdValue = lblsId.getText();
         String descriptionText = Description.getText();
         String qtyText = Qty.getText();
         KitchenWare kitchenWare = new KitchenWare(idText,cmbISupplierIdValue,descriptionText,qtyText);
@@ -140,7 +141,7 @@ public class KitchenWareFromController {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String idText = kId.getText();
-        String supplierIdValue = cmbISupplierId.getValue();
+        String supplierIdValue = lblsId.getText();
         String descriptionText = Description.getText();
         String qtyText = Qty.getText();
 
@@ -157,7 +158,18 @@ public class KitchenWareFromController {
     }
 
     @FXML
-    void cmbItemOnAction(ActionEvent event) {
+    private Label lblsId;
 
+    @FXML
+    void cmbItemOnAction(ActionEvent event) {
+        String sid = cmbISupplierId.getValue();
+        try {
+            Supplier supplier = SupplierRepo.searchByCode(sid);
+            if (supplier != null) {
+                lblsId.setText(supplier.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

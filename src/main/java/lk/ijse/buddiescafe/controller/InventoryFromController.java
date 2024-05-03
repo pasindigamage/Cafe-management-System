@@ -175,7 +175,7 @@ public class InventoryFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = lblsId.getText();
+        String id = inventoryId.getText();
 
         try {
             boolean isDeleted = InventoryRepo.delete(id);
@@ -189,8 +189,8 @@ public class InventoryFromController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String idText = lblsId.getText();
-        String supplierIdValue = cmbISupplierId.getValue();
+        String idText = inventoryId.getText();
+        String supplierIdValue = lblsId.getText();
         String descriptionText = Description.getText();
         String unitPriceText = unitPrice.getText();
         String qtyText = qty.getText();

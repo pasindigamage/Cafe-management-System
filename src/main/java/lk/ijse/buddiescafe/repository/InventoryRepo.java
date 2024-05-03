@@ -83,25 +83,4 @@ public class InventoryRepo {
         return inventory;
     }
 
-   /* public static List<Inventory> getAll() throws SQLException {
-        String sql = "SELECT * FROM Inventory";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-        List<Inventory> inventoryList = new ArrayList<>();
-        while (resultSet.next()) {
-            String id = resultSet.getString(1);
-            String supId = resultSet.getString(2);
-            String description = resultSet.getString(3);
-            String unitPrice = resultSet.getString(4);
-            String qty = resultSet.getString(5);
-            String date = resultSet.getString(6);
-
-            Inventory inventory = new Inventory(id,supId,description,unitPrice,qty,date);
-            inventoryList.add(inventory);
-        }
-        return inventoryList;
-    }*/
 }

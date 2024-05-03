@@ -12,7 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
+import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareMaintainRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
@@ -90,7 +92,7 @@ public class KitchenWareMaintainsFromController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String idText = kmId.getText();
-        String kitchenWareIdValue = (String) cmbIKitchenWareId.getValue();
+        String kitchenWareIdValue = lblKId.getText();
         String descriptionText = kmDescription.getText();
         String dateText = lblDate.getText();
         String amountText = amount.getText();
@@ -137,9 +139,12 @@ public class KitchenWareMaintainsFromController {
     }
 
     @FXML
+    private Label lblKId;
+
+    @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String idText = kmId.getText();
-        String kitchenWareIdValue = (String) cmbIKitchenWareId.getValue();
+        String kitchenWareIdValue = lblKId.getText();
         String descriptionText = kmDescription.getText();
         String dateText = lblDate.getText();
         String amountText = amount.getText();
@@ -174,7 +179,15 @@ public class KitchenWareMaintainsFromController {
 
     @FXML
     void cmbItemOnAction(ActionEvent event) {
-
+        String kid = cmbIKitchenWareId.getValue();
+        try {
+            KitchenWare kitchenWare = KitchenWareRepo.searchByCode(kid);
+            if (kitchenWare != null) {
+                lblKId.setText(kitchenWare.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

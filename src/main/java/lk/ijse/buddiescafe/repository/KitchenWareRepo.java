@@ -2,6 +2,7 @@ package lk.ijse.buddiescafe.repository;
 
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWare;
+import lk.ijse.buddiescafe.model.Supplier;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,4 +59,24 @@ public class KitchenWareRepo {
         }
         return IdList;
     }
+
+    public static KitchenWare searchByCode(String kid) throws SQLException {
+        String sql = "SELECT * FROM KitchenWare WHERE description = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, kid);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new KitchenWare(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4)
+            );
+        }
+        return null;
+    }
+
 }
