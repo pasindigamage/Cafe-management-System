@@ -4,7 +4,10 @@ import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWare;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KitchenWareRepo {
     public static boolean save(KitchenWare kitchenWare) throws SQLException {
@@ -38,5 +41,21 @@ public class KitchenWareRepo {
         pstm.setObject(4, kitchenWare.getId());
 
         return pstm.executeUpdate() > 0;
+    }
+
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT description FROM KitchenWare";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> IdList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            IdList.add(resultSet.getString(1));
+        }
+        return IdList;
     }
 }

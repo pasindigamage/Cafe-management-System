@@ -31,9 +31,9 @@
          </font>
       </Label>
       <Group layoutX="604.0" layoutY="3.0" />
-      <Label layoutX="58.0" layoutY="157.0" text="Kitchenware ID:">
+      <Label layoutX="58.0" layoutY="157.0" text="Kitchenware :">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <JFXComboBox fx:id="cmbIKitchenWareId" layoutX="58.0" layoutY="174.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="157.0" />
@@ -85,25 +85,34 @@
       </JFXButton>
       <Label layoutX="57.0" layoutY="311.0" text="Date" textFill="#363232">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="amount" layoutX="58.0" layoutY="415.0" prefHeight="33.0" prefWidth="157.0" />
+      <TextField fx:id="amount" layoutX="58.0" layoutY="415.0" prefHeight="33.0" prefWidth="157.0" promptText="eg:-100.00">
+         <font>
+            <Font size="12.0" />
+         </font></TextField>
       <Label layoutX="58.0" layoutY="392.0" text="Amount" textFill="#363232">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="kmId" layoutX="56.0" layoutY="103.0" prefHeight="33.0" prefWidth="157.0" />
+      <TextField fx:id="kmId" layoutX="56.0" layoutY="103.0" prefHeight="33.0" prefWidth="157.0" promptText="KWM00X">
+         <font>
+            <Font size="12.0" />
+         </font></TextField>
       <Label layoutX="57.0" layoutY="82.0" text="ID" textFill="#363232">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="kmDescription" layoutX="57.0" layoutY="255.0" prefHeight="33.0" prefWidth="157.0" />
+      <TextField fx:id="kmDescription" layoutX="57.0" layoutY="255.0" prefHeight="33.0" prefWidth="157.0" promptText="about the maintain">
+         <font>
+            <Font size="12.0" />
+         </font></TextField>
       <Label layoutX="57.0" layoutY="229.0" text="Description" textFill="#363232">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="lblDate" layoutX="57.0" layoutY="339.0" />

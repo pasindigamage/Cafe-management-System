@@ -1,15 +1,10 @@
 package lk.ijse.buddiescafe.repository;
-
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.Supplier;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InventoryRepo {
     public static String currentId() throws SQLException {
