@@ -112,7 +112,6 @@ public class SupplierFromController {
 
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colNIC.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("companyAddress"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -120,8 +119,11 @@ public class SupplierFromController {
     }
 
     @FXML
+    private TextField sIDSearch;
+
+    @FXML
     void IdSearchOnAction(ActionEvent event) {
-        String id = sID.getText();
+        String id = sIDSearch.getText();
 
         try {
             Supplier supplier = SupplierRepo.searchById(id);
