@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareFromController">
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareFromController">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/underbg.png" />
+            <Image url="@../../../../../Desktop/buddiescafe/src/main/resources/images/underbg.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="513.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/underbg.png" />
+            <Image url="@../../../../../Desktop/buddiescafe/src/main/resources/images/underbg.png" />
          </image>
       </ImageView>
       <Label layoutX="20.0" layoutY="24.0" text="KITCHENWARE" textFill="#2c3e50">
@@ -31,17 +31,9 @@
          </font>
       </Label>
       <Group layoutX="604.0" layoutY="3.0" />
-      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="809.0" layoutY="555.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="   back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="820.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/back.png" />
+            <Image url="@../../../../../Desktop/buddiescafe/src/main/resources/images/back.png" />
          </image>
       </ImageView>
       <Label layoutX="58.0" layoutY="174.0" text="Supplier ID:">
@@ -49,8 +41,8 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbISupplierId" layoutX="58.0" layoutY="199.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="230.0" />
-      <TableView fx:id="tblOrderCart" layoutX="323.0" layoutY="74.0" prefHeight="398.0" prefWidth="554.0">
+      <JFXComboBox fx:id="cmbISupplierId" layoutX="58.0" layoutY="199.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="195.0" />
+      <TableView fx:id="tblOrderCart" layoutX="307.0" layoutY="108.0" prefHeight="379.0" prefWidth="554.0">
          <columns>
             <TableColumn fx:id="colKitchenWareId" prefWidth="105.0" text="ID" />
             <TableColumn fx:id="colSupplierId" prefWidth="140.0" text="Supplier ID" />
@@ -63,7 +55,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="deleteKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="562.0" layoutY="490.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="deleteKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="562.0" layoutY="519.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -71,7 +63,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="updateKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="414.0" layoutY="490.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="updateKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="414.0" layoutY="519.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -79,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="addKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="263.0" layoutY="490.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="263.0" layoutY="519.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -87,7 +79,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="702.0" layoutY="490.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="702.0" layoutY="519.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -95,19 +87,19 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="kDescription" layoutX="57.0" layoutY="284.0" prefHeight="33.0" prefWidth="230.0" />
+      <TextField fx:id="Description" layoutX="57.0" layoutY="284.0" prefHeight="33.0" prefWidth="195.0" promptText="About KitchenWare" />
       <Label layoutX="57.0" layoutY="258.0" text="Description" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="kQty" layoutX="58.0" layoutY="379.0" prefHeight="33.0" prefWidth="68.0" />
+      <TextField fx:id="Qty" layoutX="58.0" layoutY="379.0" prefHeight="33.0" prefWidth="56.0" />
       <Label layoutX="58.0" layoutY="356.0" text="Qty" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="kId" layoutX="56.0" layoutY="110.0" prefHeight="33.0" prefWidth="230.0" />
+      <TextField fx:id="kId" layoutX="56.0" layoutY="110.0" prefHeight="33.0" prefWidth="195.0" promptText="KT00X" />
       <Label layoutX="57.0" layoutY="89.0" text="ID" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />

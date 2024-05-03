@@ -103,7 +103,7 @@ public class KitchenWareFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-/*
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();
@@ -153,5 +153,4 @@ public class KitchenWareFromController {
     void cmbItemOnAction(ActionEvent event) {
 
     }
-*/
 }
