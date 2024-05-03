@@ -1,26 +1,16 @@
 package lk.ijse.buddiescafe.controller;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
-import lk.ijse.buddiescafe.model.Supplier;
-import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareMaintainRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
-import lk.ijse.buddiescafe.repository.SupplierRepo;
-
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;

@@ -8,13 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.Supplier;
-import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
-
 import java.sql.SQLException;
 import java.util.List;
 

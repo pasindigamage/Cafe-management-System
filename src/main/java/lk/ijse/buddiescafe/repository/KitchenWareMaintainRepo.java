@@ -1,8 +1,6 @@
 package lk.ijse.buddiescafe.repository;
-
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

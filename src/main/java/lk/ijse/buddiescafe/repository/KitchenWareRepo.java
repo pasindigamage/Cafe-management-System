@@ -1,9 +1,6 @@
 package lk.ijse.buddiescafe.repository;
-
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWare;
-import lk.ijse.buddiescafe.model.Supplier;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
