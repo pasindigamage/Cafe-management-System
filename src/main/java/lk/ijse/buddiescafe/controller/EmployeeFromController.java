@@ -86,8 +86,6 @@ public class EmployeeFromController {
     private List<Employee> employeeList = new ArrayList<>();
 
     public void initialize(){
-
-        //this.employeeList = getAllEmployee();
         setCellValueFactory();
         loadEmployeeTable();
     }
@@ -120,12 +118,10 @@ public class EmployeeFromController {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
     }
-
 
     private List<Employee> getAllEmployee() {
         List<Employee> employeeList = null;
@@ -178,17 +174,6 @@ public class EmployeeFromController {
         }
     }
 
-   /* @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-    }
-*/
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();

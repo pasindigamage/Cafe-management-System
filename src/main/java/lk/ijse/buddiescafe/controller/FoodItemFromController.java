@@ -99,11 +99,14 @@ public class FoodItemFromController {
     }
 
     @FXML
+    private TextField fooditemSearch;
+
+    @FXML
     void IdSearchOnAction(ActionEvent event) {
-        String id = fID.getText();
+        String description = fooditemSearch.getText();
 
         try {
-            FoodItems foodItems = FoodItemsRepo.searchById(id);
+            FoodItems foodItems = FoodItemsRepo.searchByDescription(description);
 
             if (foodItems != null) {
                 fID.setText(foodItems.getId());

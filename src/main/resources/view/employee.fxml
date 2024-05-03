@@ -29,7 +29,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="eID" layoutX="37.0" layoutY="105.0" prefHeight="33.0" prefWidth="198.0" promptText="E00X" />
+      <TextField fx:id="eID" layoutX="37.0" layoutY="105.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- E001" />
       <Label layoutX="37.0" layoutY="87.0" text="Employee Id" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -41,25 +41,25 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eAddress" layoutX="37.0" layoutY="304.0" prefHeight="33.0" prefWidth="198.0" promptText="no.xxx,xxx" />
+      <TextField fx:id="eAddress" layoutX="37.0" layoutY="304.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- No.305,Hapugala,Galle" />
       <Label layoutX="37.0" layoutY="286.0" text="Address" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eContact" layoutX="37.0" layoutY="372.0" prefHeight="33.0" prefWidth="198.0" promptText="+94 xxxxxxxxx" />
+      <TextField fx:id="eContact" layoutX="37.0" layoutY="372.0" prefHeight="33.0" prefWidth="198.0" promptText="+94 XXXXXXXXX" />
       <Label layoutX="37.0" layoutY="354.0" text="Contact" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eEmail" layoutX="37.0" layoutY="443.0" prefHeight="33.0" prefWidth="198.0" promptText="xxxx@gmail.com" />
+      <TextField fx:id="eEmail" layoutX="37.0" layoutY="443.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- abc@gmail.com" />
       <Label layoutX="37.0" layoutY="425.0" text="Email" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="ePossition" layoutX="37.0" layoutY="172.0" prefHeight="33.0" prefWidth="198.0" promptText="Enter The Job Position" />
+      <TextField fx:id="ePossition" layoutX="38.0" layoutY="172.0" prefHeight="33.0" prefWidth="198.0" promptText="Enter The Job Position" />
       <Label layoutX="37.0" layoutY="154.0" text="Position" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -112,7 +112,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="eIDSearch" layoutX="620.0" layoutY="31.0" onAction="#IdSearchOnAction" prefHeight="26.0" prefWidth="147.0" promptText="E00X" />
+      <TextField fx:id="eIDSearch" layoutX="620.0" layoutY="31.0" onAction="#IdSearchOnAction" prefHeight="26.0" prefWidth="147.0" promptText="Enter Employee ID" />
       <Label layoutX="783.0" layoutY="36.0" text="Seacrch Here" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />

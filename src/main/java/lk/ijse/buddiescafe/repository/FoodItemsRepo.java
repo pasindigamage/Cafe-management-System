@@ -44,8 +44,8 @@ public class FoodItemsRepo {
 
     }
 
-    public static FoodItems searchById(String id) throws SQLException {
-        String sql = "SELECT * FROM FoodItems WHERE id = ?";
+    public static FoodItems searchByDescription(String id) throws SQLException {
+        String sql = "SELECT * FROM FoodItems WHERE description = ?";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
