@@ -36,13 +36,8 @@
             <Image url="@../../../../../Desktop/buddiescafe/src/main/resources/images/back.png" />
          </image>
       </ImageView>
-      <Label layoutX="58.0" layoutY="174.0" text="Supplier ID:">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <JFXComboBox fx:id="cmbISupplierId" layoutX="58.0" layoutY="199.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="195.0" />
-      <TableView fx:id="tblOrderCart" layoutX="307.0" layoutY="108.0" prefHeight="379.0" prefWidth="554.0">
+      <JFXComboBox fx:id="cmbISupplierId" layoutX="53.0" layoutY="194.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="195.0" promptText="Select Supplier" />
+      <TableView fx:id="tblOrderCart" layoutX="303.0" layoutY="108.0" prefHeight="379.0" prefWidth="554.0">
          <columns>
             <TableColumn fx:id="colKitchenWareId" prefWidth="105.0" text="ID" />
             <TableColumn fx:id="colSupplierId" prefWidth="140.0" text="Supplier ID" />
@@ -87,22 +82,28 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="Description" layoutX="57.0" layoutY="284.0" prefHeight="33.0" prefWidth="195.0" promptText="About KitchenWare" />
-      <Label layoutX="57.0" layoutY="258.0" text="Description" textFill="#363232">
+      <TextField fx:id="Description" layoutX="52.0" layoutY="281.0" prefHeight="33.0" prefWidth="195.0" promptText="About KitchenWare" />
+      <Label layoutX="52.0" layoutY="255.0" text="Description" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="Qty" layoutX="58.0" layoutY="379.0" prefHeight="33.0" prefWidth="56.0" />
-      <Label layoutX="58.0" layoutY="356.0" text="Qty" textFill="#363232">
+      <TextField fx:id="Qty" layoutX="53.0" layoutY="359.0" prefHeight="33.0" prefWidth="56.0" promptText="eg:- 5" />
+      <Label layoutX="53.0" layoutY="336.0" text="Qty" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="kId" layoutX="56.0" layoutY="110.0" prefHeight="33.0" prefWidth="195.0" promptText="KT00X" />
-      <Label layoutX="57.0" layoutY="89.0" text="ID" textFill="#363232">
+      <TextField fx:id="kId" layoutX="51.0" layoutY="130.0" prefHeight="33.0" prefWidth="195.0" promptText="eg:- KT001" />
+      <Label layoutX="52.0" layoutY="109.0" text="ID" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="kitchenWareIdSearch" layoutX="616.0" layoutY="40.0" onAction="#IdSearchOnAction" prefHeight="26.0" prefWidth="155.0" promptText="Enter KitchenWare Id" />
+      <Label layoutX="787.0" layoutY="45.0" text="Seacrch Here" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
    </children>

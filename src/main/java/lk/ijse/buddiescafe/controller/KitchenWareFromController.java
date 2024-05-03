@@ -85,6 +85,13 @@ public class KitchenWareFromController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    private TextField kitchenWareIdSearch;
+
+    @FXML
+    void IdSearchOnAction(ActionEvent event) {
+
+    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

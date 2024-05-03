@@ -97,7 +97,7 @@ public class SupplierRepo {
 
 
     public static List<String> getIds() throws SQLException {
-        String sql = "SELECT id FROM Supplier";
+        String sql = "SELECT name FROM Supplier";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
@@ -111,4 +111,5 @@ public class SupplierRepo {
         }
         return IdList;
     }
+
 }

@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
@@ -208,4 +210,24 @@ public class InventoryFromController {
 
     }
 
+    @FXML
+    private TextField inventoryIdSearch;
+
+    public void IdSearchOnAction(ActionEvent actionEvent) {
+        String id = inventoryIdSearch.getText();
+
+        try {
+            Inventory inventory = InventoryRepo.searchByID(id);
+
+            if (inventoryIdSearch != null) {
+                inventoryId.setText(inventory.getId());
+                cmbISupplierId.setValue(inventory.getSupplierId());
+                Description.setText(inventory.getDescription());
+                unitPrice.setText(inventory.getUnitPrice());
+                qty.setText(inventory.getQty());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
 }
