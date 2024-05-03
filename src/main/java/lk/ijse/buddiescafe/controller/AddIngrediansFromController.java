@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class AddIngredians {
+public class AddIngrediansFromController {
 
     @FXML
     private JFXButton addIngredians;
