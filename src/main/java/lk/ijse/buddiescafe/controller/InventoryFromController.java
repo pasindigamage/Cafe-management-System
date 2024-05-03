@@ -137,12 +137,37 @@ public class InventoryFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = inventoryId.getText();
 
+        try {
+            boolean isDeleted = InventoryRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Inventory Deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String idText = inventoryId.getText();
+        String supplierIdValue = cmbISupplierId.getValue();
+        String descriptionText = Description.getText();
+        String unitPriceText = unitPrice.getText();
+        String qtyText = qty.getText();
+        String dateText =lblOrderDate.getText();
 
+        Inventory inventory = new Inventory(idText,supplierIdValue,descriptionText,unitPriceText,qtyText,dateText);
+
+        try {
+            boolean isUpdated = InventoryRepo.update(inventory);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Inventory Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML

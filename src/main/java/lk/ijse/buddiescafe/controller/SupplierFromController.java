@@ -220,5 +220,4 @@ public class SupplierFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
 }
