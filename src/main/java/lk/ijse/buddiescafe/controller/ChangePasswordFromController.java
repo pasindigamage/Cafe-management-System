@@ -46,21 +46,21 @@ public class ChangePasswordFromController {
 
     private void savePassword(String uname, String eid, String newPw) {
         try {
-            String sql = "UPDATE User SET password = ? WHERE userName = ? AND employeeId = ?";
+            String sql = "UPDATE User SET password = ? WHERE userName = ?";
 
+            // Update based on userName only (assuming unique constraint)
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
 
             pstm.setString(1, newPw);
             pstm.setString(2, uname);
-            pstm.setString(3, eid);
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
                 new Alert(Alert.AlertType.CONFIRMATION, "New Password Saved!").show();
             } else {
-                // No rows updated, handle potential errors
-                new Alert(Alert.AlertType.ERROR, "Password update failed").show();
+                // No rows updated, handle potential errors (e.g., user not found)
+                new Alert(Alert.AlertType.ERROR, "Password update failed. User not found.").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -1,13 +1,13 @@
 package lk.ijse.buddiescafe.model;
-
 import lombok.*;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class FoodItems {
+
+public class OtherMaintains {
     private String id;
     private String description;
+    private String date;
     private String amount;
-
 }

@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.InventorySupplingDetails">
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.OrderFromController">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -142,6 +142,17 @@
       <Label layoutX="20.0" layoutY="563.0" text="Net Total : ">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="343.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
+      <Label layoutX="359.0" layoutY="564.0" text="Payment ID:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPayId" layoutX="467.0" layoutY="564.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
    </children>
