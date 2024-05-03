@@ -80,13 +80,13 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
-       // loadInventoryTable();
-       // setCellValueFactory();
+        loadInventoryTable();
+        setCellValueFactory();
     }
     @FXML
     private Label lblsId;
 
-    /*private void loadInventoryTable() {
+    private void loadInventoryTable() {
         ObservableList<Inventory> obList = FXCollections.observableArrayList();
 
         try {
@@ -100,10 +100,8 @@ public class InventoryFromController {
                         inventory.getQty(),
                         inventory.getDate()
                 );
-
                 obList.add(tm);
             }
-
             tblOrderCart.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -117,7 +115,7 @@ public class InventoryFromController {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-    }*/
+    }
 
     private void setDate() {
         LocalDate now = LocalDate.now();
