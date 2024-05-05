@@ -53,6 +53,15 @@ public class InventoryRepo {
 
     public static boolean delete(String id) throws SQLException {
         String sql = "DELETE FROM Inventory WHERE id = ?";
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public static boolean delete(String id) throws SQLException {
+        String sql = "DELETE FROM Inventory WHERE id = ?";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
