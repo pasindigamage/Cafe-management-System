@@ -82,7 +82,7 @@ public class InventoryFromController {
         setDate();
         getSupplierIds();
         loadInventoryTable();
-        setCellValueFactory();
+       // setCellValueFactory();
     }
     @FXML
     private Label lblsId;
