@@ -73,7 +73,7 @@ public class LoginFromController {
     }
 
     private void navigateToTheDashboard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/mainDashboard.fxml"));
 
         Scene scene = new Scene(rootNode);
 

@@ -3,8 +3,12 @@ package lk.ijse.buddiescafe.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class MainDashboardFromController {
 
@@ -42,8 +46,11 @@ public class MainDashboardFromController {
     private Label time;
 
     @FXML
-    void employeeOnAction(ActionEvent event) {
-
+    void employeeOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/employee.fxml"));
+        Parent rootNode = loader.load();
+        subDashboard.getChildren().clear();
+        subDashboard.getChildren().add(rootNode);
     }
 
     @FXML
