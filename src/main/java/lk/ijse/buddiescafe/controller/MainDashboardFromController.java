@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class MainDashboardFromController {
 
@@ -20,6 +21,9 @@ public class MainDashboardFromController {
     private JFXButton logout;
 
     @FXML
+    private AnchorPane mainDashboard;
+
+    @FXML
     private JFXButton maintain;
 
     @FXML
@@ -27,6 +31,9 @@ public class MainDashboardFromController {
 
     @FXML
     private JFXButton order;
+
+    @FXML
+    private AnchorPane subDashboard;
 
     @FXML
     private JFXButton supplier;
