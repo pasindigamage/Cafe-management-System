@@ -81,15 +81,15 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Label layoutX="64.0" layoutY="-1.0" prefHeight="58.0" prefWidth="127.0" text="HOME" textFill="#1a120b">
-         <font>
-            <Font name="System Bold Italic" size="20.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/home.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="home" layoutX="-1.0" onAction="#homeOnAction" prefHeight="58.0" prefWidth="208.0" text="HOME" textFill="#1a120b">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
