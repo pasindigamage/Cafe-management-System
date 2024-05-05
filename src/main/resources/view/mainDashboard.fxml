@@ -1,12 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="1275.0" style="-fx-background-color: #D5CEA3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.MainDashboardFromController">
    <children>
-      <AnchorPane layoutX="313.0" layoutY="25.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a120b" height="650.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <AnchorPane layoutX="313.0" layoutY="25.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="23.0" layoutY="57.0" prefHeight="52.0" prefWidth="458.0" text="WELCOME TO BUDDIES CAFE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="time" layoutX="23.0" layoutY="14.0" prefHeight="52.0" prefWidth="273.0" text="good morning......!!!!!!">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="282.0" fitWidth="208.0" layoutX="678.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo-removebg.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane layoutY="57.0" prefHeight="593.0" prefWidth="208.0" style="-fx-background-color: #1a120b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1067.0" AnchorPane.topAnchor="57.0">
+         <children>
+            <VBox layoutY="14.0" prefHeight="593.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="employee" layoutX="10.0" layoutY="530.0" onAction="#employeeOnAction" prefHeight="65.0" prefWidth="208.0" text="EMPLOYEE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="supplier" layoutX="10.0" layoutY="10.0" onAction="#supplierOnAction" prefHeight="65.0" prefWidth="208.0" text="SUPPLIER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="order" layoutX="10.0" layoutY="75.0" onAction="#orderOnAction" prefHeight="65.0" prefWidth="208.0" text="ORDERS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="inventory" layoutX="10.0" layoutY="140.0" onAction="#inventoryOnAction" prefHeight="65.0" prefWidth="208.0" text="INVENTORY" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="menu" layoutX="10.0" layoutY="205.0" onAction="#menuOnAction" prefHeight="65.0" prefWidth="208.0" text="MENU" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="kitchenware" layoutX="10.0" layoutY="270.0" onAction="#kitchenwareOnAction" prefHeight="65.0" prefWidth="208.0" text="KITCHENWARE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="maintain" layoutX="10.0" layoutY="335.0" onAction="#maintainOnAction" prefHeight="65.0" prefWidth="208.0" text="MAINTAINS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="465.0" prefHeight="65.0" prefWidth="208.0" text="         " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="logout" layoutX="10.0" layoutY="530.0" onAction="#logoutOnAction" prefHeight="65.0" prefWidth="208.0" text="Log Out" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Label layoutX="64.0" layoutY="-1.0" prefHeight="58.0" prefWidth="127.0" text="HOME" textFill="#1a120b">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/home.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
