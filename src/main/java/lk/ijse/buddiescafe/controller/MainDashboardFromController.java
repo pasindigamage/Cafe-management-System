@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -110,9 +110,9 @@ public class MainDashboardFromController {
     }
 
     public void homeOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/mainDashboard.fxml"));
-        Pane registerPane = fxmlLoader.load();
-        subDashboard.getChildren().clear();
-        subDashboard.getChildren().add(registerPane);
+        mainDashboard.getChildren().clear();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/mainDashboard.fxml"));
+        Stage stage = (Stage) mainDashboard.getScene().getWindow();
+        stage.setScene(new Scene(anchorPane));
     }
 }
