@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class OrderFromController {
 
@@ -76,6 +77,15 @@ public class OrderFromController {
 
     @FXML
     private Label lblPayId;
+
+    public void initialize(){
+        setDate();
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblOrderDate.setText(String.valueOf(now));
+    }
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {

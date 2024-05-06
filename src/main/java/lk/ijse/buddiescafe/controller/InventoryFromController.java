@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.Supplier;
-import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
@@ -84,6 +82,7 @@ public class InventoryFromController {
         loadInventoryTable();
        // setCellValueFactory();
     }
+
     @FXML
     private Label lblsId;
 
