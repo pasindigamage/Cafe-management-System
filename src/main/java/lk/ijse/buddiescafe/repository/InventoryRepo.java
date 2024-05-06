@@ -76,12 +76,11 @@ public class InventoryRepo {
             String inventoryId = resultSet.getString(1);
             String SupplierId = resultSet.getString(2);
             String description = resultSet.getString(3);
-            String unitPrice = resultSet.getString(3);
-            String qty = resultSet.getString(3);
-            String date = resultSet.getString(3);
+            String unitPrice = resultSet.getString(4);
+            String qty = resultSet.getString(5);
+            String date = resultSet.getString(6);
 
-
-            inventory = new Inventory(inventoryId,SupplierId,description,unitPrice,qty,date);
+            inventory = new Inventory(inventoryId,null,description,unitPrice,qty,date);
         }
         return inventory;
     }

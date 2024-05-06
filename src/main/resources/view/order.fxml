@@ -32,7 +32,7 @@
          </font>
       </Label>
       <TextField fx:id="txtQty" layoutX="746.0" layoutY="175.0" onAction="#txtQtyOnAction" prefHeight="33.0" prefWidth="66.0" />
-      <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="673.0" layoutY="554.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
+      <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="771.0" layoutY="554.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -49,19 +49,6 @@
          </cursor>
       </JFXButton>
       <Group layoutX="604.0" layoutY="3.0" />
-      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="809.0" layoutY="555.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="   back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="820.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/back.png" />
-         </image>
-      </ImageView>
       <Label layoutX="60.0" layoutY="95.0" text="CASHIER : " textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -72,7 +59,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="359.0" layoutY="93.0" text="Order ID:">
+      <Label layoutX="359.0" layoutY="93.0" text="ORDER ID:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -87,7 +74,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderDate" layoutX="686.0" layoutY="90.0" prefHeight="21.0" prefWidth="54.0" textFill="#278d7f">
+      <Label fx:id="lblOrderDate" layoutX="686.0" layoutY="90.0" prefHeight="21.0" prefWidth="191.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -123,14 +110,14 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tblOrderCart" layoutX="14.0" layoutY="286.0" prefHeight="256.0" prefWidth="873.0">
+      <TableView fx:id="tblOrderCart" layoutX="39.0" layoutY="286.0" prefHeight="256.0" prefWidth="817.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="119.0" text="Code" />
-            <TableColumn fx:id="colDescription" prefWidth="212.0" text="Description" />
+            <TableColumn fx:id="colItemCode" prefWidth="79.0" text="Code" />
+            <TableColumn fx:id="colDescription" prefWidth="252.0" text="Description" />
             <TableColumn fx:id="colQty" prefWidth="113.0" text="Qty" />
             <TableColumn fx:id="colUnitPrice" prefWidth="145.0" text="Unit Price" />
-            <TableColumn fx:id="colTotal" prefWidth="159.0" text="Total" />
-            <TableColumn fx:id="colAction" prefWidth="124.0" text="Action" />
+            <TableColumn fx:id="colTotal" prefWidth="130.0" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="97.0" text="Action" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="13.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
@@ -144,13 +131,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="343.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
-      <Label layoutX="359.0" layoutY="564.0" text="Payment ID:">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="406.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
+      <Label layoutX="422.0" layoutY="564.0" text="Payment ID:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblPayId" layoutX="467.0" layoutY="564.0" textFill="#278d7f">
+      <Label fx:id="lblPayId" layoutX="530.0" layoutY="564.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

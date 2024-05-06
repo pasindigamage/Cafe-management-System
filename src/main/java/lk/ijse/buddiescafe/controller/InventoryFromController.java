@@ -79,8 +79,8 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
-        loadInventoryTable();
-       // setCellValueFactory();
+       // loadInventoryTable();
+        // setCellValueFactory();
     }
 
     @FXML
@@ -229,10 +229,11 @@ public class InventoryFromController {
 
             if (inventoryIdSearch != null) {
                 inventoryId.setText(inventory.getId());
-                cmbISupplierId.setValue(inventory.getSupplierId());
+               // cmbISupplierId.setValue(inventory.getSupplierId());
                 Description.setText(inventory.getDescription());
                 unitPrice.setText(inventory.getUnitPrice());
                 qty.setText(inventory.getQty());
+                lblOrderDate.setText(inventory.getDate());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
