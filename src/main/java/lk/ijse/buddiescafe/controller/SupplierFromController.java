@@ -134,7 +134,7 @@ public class SupplierFromController {
                 sName.setText(supplier.getName());
                 sAddress.setText(supplier.getCompanyAddress());
                 sEmail.setText(supplier.getEmail());
-                sEmail.setText(supplier.getContact());
+                sContact.setText(String.valueOf(supplier.getContact()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalTime;
 
 public class MainDashboardFromController {
 
@@ -46,6 +47,15 @@ public class MainDashboardFromController {
 
     @FXML
     private Label time;
+    public void initialize(){
+        setGreetings();
+    }
+
+    private void setGreetings() {
+        LocalTime currentTime = LocalTime.now();
+        String greeting = (currentTime.getHour() < 12) ? "Good Morning" : "Good Evening";
+        time.setText(greeting);
+    }
 
     @FXML
     void employeeOnAction(ActionEvent event) throws IOException {
@@ -115,4 +125,5 @@ public class MainDashboardFromController {
         Stage stage = (Stage) mainDashboard.getScene().getWindow();
         stage.setScene(new Scene(anchorPane));
     }
+
 }
