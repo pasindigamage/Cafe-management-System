@@ -1,8 +1,6 @@
 package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.Supplier;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,7 +84,9 @@ public class InventoryRepo {
     }
 
     public static List<Inventory> getAll() throws SQLException {
-        String sql = "SELECT * FROM Inventory";
+        String sql = "\n" +
+                " SELECT Inventory.id, Inventory.description, Inventory.date, Inventory.unitPrice, Inventory.qty " +
+                "FROM Inventory join Supplier on Inventory.supplierId = Supplier.id;\n";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 

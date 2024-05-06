@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWare;
+import lk.ijse.buddiescafe.model.Supplier;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +29,6 @@ public class KitchenWareRepo {
 
         return pstm.executeUpdate() > 0;
     }
-
 
     public static boolean update(KitchenWare kitchenWare) throws SQLException {
         String sql = "UPDATE KitchenWare set supplierId = ?, description = ?,qty = ? where id =? ";
@@ -76,4 +77,25 @@ public class KitchenWareRepo {
         return null;
     }
 
+    public static List<KitchenWare> getAll() throws SQLException {
+        String sql = "\n" +
+                " SELECT KitchenWare.id, Supplier.name, KitchenWare.description, KitchenWare.qty " +
+                "FROM KitchenWare join Supplier on KitchenWare.supplierId = Supplier.id;\n";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<KitchenWare> kitchenWareList = new ArrayList<>();
+        while (resultSet.next()) {
+            String Id = resultSet.getString(1);
+            String supName = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String qty = resultSet.getString(4);
+
+            KitchenWare kitchenWare = new KitchenWare(Id,supName,description,qty);
+            kitchenWareList.add(kitchenWare);
+        }
+        return kitchenWareList;
+    }
 }

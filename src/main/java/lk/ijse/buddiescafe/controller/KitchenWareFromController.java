@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.Supplier;
@@ -57,15 +58,45 @@ public class KitchenWareFromController {
     private AnchorPane rootNode;
 
     @FXML
-    private TableView<?> tblOrderCart;
+    private TableView<KitchenWare> tblOrderCart;
 
     @FXML
     private JFXButton updateKitchenWare;
 
     public void initialize() {
         getSupplierIds();
-        // loadInventoryTable();
-        // setCellValueFactory();
+         loadInventoryTable();
+         setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+
+        colKitchenWareId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+    }
+
+    private void loadInventoryTable() {
+        ObservableList<KitchenWare> obList = FXCollections.observableArrayList();
+
+        try {
+            List<KitchenWare> kitchenWareList = KitchenWareRepo.getAll();
+            for (KitchenWare kitchenWare : kitchenWareList) {
+                KitchenWare tm = new KitchenWare(
+                        kitchenWare.getId(),
+                        kitchenWare.getSupplierId(),
+                        kitchenWare.getDescription(),
+                        kitchenWare.getQty()
+                );
+
+                obList.add(tm);
+            }
+
+            tblOrderCart.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getSupplierIds() {
@@ -88,7 +119,20 @@ public class KitchenWareFromController {
 
     @FXML
     void IdSearchOnAction(ActionEvent event) {
+        String id = kitchenWareIdSearch.getText();
 
+        try {
+            KitchenWare kitchenWare = KitchenWareRepo.searchByCode(id);
+
+            if (kitchenWare != null) {
+                kId.setText(kitchenWare.getId());
+                //sNIC.setText(supplier.getNic());
+                Description.setText(kitchenWare.getDescription());
+                Qty.setText(kitchenWare.getQty());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -119,6 +163,7 @@ public class KitchenWareFromController {
         Description.setText("");
         cmbISupplierId.setValue("");
         Qty.setText("");
+        kitchenWareIdSearch.setText("");
     }
 
     @FXML

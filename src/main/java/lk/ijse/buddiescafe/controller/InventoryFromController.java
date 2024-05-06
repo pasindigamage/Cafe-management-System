@@ -9,8 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.Supplier;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
+import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
 import java.sql.SQLException;
@@ -79,8 +81,8 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
-       // loadInventoryTable();
-        // setCellValueFactory();
+        loadInventoryTable();
+        setCellValueFactory();
     }
 
     @FXML
@@ -94,20 +96,19 @@ public class InventoryFromController {
             for (Inventory inventory : inventoryList) {
                 Inventory tm = new Inventory(
                         inventory.getId(),
-                        inventory.getSupplierId(),
                         inventory.getDescription(),
-                        inventory.getUnitPrice(),
-                        inventory.getQty(),
-                        inventory.getDate()
+                        inventory.getDescription(),
+                        inventory.getQty()
                 );
+
                 obList.add(tm);
             }
+
             tblOrderCart.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
     private void setCellValueFactory() {
         colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));

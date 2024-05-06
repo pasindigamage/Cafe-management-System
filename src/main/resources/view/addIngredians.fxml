@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EEE1C6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngrediansFromController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngrediansFromController">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-4.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -98,13 +98,5 @@
          </font>
       </Label>
       <TextField fx:id="qty" layoutX="347.0" layoutY="326.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="91.0" />
-      <JFXButton fx:id="back" buttonType="RAISED" contentDisplay="RIGHT" layoutX="809.0" layoutY="550.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="   back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
    </children>
 </AnchorPane>
