@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -57,7 +58,7 @@ public class FoodItemFromController {
     private TextField fID;
 
     @FXML
-    private AnchorPane rootNode;
+    private AnchorPane rootNode1;
 
     @FXML
     private TableView<FoodItems> tblMenu;
@@ -138,24 +139,11 @@ public class FoodItemFromController {
 
     @FXML
     void btnAnchorpaneChnageOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addIngredians.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addIngredians.fxml"));
+        Parent rootNode = loader.load();
+        rootNode1.getChildren().clear();
+        rootNode1.getChildren().add(rootNode);
 
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-    }
-
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
     }
 
     @FXML

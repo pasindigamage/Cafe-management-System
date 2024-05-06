@@ -25,28 +25,22 @@ public class MaintainsFromController {
     private JFXButton kitchenWareMaintains;
 
     @FXML
-    private AnchorPane rootNode;
+    private AnchorPane rootNode1;
 
     @FXML
     void btnOtherMaintainsOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/otherMaintains.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/otherMaintains.fxml"));
+        Parent rootNode = loader.load();
+        rootNode1.getChildren().clear();
+        rootNode1.getChildren().add(rootNode);
     }
 
     @FXML
     void btnkitchenWareMaintainsOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/kitchenWareMaintains.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/kitchenWare.fxml"));
+        Parent rootNode = loader.load();
+        rootNode1.getChildren().clear();
+        rootNode1.getChildren().add(rootNode);
     }
 
 }
