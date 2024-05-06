@@ -181,6 +181,7 @@ public class EmployeeFromController {
         eEmail.setText("");
         ePossition.setText("");
         eName.setText("");
+        eIDSearch.setText("");
     }
 
     @FXML

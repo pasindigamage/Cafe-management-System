@@ -46,7 +46,7 @@ public class InventoryFromController {
     private TableColumn<?, ?> colQty;
 
     @FXML
-    private TableColumn<?, ?> colSupplierId;
+    private TableColumn<?, ?> colSupplier;
 
     @FXML
     private TableColumn<?, ?> colUnitPrice;
@@ -82,7 +82,7 @@ public class InventoryFromController {
         setDate();
         getSupplierIds();
         loadInventoryTable();
-        setCellValueFactory();
+       // setCellValueFactory();
     }
 
     @FXML
@@ -97,8 +97,11 @@ public class InventoryFromController {
                 Inventory tm = new Inventory(
                         inventory.getId(),
                         inventory.getDescription(),
-                        inventory.getDescription(),
+                        inventory.getSupplierId(),
+                        inventory.getDate(),
+                        inventory.getUnitPrice(),
                         inventory.getQty()
+
                 );
 
                 obList.add(tm);
@@ -112,6 +115,7 @@ public class InventoryFromController {
     private void setCellValueFactory() {
         colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -169,6 +173,7 @@ public class InventoryFromController {
         Description.setText("");
         unitPrice.setText("");
         qty.setText("");
+        inventoryIdSearch.setText("");
     }
 
     @FXML

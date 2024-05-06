@@ -185,7 +185,7 @@ public class SupplierFromController {
         sAddress.setText("");
         sEmail.setText("");
         sContact.setText("");
-
+        sIDSearch.setText("");
     }
 
     @FXML
