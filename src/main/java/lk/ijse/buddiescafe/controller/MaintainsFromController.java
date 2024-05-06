@@ -29,9 +29,13 @@ public class MaintainsFromController {
 
     @FXML
     void btnOtherMaintainsOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("view/otherMainlains.fxml"));
-        this.rootNode.getChildren().clear();
-        this.rootNode.getChildren().add(rootNode);
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/otherMaintains.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) this.rootNode.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
     @FXML

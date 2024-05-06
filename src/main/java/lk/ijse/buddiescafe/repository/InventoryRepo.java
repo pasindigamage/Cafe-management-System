@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.KitchenWare;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,9 +86,7 @@ public class InventoryRepo {
     }
 
     public static List<Inventory> getAll() throws SQLException {
-        String sql = "\n" +
-                " SELECT Inventory.id, Inventory.description, Supplier.name, Inventory.date, Inventory.unitPrice, Inventory.qty " +
-                "FROM Inventory join Supplier on Inventory.supplierId = Supplier.id;\n";
+        String sql = "select * from Inventory";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -94,14 +94,14 @@ public class InventoryRepo {
 
         List<Inventory> inventoryList = new ArrayList<>();
         while (resultSet.next()) {
-            String iId = resultSet.getString(1);
-            String sId = resultSet.getString(2);
+            String Id = resultSet.getString(1);
+            String supid = resultSet.getString(2);
             String description = resultSet.getString(3);
-            String unitPrice = resultSet.getString(4);
-            String qty = resultSet.getString(5);
-            String date = resultSet.getString(6);
+            String date = resultSet.getString(4);
+            String unitPrice = resultSet.getString(5);
+            String qty = resultSet.getString(6);
 
-            Inventory inventory = new Inventory(iId,sId,description,unitPrice,qty,date);
+            Inventory inventory = new Inventory(Id,supid,description,unitPrice,qty,date);
             inventoryList.add(inventory);
         }
         return inventoryList;

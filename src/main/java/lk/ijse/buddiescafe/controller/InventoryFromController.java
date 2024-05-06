@@ -81,12 +81,21 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
-        loadInventoryTable();
-       // setCellValueFactory();
+       // loadInventoryTable();
+        //setCellValueFactory();
     }
 
     @FXML
     private Label lblsId;
+
+    private void setCellValueFactory() {
+        colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+    }
 
     private void loadInventoryTable() {
         ObservableList<Inventory> obList = FXCollections.observableArrayList();
@@ -96,13 +105,12 @@ public class InventoryFromController {
             for (Inventory inventory : inventoryList) {
                 Inventory tm = new Inventory(
                         inventory.getId(),
-                        inventory.getDescription(),
                         inventory.getSupplierId(),
+                        inventory.getDescription(),
                         inventory.getDate(),
                         inventory.getUnitPrice(),
                         inventory.getQty()
-
-                );
+                        );
 
                 obList.add(tm);
             }
@@ -112,14 +120,7 @@ public class InventoryFromController {
             throw new RuntimeException(e);
         }
     }
-    private void setCellValueFactory() {
-        colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-    }
+
 
     private void setDate() {
         LocalDate now = LocalDate.now();

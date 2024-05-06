@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
@@ -69,7 +70,7 @@ public class KitchenWareMaintainsFromController {
     private Label lblNetTotal;
 
     @FXML
-    private TableView<?> tblOrderCart;
+    private TableView<KitchenWareMaintains> tblOrderCart;
 
     @FXML
     private JFXButton updateKitchenWareMaintains;
@@ -77,8 +78,41 @@ public class KitchenWareMaintainsFromController {
     public void initialize(){
         setDate();
         getKitchenWareIds();
+        loadInventoryTable();
+        setCellValueFactory();
     }
 
+    private void setCellValueFactory() {
+
+        colKitchenWareMaintainId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colKitchenWareId.setCellValueFactory(new PropertyValueFactory<>("kitchenWareId"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    }
+
+    private void loadInventoryTable() {
+        ObservableList<KitchenWareMaintains> obList = FXCollections.observableArrayList();
+
+        try {
+            List<KitchenWareMaintains> kitchenWareMaintainsList = KitchenWareMaintainRepo.getAll();
+            for (KitchenWareMaintains kitchenWareMaintains : kitchenWareMaintainsList) {
+                KitchenWareMaintains tm = new KitchenWareMaintains(
+                        kitchenWareMaintains.getId(),
+                        kitchenWareMaintains.getKitchenWareId(),
+                        kitchenWareMaintains.getDescription(),
+                        kitchenWareMaintains.getDate(),
+                        kitchenWareMaintains.getAmount()
+                );
+
+                obList.add(tm);
+            }
+
+            tblOrderCart.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String idText = kmId.getText();

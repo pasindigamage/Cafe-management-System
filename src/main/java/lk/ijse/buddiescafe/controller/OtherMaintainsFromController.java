@@ -16,12 +16,16 @@ import lk.ijse.buddiescafe.repository.otherMaintainRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class OtherMaintainsFromController {
 
     @FXML
     private AnchorPane rootNode;
+
+    @FXML
+    private Label lbldate;
 
     @FXML
     private JFXButton addOtherMaintains;
@@ -71,6 +75,12 @@ public class OtherMaintainsFromController {
     public void initialize() {
         setCellValueFactory();
         loadCustomerTable();
+        setDate();
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lbldate.setText(String.valueOf(now));
     }
 
     private void loadCustomerTable() {
