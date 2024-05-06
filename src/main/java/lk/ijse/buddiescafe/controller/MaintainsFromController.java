@@ -29,7 +29,7 @@ public class MaintainsFromController {
     void btnBackOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/kitchenWare.fxml"));
         Pane registerPane = fxmlLoader.load();
-       // subDashboard.getChildren().clear();
+        //subDashboard.getChildren().clear();
       //  subDashboard.getChildren().add(registerPane);
         }
 
