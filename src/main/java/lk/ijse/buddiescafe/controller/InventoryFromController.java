@@ -175,6 +175,7 @@ public class InventoryFromController {
         unitPrice.setText("");
         qty.setText("");
         inventoryIdSearch.setText("");
+        cmbISupplierId.setValue("");
     }
 
     @FXML

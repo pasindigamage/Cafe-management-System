@@ -137,6 +137,7 @@ public class KitchenWareMaintainsFromController {
         LocalDate now = LocalDate.now();
         lblDate.setText(String.valueOf(now));
     }
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();
@@ -146,6 +147,7 @@ public class KitchenWareMaintainsFromController {
         kmId.setText("");
         kmDescription.setText("");
         amount.setText("");
+        cmbIKitchenWareId.setValue("");
     }
 
     @FXML

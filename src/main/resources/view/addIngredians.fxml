@@ -25,15 +25,9 @@
             <Image url="@../images/underbg.png" />
          </image>
       </ImageView>
-      <Label layoutX="21.0" layoutY="18.0" text="INGREDIANS DETAILS" textFill="#2c3e50">
+      <Label layoutX="21.0" layoutY="18.0" text="SUPPLEMENT FOR EACH FOOD ITEM" textFill="#2c3e50">
          <font>
             <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <TextField fx:id="fDescription" layoutX="37.0" layoutY="199.0" prefHeight="33.0" prefWidth="230.0" />
-      <Label layoutX="37.0" layoutY="181.0" text="Description" textFill="#363232">
-         <font>
-            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <JFXButton fx:id="deleteIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="621.0" layoutY="518.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
@@ -61,10 +55,11 @@
          </cursor>
       </JFXButton>
       <Group layoutX="606.0" layoutY="1.0" />
-      <TableView fx:id="tblMenu" layoutX="380.0" layoutY="143.0" prefHeight="332.0" prefWidth="421.0">
+      <TableView fx:id="tblMenu" layoutX="380.0" layoutY="115.0" prefHeight="360.0" prefWidth="421.0">
          <columns>
-            <TableColumn fx:id="colDescription" prefWidth="294.0" text="Inventory" />
-            <TableColumn fx:id="colQty" prefWidth="129.0" text="Qty" />
+            <TableColumn fx:id="colDescription" prefWidth="220.0" text="Suppliments" />
+            <TableColumn fx:id="colQty" prefWidth="121.0" text="Qty" />
+            <TableColumn fx:id="colAction" prefWidth="85.0" text="Action" />
          </columns>
       </TableView>
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="822.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
@@ -80,14 +75,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXComboBox fx:id="cmbIngrediansID" layoutX="37.0" layoutY="270.0" onAction="#cmbIngrediansOnAction" prefHeight="33.0" prefWidth="230.0" promptText="Inventory ID" />
-      <Label layoutX="37.0" layoutY="336.0" text="Qty:" textFill="#363232">
+      <JFXComboBox fx:id="cmbIngrediansID" layoutX="37.0" layoutY="243.0" onAction="#cmbIngrediansOnAction" prefHeight="33.0" prefWidth="230.0" promptText="Select Inventory" />
+      <Label layoutX="37.0" layoutY="302.0" text="Qty:" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="qty" layoutX="36.0" layoutY="365.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="70.0" />
-      <JFXComboBox fx:id="cmbFoodItemD" layoutX="37.0" layoutY="104.0" onAction="#cmbFoodItemOnAction" prefHeight="33.0" prefWidth="230.0" promptText="Food Item ID" />
-      <Label fx:id="menuItem" layoutX="380.0" layoutY="88.0" prefHeight="40.0" prefWidth="230.0" textFill="#2a2a2a" />
+      <TextField fx:id="qty" layoutX="36.0" layoutY="331.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="52.0" />
+      <JFXComboBox fx:id="cmbFoodItemD" layoutX="37.0" layoutY="119.0" onAction="#cmbFoodItemOnAction" prefHeight="33.0" prefWidth="230.0" promptText="Select Food Item" />
    </children>
 </AnchorPane>

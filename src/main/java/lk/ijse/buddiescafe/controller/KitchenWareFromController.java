@@ -164,6 +164,7 @@ public class KitchenWareFromController {
         cmbISupplierId.setValue("");
         Qty.setText("");
         kitchenWareIdSearch.setText("");
+        cmbISupplierId.setValue("");
     }
 
     @FXML
