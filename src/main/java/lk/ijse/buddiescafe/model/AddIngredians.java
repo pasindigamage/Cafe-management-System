@@ -1,7 +1,16 @@
 package lk.ijse.buddiescafe.model;
+import com.jfoenix.controls.JFXButton;
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 
 public class AddIngredians {
     String inventoryId;
     String foodItemId;
-    String qty;
+    int qty;
+    private JFXButton btnRemove;
 }
+
+

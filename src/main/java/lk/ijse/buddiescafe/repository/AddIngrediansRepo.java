@@ -1,6 +1,7 @@
 package lk.ijse.buddiescafe.repository;
 
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.model.AddIngredians;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
