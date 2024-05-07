@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -14,10 +15,10 @@ public class AddIngrediansFromController {
     private JFXButton addIngredians;
 
     @FXML
-    private JFXButton back;
+    private JFXButton clear;
 
     @FXML
-    private JFXButton clear;
+    private JFXComboBox<?> cmbFoodItemD;
 
     @FXML
     private JFXComboBox<?> cmbIngrediansID;
@@ -35,16 +36,10 @@ public class AddIngrediansFromController {
     private TextField fDescription;
 
     @FXML
-    private TextField fID;
+    private Label menuItem;
 
     @FXML
     private TextField qty;
-
-    @FXML
-    private TextField qtyG;
-
-    @FXML
-    private TextField qtyMl;
 
     @FXML
     private TableView<?> tblMenu;
@@ -53,17 +48,7 @@ public class AddIngrediansFromController {
     private JFXButton updateIngredians;
 
     @FXML
-    void IdSearchOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnAddOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnBackOnAction(ActionEvent event) {
 
     }
 
@@ -83,17 +68,12 @@ public class AddIngrediansFromController {
     }
 
     @FXML
+    void cmbFoodItemOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void cmbIngrediansOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void qtyGOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void qtyMlOnAction(ActionEvent event) {
 
     }
 
