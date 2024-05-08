@@ -9,16 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import lk.ijse.buddiescafe.model.AddIngredians;
+import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.repository.AddIngrediansRepo;
+import lk.ijse.buddiescafe.repository.InventoryRepo;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class AddIngrediansFromController {
-
-    @FXML
-    private JFXButton addIngredians;
 
     @FXML
     private JFXButton clear;
@@ -45,6 +44,12 @@ public class AddIngrediansFromController {
     private TextField qty;
 
     @FXML
+    private Label lblFoodItemID;
+
+    @FXML
+    private Label lblInvenID;
+
+    @FXML
     private TableView<AddIngredians> tblMenu;
 
     @FXML
@@ -59,11 +64,38 @@ public class AddIngrediansFromController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String foodItemDValue = lblFoodItemID.getText();
+        String ingrediansIDValue = lblFoodItemID.getText();
+        String qtyText = qty.getText();
 
+        AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
+
+        try {
+            boolean isSaved = AddIngrediansRepo.save(addIngredians);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Saved!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
-    @FXML
+   @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String foodItemDValue = cmbFoodItemD.getValue();
+        String ingrediansIDValue = cmbIngrediansID.getValue();
+        String qtyText = qty.getText();
+
+        AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
+
+        try {
+            boolean isUpdated = AddIngrediansRepo.update(addIngredians);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 

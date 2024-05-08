@@ -1,6 +1,7 @@
 package lk.ijse.buddiescafe.repository;
 
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.model.AddIngredians;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,4 +43,22 @@ public class AddIngrediansRepo {
         return IdList;
     }
 
+    public static boolean save(AddIngredians addIngredians) throws SQLException {
+        String sql ="INSERT INTO IngrediansDetail VALUES(?, ?, ?)";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1, addIngredians.getInventoryId());
+        pstm.setObject(2, addIngredians.getFoodItemId());
+        pstm.setObject(3, addIngredians.getQty());
+        return pstm.executeUpdate() > 0;
+    }
+
+    public static boolean update(AddIngredians addIngredians) throws SQLException {
+        String sql = "UPDATE IngrediansDetail set inventoryId = ?, qty = ? where foodItemId =? ";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        pstm.setObject(1, addIngredians.getInventoryId());
+        pstm.setObject(2, addIngredians.getQty());
+        pstm.setObject(3, addIngredians.getFoodItemId());
+        return pstm.executeUpdate() > 0;
+    }
 }
