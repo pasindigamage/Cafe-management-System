@@ -66,10 +66,11 @@
       <TableView fx:id="tblOrderCart" layoutX="27.0" layoutY="259.0" prefHeight="224.0" prefWidth="846.0">
          <columns>
             <TableColumn fx:id="colInventoryId" prefWidth="82.0" text="ID" />
-            <TableColumn fx:id="colDeascription" prefWidth="307.0" text="Description" />
-            <TableColumn fx:id="colDate" prefWidth="191.0" text="Date" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="167.0" text="Unit Price" />
-            <TableColumn fx:id="colQty" prefWidth="97.0" text="Qty" />
+            <TableColumn fx:id="colDescription" prefWidth="163.0" text="Description" />
+            <TableColumn fx:id="colSupName" prefWidth="193.0" text="Supplier" />
+            <TableColumn fx:id="colDate" prefWidth="189.0" text="Date" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="132.0" text="Unit Price" />
+            <TableColumn fx:id="colQty" prefWidth="90.0" text="Qty" />
          </columns>
       </TableView>
       <Label layoutX="405.0" layoutY="157.0" text="Description :">

@@ -8,11 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.KitchenWare;
-import lk.ijse.buddiescafe.model.Supplier;
+import lk.ijse.buddiescafe.model.*;
+import lk.ijse.buddiescafe.model.TM.InventoryTM;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
-import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 
 import java.sql.SQLException;
@@ -70,7 +68,7 @@ public class InventoryFromController {
     private AnchorPane rootNode;
 
     @FXML
-    private TableView<Inventory> tblOrderCart;
+    private TableView<InventoryTM> tblOrderCart;
 
     @FXML
     private TextField unitPrice;
@@ -81,46 +79,46 @@ public class InventoryFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
-       // loadInventoryTable();
-        //setCellValueFactory();
+        loadInventoryTable();
+        setCellValueFactory();
     }
 
     @FXML
     private Label lblsId;
 
+    @FXML
+    private TableColumn<?, ?> colSupName;
+
     private void setCellValueFactory() {
         colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
     private void loadInventoryTable() {
-        ObservableList<Inventory> obList = FXCollections.observableArrayList();
+        ObservableList<InventoryTM> obList = FXCollections.observableArrayList();
 
         try {
-            List<Inventory> inventoryList = InventoryRepo.getAll();
-            for (Inventory inventory : inventoryList) {
-                Inventory tm = new Inventory(
-                        inventory.getId(),
-                        inventory.getSupplierId(),
-                        inventory.getDescription(),
-                        inventory.getDate(),
-                        inventory.getUnitPrice(),
-                        inventory.getQty()
-                        );
-
+            List<InventoryTM> inventoryTMList = InventoryRepo.getAll();
+            for (InventoryTM inventoryTM : inventoryTMList) {
+                InventoryTM tm = new InventoryTM(
+                        inventoryTM.getId(),
+                        inventoryTM.getDescription(),
+                        inventoryTM.getSupName(),
+                        inventoryTM.getDate(),
+                        inventoryTM.getUnitPrice(),
+                        inventoryTM.getQty()
+                );
                 obList.add(tm);
             }
-
             tblOrderCart.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     private void setDate() {
         LocalDate now = LocalDate.now();

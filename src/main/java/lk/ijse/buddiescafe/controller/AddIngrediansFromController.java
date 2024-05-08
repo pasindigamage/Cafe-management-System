@@ -59,45 +59,6 @@ public class AddIngrediansFromController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        String ingrediansIDValue = cmbIngrediansID.getValue();
-        String foodItemDValue = cmbFoodItemD.getValue();
-        int qtyText = Integer.parseInt(qty.getText());
-
-        JFXButton btnRemove = new JFXButton("REMOVE");
-        btnRemove.setCursor(Cursor.HAND);
-
-        btnRemove.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
-
-            if(type.orElse(no) == yes) {
-                int selectedIndex = tblMenu.getSelectionModel().getSelectedIndex();
-                addList.remove(selectedIndex);
-
-                tblMenu.refresh();
-            }
-        });
-        for (int i = 0; i < tblMenu.getItems().size(); i++) {
-            if (ingrediansIDValue.equals(colSupplement.getCellData(i))) {
-               /* qty += cartList.get(i).getQty();
-                total = unitPrice * qty;
-
-                cartList.get(i).setQty(qty);
-                cartList.get(i).setTotal(total);
-
-                tblOrderCart.refresh();
-                calculateNetTotal();
-                txtQty.setText("");
-                return;
-            */}
-        }
-        AddIngredians addIngrediansText = new AddIngredians(ingrediansIDValue,foodItemDValue,qtyText,btnRemove);
-
-        addList.add(addIngrediansText);
-
-        tblMenu.setItems(addList);
 
     }
 
@@ -163,4 +124,6 @@ public class AddIngrediansFromController {
         clearFields();
     }
 
+    public void btnDeleteOnAction(ActionEvent actionEvent) {
+    }
 }

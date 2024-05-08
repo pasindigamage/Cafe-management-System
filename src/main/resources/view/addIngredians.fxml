@@ -30,7 +30,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="updateIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="550.0" layoutY="518.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="updateIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="438.0" layoutY="518.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -38,7 +38,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="addIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="322.0" layoutY="518.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="294.0" layoutY="518.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -60,7 +60,7 @@
             <Image url="@../images/back.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="761.0" layoutY="518.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="733.0" layoutY="518.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -76,5 +76,13 @@
       </Label>
       <TextField fx:id="qty" layoutX="36.0" layoutY="331.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="52.0" />
       <JFXComboBox fx:id="cmbFoodItemD" layoutX="37.0" layoutY="119.0" onAction="#cmbFoodItemOnAction" prefHeight="51.0" prefWidth="171.0" promptText="Select Food Item" />
+      <JFXButton fx:id="deleteIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="592.0" layoutY="517.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
