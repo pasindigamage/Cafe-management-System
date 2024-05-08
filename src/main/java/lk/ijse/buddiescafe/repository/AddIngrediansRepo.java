@@ -2,7 +2,9 @@ package lk.ijse.buddiescafe.repository;
 
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.AddIngredians;
+import lk.ijse.buddiescafe.model.KitchenWareMaintains;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,62 +15,103 @@ public class AddIngrediansRepo {
 
     public static List<String> getIds() throws SQLException {
         String sql = "SELECT description FROM FoodItems";
-
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
-
         List<String> IdList = new ArrayList<>();
 
-        ResultSet resultSet = pstm.executeQuery();
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
 
-        while(resultSet.next()) {
-            IdList.add(resultSet.getString(1));
+            while (resultSet.next()) {
+                IdList.add(resultSet.getString(1));
+            }
         }
         return IdList;
     }
 
     public static List<String> getInvenIds() throws SQLException {
         String sql = "SELECT description FROM Inventory";
-
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
-
         List<String> IdList = new ArrayList<>();
 
-        ResultSet resultSet = pstm.executeQuery();
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
 
-        while(resultSet.next()) {
-            IdList.add(resultSet.getString(1));
+            while (resultSet.next()) {
+                IdList.add(resultSet.getString(1));
+            }
         }
+
         return IdList;
     }
 
     public static boolean save(AddIngredians addIngredians) throws SQLException {
-        String sql ="INSERT INTO IngrediansDetail VALUES(?, ?, ?)";
+        String sql = "INSERT INTO IngrediansDetail (id, inventoryId, foodItemId, qty) VALUES (?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1, addIngredians.getInventoryId());
-        pstm.setObject(2, addIngredians.getFoodItemId());
-        pstm.setObject(3, addIngredians.getQty());
+
+        pstm.setObject(1, addIngredians.getId());
+        pstm.setObject(2, addIngredians.getInventoryId());
+        pstm.setObject(3, addIngredians.getFoodItemId());
+        pstm.setObject(4, addIngredians.getQty());
         return pstm.executeUpdate() > 0;
     }
 
     public static boolean update(AddIngredians addIngredians) throws SQLException {
-        String sql = "UPDATE IngrediansDetail set inventoryId = ?, qty = ? where foodItemId =? ";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        String sql = "UPDATE IngrediansDetail SET foodItemId = ?, inventoryId = ?, qty = ? WHERE id = ?";
 
-        pstm.setObject(1, addIngredians.getInventoryId());
-        pstm.setObject(2, addIngredians.getQty());
-        pstm.setObject(3, addIngredians.getFoodItemId());
-        return pstm.executeUpdate() > 0;
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setObject(1, addIngredians.getFoodItemId());
+            pstm.setObject(2, addIngredians.getInventoryId());
+            pstm.setObject(3, addIngredians.getQty());
+            pstm.setObject(4, addIngredians.getId());
+            return pstm.executeUpdate() > 0;
+        }
     }
 
     public static boolean delete(String id) throws SQLException {
-        String sql = "DELETE FROM  IngrediansDetail WHERE foodItemId = ?";
+        String sql = "DELETE FROM IngrediansDetail WHERE id = ?";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setObject(1, id);
+            return pstm.executeUpdate() > 0;
+        }
+    }
+
+    public static int currentId() throws SQLException {
+        String sql = "SELECT id FROM IngrediansDetail ORDER BY id LIMIT 1";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
+
+    public static List<AddIngredians> getAll() throws SQLException {
+        String sql = "select * from IngrediansDetail";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
-        pstm.setObject(1, id);
+        ResultSet resultSet = pstm.executeQuery();
 
-        return pstm.executeUpdate() > 0;
+        List<AddIngredians> addIngrediansList = new ArrayList<>();
+        while (resultSet.next()) {
+            String Id = resultSet.getString(1);
+            String fid = resultSet.getString(2);
+            String iid = resultSet.getString(3);
+            String qty = resultSet.getString(4);
+
+            AddIngredians addIngredians = new AddIngredians(Id,fid,iid,qty);
+            addIngrediansList.add(addIngredians);
+        }
+        return addIngrediansList;
+
     }
 }

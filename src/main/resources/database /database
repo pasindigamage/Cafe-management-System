@@ -67,7 +67,7 @@ create table Inventory(
 	);
 
 create table IngrediansDetail(
-    id int auto_increment primary key,
+    id varchar(10) primary key,
 	inventoryId varchar(20),
 	foodItemId varchar(20),
 	qty int(10),

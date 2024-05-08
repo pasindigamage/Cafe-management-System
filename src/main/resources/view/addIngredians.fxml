@@ -94,10 +94,11 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblId" layoutX="28.0" layoutY="117.0" prefHeight="26.0" prefWidth="116.0" textFill="#363232">
+      <Label layoutX="28.0" layoutY="117.0" prefHeight="26.0" prefWidth="31.0" text="ID:" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <TextField fx:id="lblId" layoutX="102.0" layoutY="114.0" prefHeight="33.0" prefWidth="171.0" />
    </children>
 </AnchorPane>

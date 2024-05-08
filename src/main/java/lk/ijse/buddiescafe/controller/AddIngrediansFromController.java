@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
@@ -18,6 +19,7 @@ import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,22 +64,57 @@ public class AddIngrediansFromController {
     private ObservableList<AddIngredians> addList = FXCollections.observableArrayList();
 
     public void initialize() {
-    getInventoryIds();
-    getFoodItemIds();
+        getInventoryIds();
+        getFoodItemIds();
+        setCellValueFactory();
+        loadInventoryTable();
     }
 
+    private void setCellValueFactory() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colFoodItem.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
+        colSupplement.setCellValueFactory(new PropertyValueFactory<>("foodItemId"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+    }
+
+    private void loadInventoryTable() {
+        ObservableList<AddIngredians> obList = FXCollections.observableArrayList();
+
+        try {
+            List<AddIngredians> addIngrediansList = AddIngrediansRepo.getAll();
+            for (AddIngredians addIngredians : addIngrediansList) {
+                AddIngredians tm = new AddIngredians(
+                        addIngredians.getId(),
+                        addIngredians.getFoodItemId(),
+                        addIngredians.getInventoryId(),
+                        addIngredians.getQty()
+                );
+                obList.add(tm);
+            }
+            tblMenu.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String foodItemDValue = lblFoodItemID.getText();
         String ingrediansIDValue = lblInvenID.getText();
         String qtyText = qty.getText();
+        String id = lblId.getText();
 
-        AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
+        if (foodItemDValue == null || ingrediansIDValue == null || qtyText.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill all the fields!").show();
+            return;
+        }
+
+        AddIngredians addIngredians = new AddIngredians(id,foodItemDValue, ingrediansIDValue, qtyText);
 
         try {
             boolean isSaved = AddIngrediansRepo.save(addIngredians);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Saved!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -89,22 +126,28 @@ public class AddIngrediansFromController {
        String foodItemDValue = lblFoodItemID.getText();
        String ingrediansIDValue = lblInvenID.getText();
        String qtyText = qty.getText();
+       String id = lblId.getText();
 
-       AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
+       if (foodItemDValue == null || ingrediansIDValue == null || qtyText.isEmpty()) {
+           new Alert(Alert.AlertType.ERROR, "Please fill all the fields!").show();
+           return;
+       }
 
-        try {
-            boolean isUpdated = AddIngrediansRepo.update(addIngredians);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Updated!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+       AddIngredians addIngredians = new AddIngredians(id,foodItemDValue, ingrediansIDValue, qtyText);
 
+       try {
+           boolean isUpdated = AddIngrediansRepo.update(addIngredians);
+           if (isUpdated) {
+               new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Updated!").show();
+               clearFields();
+           }
+       } catch (SQLException e) {
+           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+       }
     }
 
     @FXML
-    private Label lblId;
+    private TextField lblId;
 
     @FXML
     private TableColumn<?, ?> colId;
@@ -183,12 +226,13 @@ public class AddIngrediansFromController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-        String id = lblFoodItemID.getText();
+        String id = lblId.getText();
 
         try {
             boolean isDeleted = AddIngrediansRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Deleted!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
