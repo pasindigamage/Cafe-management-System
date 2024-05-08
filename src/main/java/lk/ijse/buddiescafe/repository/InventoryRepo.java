@@ -1,5 +1,6 @@
 package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.TM.InventoryTM;
 
@@ -110,4 +111,25 @@ public class InventoryRepo {
         return inventoryTMList;
     }
 
+    public static Inventory searchByCode(String ingrediansIDValue) throws SQLException {
+        String sql = "SELECT * FROM Inventory WHERE description = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, ingrediansIDValue);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Inventory(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+                    );
+        }
+        return null;
+
+    }
 }

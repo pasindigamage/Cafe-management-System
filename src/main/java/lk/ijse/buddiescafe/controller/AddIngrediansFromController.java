@@ -9,9 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import lk.ijse.buddiescafe.model.AddIngredians;
+import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.repository.AddIngrediansRepo;
+import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
+import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -65,7 +69,7 @@ public class AddIngrediansFromController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String foodItemDValue = lblFoodItemID.getText();
-        String ingrediansIDValue = lblFoodItemID.getText();
+        String ingrediansIDValue = lblInvenID.getText();
         String qtyText = qty.getText();
 
         AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
@@ -82,11 +86,11 @@ public class AddIngrediansFromController {
 
    @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String foodItemDValue = cmbFoodItemD.getValue();
-        String ingrediansIDValue = cmbIngrediansID.getValue();
-        String qtyText = qty.getText();
+       String foodItemDValue = lblFoodItemID.getText();
+       String ingrediansIDValue = lblInvenID.getText();
+       String qtyText = qty.getText();
 
-        AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
+       AddIngredians addIngredians = new AddIngredians(foodItemDValue,ingrediansIDValue,qtyText);
 
         try {
             boolean isUpdated = AddIngrediansRepo.update(addIngredians);
@@ -100,13 +104,35 @@ public class AddIngrediansFromController {
     }
 
     @FXML
-    void cmbFoodItemOnAction(ActionEvent event) {
+    private Label lblId;
 
+    @FXML
+    private TableColumn<?, ?> colId;
+
+    @FXML
+    void cmbFoodItemOnAction(ActionEvent event) {
+        String foodItemDValue = cmbFoodItemD.getValue();
+        try {
+            FoodItems foodItems = FoodItemsRepo.searchByCode(foodItemDValue);
+            if (foodItems != null) {
+                lblFoodItemID.setText(foodItems.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void cmbIngrediansOnAction(ActionEvent event) {
-
+        String ingrediansIDValue = cmbIngrediansID.getValue();
+        try {
+            Inventory inventory = InventoryRepo.searchByCode(ingrediansIDValue);
+            if (inventory != null) {
+                lblInvenID.setText(inventory.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -157,5 +183,15 @@ public class AddIngrediansFromController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
+        String id = lblFoodItemID.getText();
+
+        try {
+            boolean isDeleted = AddIngrediansRepo.delete(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 }

@@ -3,6 +3,7 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.model.FoodItems;
+import lk.ijse.buddiescafe.model.KitchenWare;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,4 +85,21 @@ public class FoodItemsRepo {
         return foodItemsList;
     }
 
+    public static FoodItems searchByCode(String foodItemDValue) throws SQLException {
+        String sql = "SELECT * FROM FoodItems WHERE description = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, foodItemDValue);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new FoodItems(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3)
+            );
+        }
+        return null;
+    }
 }

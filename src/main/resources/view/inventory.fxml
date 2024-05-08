@@ -119,6 +119,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblsId" layoutX="49.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0" />
+      <Label fx:id="lblsId" layoutX="49.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

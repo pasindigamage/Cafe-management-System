@@ -49,9 +49,10 @@
       <Group layoutX="606.0" layoutY="1.0" />
       <TableView fx:id="tblMenu" layoutX="353.0" layoutY="115.0" prefHeight="360.0" prefWidth="494.0">
          <columns>
-            <TableColumn fx:id="colFoodItem" prefWidth="211.0" text="Food Item" />
-            <TableColumn fx:id="colSupplement" prefWidth="176.0" text="Supplement" />
-            <TableColumn fx:id="colQty" prefWidth="105.0" text="Qty" />
+            <TableColumn fx:id="colId" prefWidth="60.0" text="Id" />
+            <TableColumn fx:id="colFoodItem" prefWidth="192.0" text="Food Item" />
+            <TableColumn fx:id="colSupplement" prefWidth="168.0" text="Supplement" />
+            <TableColumn fx:id="colQty" prefWidth="84.0" text="Qty" />
          </columns>
       </TableView>
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="822.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
@@ -74,7 +75,7 @@
          </font>
       </Label>
       <TextField fx:id="qty" layoutX="205.0" layoutY="355.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="52.0" />
-      <JFXComboBox fx:id="cmbFoodItemD" layoutX="103.0" layoutY="131.0" onAction="#cmbFoodItemOnAction" prefHeight="51.0" prefWidth="171.0" promptText="Select Food Item" />
+      <JFXComboBox fx:id="cmbFoodItemD" layoutX="103.0" layoutY="171.0" onAction="#cmbFoodItemOnAction" prefHeight="51.0" prefWidth="171.0" promptText="Select Food Item" />
       <JFXButton fx:id="deleteIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="592.0" layoutY="517.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -88,7 +89,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblFoodItemID" layoutX="26.0" layoutY="152.0" prefHeight="26.0" prefWidth="64.0" textFill="#363232">
+      <Label fx:id="lblFoodItemID" layoutX="26.0" layoutY="192.0" prefHeight="26.0" prefWidth="64.0" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblId" layoutX="28.0" layoutY="117.0" prefHeight="26.0" prefWidth="116.0" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
