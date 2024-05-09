@@ -31,7 +31,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQty" layoutX="746.0" layoutY="175.0" onAction="#txtQtyOnAction" prefHeight="33.0" prefWidth="66.0" />
+      <TextField fx:id="txtQty" layoutX="628.0" layoutY="175.0" onAction="#txtQtyOnAction" prefHeight="33.0" prefWidth="66.0" />
       <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="771.0" layoutY="554.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="RIGHT" layoutX="745.0" layoutY="232.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: #4D3E3E;" text="Add to cart" textFill="WHITE">
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="RIGHT" layoutX="741.0" layoutY="169.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: #4D3E3E;" text="Add to cart" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -64,7 +64,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderId" layoutX="434.0" layoutY="94.0" textFill="#278d7f">
+      <Label fx:id="lblOrderId" layoutX="443.0" layoutY="88.0" prefHeight="26.0" prefWidth="121.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -79,33 +79,28 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="149.0" text="Menu Item Code:">
+      <Label layoutX="156.0" layoutY="149.0" text="Food Item :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbItemCode" layoutX="58.0" layoutY="177.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="183.0" />
-      <Label layoutX="348.0" layoutY="149.0" text="Description: ">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblDescription" layoutX="351.0" layoutY="191.0" prefHeight="16.0" prefWidth="42.0" textFill="#278d7f">
+      <JFXComboBox fx:id="cmbItemCode" layoutX="156.0" layoutY="177.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="183.0" />
+      <Label fx:id="lblDescription" layoutX="30.0" layoutY="179.0" prefHeight="33.0" prefWidth="90.0" textFill="#131414">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="562.0" layoutY="149.0" text="Unit Price:">
+      <Label layoutX="426.0" layoutY="149.0" text="Unit Price:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblUnitPrice" layoutX="565.0" layoutY="191.0" prefHeight="16.0" prefWidth="42.0" textFill="#278d7f">
+      <Label fx:id="lblUnitPrice" layoutX="429.0" layoutY="184.0" prefHeight="26.0" prefWidth="78.0" textFill="#2a2a2a">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="747.0" layoutY="149.0" text="Qty">
+      <Label layoutX="629.0" layoutY="149.0" text="Qty">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -114,32 +109,22 @@
          <columns>
             <TableColumn fx:id="colItemCode" prefWidth="79.0" text="Code" />
             <TableColumn fx:id="colDescription" prefWidth="252.0" text="Description" />
-            <TableColumn fx:id="colQty" prefWidth="113.0" text="Qty" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="145.0" text="Unit Price" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="179.0" text="Unit Price" />
+            <TableColumn fx:id="colQty" prefWidth="79.0" text="Qty" />
             <TableColumn fx:id="colTotal" prefWidth="130.0" text="Total" />
             <TableColumn fx:id="colAction" prefWidth="97.0" text="Action" />
          </columns>
       </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="13.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
-      <Label fx:id="lblNetTotal" layoutX="115.0" layoutY="559.0" textFill="#b51313">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="13.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="107.0" />
       <Label layoutX="20.0" layoutY="563.0" text="Net Total : ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="406.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" width="307.0" />
-      <Label layoutX="422.0" layoutY="564.0" text="Payment ID:">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="145.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="208.0" />
+      <Label fx:id="lblNetTotal" layoutX="166.0" layoutY="561.0" prefHeight="26.0" prefWidth="121.0" textFill="#b51313">
          <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblPayId" layoutX="530.0" layoutY="564.0" textFill="#278d7f">
-         <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
    </children>

@@ -51,6 +51,8 @@ public class LoginFromController {
 
     }
 
+    public static String signPerson;
+
     private void checkCredential(String un, String pw) throws SQLException, IOException {
         String sql = "SELECT userName, password FROM User WHERE userName = ?";
 

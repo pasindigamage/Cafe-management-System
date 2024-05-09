@@ -4,6 +4,7 @@ import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.KitchenWare;
+import lk.ijse.buddiescafe.model.OrderDetail;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,5 +102,31 @@ public class FoodItemsRepo {
             );
         }
         return null;
+    }
+
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT description FROM FoodItems";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> IdList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            IdList.add(resultSet.getString(1));
+        }
+        return IdList;
+    }
+
+    public static boolean updateQty(List<OrderDetail> odList) {
+        for (OrderDetail od : odList) {
+            if(!updateQty((List<OrderDetail>) od)) {
+                return false;
+            }
+        }
+        return true;
+
     }
 }
