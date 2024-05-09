@@ -53,7 +53,7 @@ public class MainDashboardFromController {
 
     private void setGreetings() {
         LocalTime currentTime = LocalTime.now();
-        String greeting = (currentTime.getHour() < 12) ? "Good Morning" : "Good Evening";
+        String greeting = (currentTime.getHour() < 12) ? "Good Morning !!!" : "Good Evening !!!";
         time.setText(greeting);
     }
 

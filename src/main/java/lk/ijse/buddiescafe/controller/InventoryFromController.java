@@ -92,11 +92,12 @@ public class InventoryFromController {
     private void setCellValueFactory() {
         colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
+
 
     private void loadInventoryTable() {
         ObservableList<InventoryTM> obList = FXCollections.observableArrayList();
