@@ -72,8 +72,8 @@ public class AddIngrediansFromController {
 
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colFoodItem.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
-        colSupplement.setCellValueFactory(new PropertyValueFactory<>("foodItemId"));
+        colFoodItem.setCellValueFactory(new PropertyValueFactory<>("foodItemId"));
+        colSupplement.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
@@ -218,6 +218,9 @@ public class AddIngrediansFromController {
     private void clearFields() {
         qty.setText("");
         cmbIngrediansID.setValue("");
+        cmbFoodItemD.setValue("");
+        lblId.setText("");
+
     }
 
     @FXML

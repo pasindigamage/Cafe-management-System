@@ -95,7 +95,13 @@ public class AddIngrediansRepo {
     }
 
     public static List<AddIngredians> getAll() throws SQLException {
-        String sql = "select * from IngrediansDetail";
+        String sql = " select IngrediansDetail.id, FoodItems.description, " +
+                "Inventory.description, IngrediansDetail.qty " +
+                "from FoodItems " +
+                "join IngrediansDetail " +
+                "on FoodItems.id = IngrediansDetail.foodItemId " +
+                "join Inventory " +
+                "on IngrediansDetail.inventoryId = Inventory.id";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
