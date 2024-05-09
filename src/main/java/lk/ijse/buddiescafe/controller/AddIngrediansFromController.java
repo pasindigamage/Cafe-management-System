@@ -70,6 +70,7 @@ public class AddIngrediansFromController {
         loadInventoryTable();
     }
 
+
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFoodItem.setCellValueFactory(new PropertyValueFactory<>("foodItemId"));
@@ -220,7 +221,6 @@ public class AddIngrediansFromController {
         cmbIngrediansID.setValue("");
         cmbFoodItemD.setValue("");
         lblId.setText("");
-
     }
 
     @FXML

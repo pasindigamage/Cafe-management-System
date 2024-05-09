@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Order;
@@ -24,6 +25,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static lk.ijse.buddiescafe.controller.LoginFromController.signPerson;
 
 public class OrderFromController {
 
@@ -90,7 +93,8 @@ public class OrderFromController {
         setDate();
         getFoodItems();
         loadNextOrderId();
-
+        setCashier();
+setCellValueFactory();
     }
 
     private void loadNextOrderId() {
@@ -114,6 +118,11 @@ public class OrderFromController {
         return "O1";
     }
 
+    private void setCashier(){
+        String un = signPerson;
+        lblUserName.setText(un);
+    }
+
     private void setDate() {
         LocalDate now = LocalDate.now();
         lblOrderDate.setText(String.valueOf(now));
@@ -121,6 +130,14 @@ public class OrderFromController {
 
     private ObservableList<CartTM> cartList = FXCollections.observableArrayList();
 
+    private void setCellValueFactory() {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
+    }
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {

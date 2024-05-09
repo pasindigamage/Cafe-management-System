@@ -65,6 +65,7 @@ public class LoginFromController {
             String dbPw = resultSet.getString(2);
 
             if(dbPw.equals(pw)) {
+                signPerson = getUserName(un);
                 navigateToTheDashboard();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Password is incorrect!").show();
@@ -73,6 +74,26 @@ public class LoginFromController {
             new Alert(Alert.AlertType.INFORMATION, "User Name is not found!").show();
         }
     }
+
+    private String getUserName(String un) throws SQLException {
+        String sql = "SELECT Employee.name FROM User JOIN Employee ON User.employeeId = Employee.id WHERE userName = ?";
+
+        String signPerson = null;
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setString(1, un); // Set the parameter
+
+            try (ResultSet resultSet = pstm.executeQuery()) {
+                if (resultSet.next()) { // Check if there's at least one row
+                    signPerson = resultSet.getString(1); // Retrieve the value from the first column
+                }
+            }
+        }
+        return signPerson; // Return the retrieved value
+    }
+
 
     private void navigateToTheDashboard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/mainDashboard.fxml"));
