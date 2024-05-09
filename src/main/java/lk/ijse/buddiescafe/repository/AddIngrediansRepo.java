@@ -3,6 +3,7 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
+import lk.ijse.buddiescafe.model.OrderDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -119,5 +120,45 @@ public class AddIngrediansRepo {
         }
         return addIngrediansList;
 
+    }
+
+    public static boolean updateQty(List<OrderDetail> odList) {
+        try (Connection connection = DbConnection.getInstance().getConnection()) {
+            for (OrderDetail od : odList) {
+                AddIngredians addIngredians = getIngredientByFoodItemId(od.getItemCode());
+                if (addIngredians != null) {
+                    String sql = "UPDATE IngrediansDetail SET qty = qty - ? WHERE inventoryId = ?";
+                    try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                        pstm.setInt(1, od.getQty());
+                        pstm.setString(2, addIngredians.getId());
+                        pstm.executeUpdate();
+                    }
+                }
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static AddIngredians getIngredientByFoodItemId(String foodItemId) throws SQLException {
+        String sql = "SELECT * FROM IngrediansDetail WHERE foodItemId = ?";
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, foodItemId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new AddIngredians(
+                            resultSet.getString("id"),
+                            resultSet.getString("inventoryId"),
+                            resultSet.getString("foodItemId"),
+                            resultSet.getString("qty")
+                    );
+                }
+            }
+        }
+        return null;
     }
 }

@@ -32,7 +32,7 @@
          </font>
       </Label>
       <TextField fx:id="txtQty" layoutX="628.0" layoutY="175.0" onAction="#txtQtyOnAction" prefHeight="33.0" prefWidth="66.0" />
-      <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="771.0" layoutY="554.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
+      <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="769.0" layoutY="552.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -87,7 +87,7 @@
       <JFXComboBox fx:id="cmbItemCode" layoutX="156.0" layoutY="177.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="183.0" />
       <Label fx:id="lblDescription" layoutX="30.0" layoutY="179.0" prefHeight="33.0" prefWidth="90.0" textFill="#131414">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Label layoutX="426.0" layoutY="149.0" text="Unit Price:">
@@ -105,7 +105,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tblOrderCart" layoutX="39.0" layoutY="286.0" prefHeight="256.0" prefWidth="817.0">
+      <TableView fx:id="tblOrderCart" layoutX="39.0" layoutY="264.0" prefHeight="256.0" prefWidth="817.0">
          <columns>
             <TableColumn fx:id="colItemCode" prefWidth="79.0" text="Code" />
             <TableColumn fx:id="colDescription" prefWidth="252.0" text="Description" />

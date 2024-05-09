@@ -15,6 +15,7 @@ import lk.ijse.buddiescafe.repository.SupplierRepo;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class InventoryFromController {
@@ -143,17 +144,22 @@ public class InventoryFromController {
     }
 
     @FXML
-    void btnAddOnAction(ActionEvent event) {
-        String idText = inventoryId.getText();
-        String supplierIdValue = lblsId.getText();
-        String descriptionText = Description.getText();
-        String unitPriceText = unitPrice.getText();
-        String qtyText = qty.getText();
-        String dateText =lblOrderDate.getText();
-
-        Inventory inventory = new Inventory(idText,supplierIdValue,descriptionText,unitPriceText,qtyText,dateText);
-
+    void btnAddOnAction(ActionEvent event) throws NumberFormatException, IllegalArgumentException {
         try {
+            String idText = inventoryId.getText();
+            String supplierIdValue = lblsId.getText();
+            String descriptionText = Description.getText();
+            Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
+            int qtyText = Integer.parseInt(qty.getText());
+            String dateText = lblOrderDate.getText();
+
+            // Check if unitPrice is valid
+            if (unitPriceText == null || unitPriceText <= 0) {
+                throw new IllegalArgumentException("Invalid unit price.");
+            }
+
+            Inventory inventory = new Inventory(idText, supplierIdValue, descriptionText, unitPriceText, qtyText, dateText);
+
             boolean isSaved = InventoryRepo.save(inventory);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Inventory Saved!").show();
@@ -162,6 +168,7 @@ public class InventoryFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
@@ -192,23 +199,36 @@ public class InventoryFromController {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-        String idText = inventoryId.getText();
-        String supplierIdValue = lblsId.getText();
-        String descriptionText = Description.getText();
-        String unitPriceText = unitPrice.getText();
-        String qtyText = qty.getText();
-        String dateText =lblOrderDate.getText();
-
-        Inventory inventory = new Inventory(idText,supplierIdValue,descriptionText,unitPriceText,qtyText,dateText);
-
+    void btnUpdateOnAction(ActionEvent event) throws NumberFormatException, IllegalArgumentException {
         try {
+            String idText = inventoryId.getText();
+            String supplierIdValue = lblsId.getText();
+            String descriptionText = Description.getText();
+            Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
+            int qtyText = Integer.parseInt(qty.getText());
+            String dateText = lblOrderDate.getText();
+
+            // Check if unitPrice is valid
+            if (unitPriceText == null || unitPriceText <= 0) {
+                throw new IllegalArgumentException("Invalid unit price.");
+            }
+
+            Inventory inventory = new Inventory(idText, supplierIdValue, descriptionText, unitPriceText, qtyText, dateText);
+
             boolean isUpdated = InventoryRepo.update(inventory);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Inventory Updated!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private Double parseDouble(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return null; // Return null if parsing fails
         }
     }
 
@@ -238,9 +258,9 @@ public class InventoryFromController {
                 inventoryId.setText(inventory.getId());
                // cmbISupplierId.setValue(inventory.getSupplierId());
                 Description.setText(inventory.getDescription());
-                unitPrice.setText(inventory.getUnitPrice());
-                qty.setText(inventory.getQty());
-                lblOrderDate.setText(inventory.getDate());
+                unitPrice.setText(String.valueOf(inventory.getUnitPrice()));
+                qty.setText(String.valueOf(inventory.getQty()));
+                lblOrderDate.setText(String.valueOf(inventory.getDate()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

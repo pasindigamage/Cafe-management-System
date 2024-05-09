@@ -94,7 +94,7 @@ public class OrderFromController {
         getFoodItems();
         loadNextOrderId();
         setCashier();
-setCellValueFactory();
+        setCellValueFactory();
     }
 
     private void loadNextOrderId() {
@@ -131,7 +131,7 @@ setCellValueFactory();
     private ObservableList<CartTM> cartList = FXCollections.observableArrayList();
 
     private void setCellValueFactory() {
-        colItemCode.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -157,15 +157,18 @@ setCellValueFactory();
 
             if(type.orElse(no) == yes) {
                 int selectedIndex = tblOrderCart.getSelectionModel().getSelectedIndex();
-                cartList.remove(selectedIndex);
-
-                tblOrderCart.refresh();
-                calculateNetTotal();
+                if (selectedIndex != -1) {
+                    cartList.remove(selectedIndex);
+                    tblOrderCart.refresh();
+                    calculateNetTotal();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "No item selected to remove!").show();
+                }
             }
         });
 
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-            if (code.equals(colItemCode.getCellData(i))) {
+            if (code.equals(cartList.get(i).getCode())) {
                 qty += cartList.get(i).getQty();
                 total = unitPrice * qty;
 
@@ -186,8 +189,6 @@ setCellValueFactory();
         tblOrderCart.setItems(cartList);
         txtQty.setText("");
         calculateNetTotal();
-
-
     }
 
     private void calculateNetTotal() {
@@ -199,12 +200,12 @@ setCellValueFactory();
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
-        String userId = "U001";
+      //  String userId = signPerson;
         String date = String.valueOf(LocalDate.now());
 
-        var order = new Order(orderId, userId, date);
+        var order = new Order(orderId, date);
 
         List<OrderDetail> odList = new ArrayList<>();
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
@@ -219,15 +220,11 @@ setCellValueFactory();
         }
 
         PlaceOrder po = new PlaceOrder(order, odList);
-        try {
-            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
-            if(isPlaced) {
-                new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "order not placed!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+        if(isPlaced) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Order placed successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Failed to place order!").show();
         }
     }
 

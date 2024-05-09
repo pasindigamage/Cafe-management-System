@@ -121,13 +121,4 @@ public class FoodItemsRepo {
         return IdList;
     }
 
-    public static boolean updateQty(List<OrderDetail> odList) {
-        for (OrderDetail od : odList) {
-            if(!updateQty((List<OrderDetail>) od)) {
-                return false;
-            }
-        }
-        return true;
-
-    }
 }

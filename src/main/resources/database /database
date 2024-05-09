@@ -19,24 +19,21 @@ create table User(
 	foreign key(employeeId) references Employee(id) on update cascade on delete cascade
 	);
 
-
-create table Orders(
-	id int auto_increment primary key,
-	userId varchar(10),
-	paymentId int,
-	date date not null,
-	amount decimal(10,2),
-	foreign key(userId) references User(id) on update cascade on delete cascade
-	);
-
 create table FoodItems(
 	id varchar(20) primary key,
 	description varchar(20),
 	amount decimal(20,2)
 	);
 
+create table Orders(
+	id varchar(10) primary key,
+	paymentId int,
+	date date not null,
+	amount decimal(10,2)
+	);
+
 create table orderDetails(
-	orderId int,
+	orderId varchar(10),
 	foodItemId varchar(10),
 	qty int(10),
 	foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade,

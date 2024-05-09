@@ -2,11 +2,10 @@ package lk.ijse.buddiescafe.repository;
 
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.Order;
+import lk.ijse.buddiescafe.model.OrderDetail;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.List;
 
 public class OrdersRepo {
     public static String currentId() throws SQLException {
@@ -24,14 +23,11 @@ public class OrdersRepo {
     }
 
     public static boolean save(Order order) throws SQLException {
-        String sql = "INSERT INTO Orders VALUES(?, ?, ?)";
-        try (Connection connection = DbConnection.getInstance().getConnection();
-             PreparedStatement pstm = connection.prepareStatement(sql)) {
-
+        String sql = "INSERT INTO Orders (id, date) VALUES (?, ?)";
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
             pstm.setString(1, order.getId());
-            pstm.setString(2, order.getUserId());
-            pstm.setString(3, order.getDate());
-
+            //pstm.setString(2, order.getUserId());
+            pstm.setDate(3, Date.valueOf(order.getDate())); // Assuming date is of type java.sql.Date
             return pstm.executeUpdate() > 0;
         }
     }
