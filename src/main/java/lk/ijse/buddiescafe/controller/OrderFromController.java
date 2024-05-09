@@ -196,8 +196,7 @@ public class OrderFromController {
             OrderDetail od = new OrderDetail(
                     orderId,
                     tm.getCode(),
-                    tm.getQty(),
-                    tm.getUnitPrice()
+                    tm.getQty()
             );
             odList.add(od);
         }

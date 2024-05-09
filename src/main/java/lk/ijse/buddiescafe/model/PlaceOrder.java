@@ -1,12 +1,15 @@
 package lk.ijse.buddiescafe.model;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Data
 public class PlaceOrder {
-        private Order order;
-        private List<OrderDetail> odList;
-    }
+    private Order order;
+    private List<OrderDetail> odList;
+}
