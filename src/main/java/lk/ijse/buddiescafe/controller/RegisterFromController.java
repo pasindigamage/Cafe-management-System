@@ -5,9 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -32,6 +35,24 @@ public class RegisterFromController {
     @FXML
     private TextField userName;
 
+    public void initialize(){
+        employeeID.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                userId.requestFocus();
+            }
+        });
+        userId.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                userName.requestFocus();
+            }
+        });
+
+        userName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                password.requestFocus();
+            }
+        });
+    }
     @FXML
     void cancelOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) cancel.getScene().getWindow();
@@ -65,5 +86,25 @@ public class RegisterFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
         }
+    }
+
+    @FXML
+    void txtEmployeeIdOnKeyReleased(KeyEvent event) {
+       // Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
+    }
+
+    @FXML
+    void txtPasswordOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,password);
+    }
+
+    @FXML
+    void txtUserIdOnKeyReleased(KeyEvent event) {
+    //    Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
+    }
+
+    @FXML
+    void txtUserNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,userName);
     }
 }

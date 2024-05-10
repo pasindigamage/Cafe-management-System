@@ -86,7 +86,8 @@ public class EmployeeFromController {
         setCellValueFactory();
         loadEmployeeTable();
         loadNextOrderId();
-            ePossition.setOnKeyPressed(event -> {
+
+        ePossition.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.ENTER) {
                     eName.requestFocus();
                 }

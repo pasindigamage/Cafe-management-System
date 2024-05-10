@@ -29,7 +29,6 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="sID" layoutX="37.0" layoutY="104.0" onAction="#IdSearchOnAction" prefHeight="33.0" prefWidth="195.0" promptText="eg:- S001" />
       <Label layoutX="37.0" layoutY="86.0" text="Supplier Id" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />

@@ -4,6 +4,7 @@ import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.OtherMaintains;
 import lk.ijse.buddiescafe.model.Supplier;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,5 +66,19 @@ public class otherMaintainRepo {
         }
         return otherMaintainsList;
 
+    }
+
+    public static String currentId() throws SQLException {
+        String sql = "SELECT id FROM otherMaintain ORDER BY id desc LIMIT 1";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        }
     }
 }

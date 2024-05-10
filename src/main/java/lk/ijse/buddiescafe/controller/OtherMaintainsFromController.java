@@ -9,10 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.OtherMaintains;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.otherMaintainRepo;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -64,7 +68,7 @@ public class OtherMaintainsFromController {
     private TextField omDescription;
 
     @FXML
-    private TextField omId;
+    private Label omId;
 
     @FXML
     private TableView<OtherMaintains> tblOrderCart;
@@ -76,11 +80,45 @@ public class OtherMaintainsFromController {
         setCellValueFactory();
         loadCustomerTable();
         setDate();
+        loadNextOrderId();
+
+        omDescription.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                amount.requestFocus();
+            }
+        });
+
+    }
+
+    private void loadNextOrderId() {
+        try {
+            String currentId = otherMaintainRepo.currentId();
+            String nextId = nextId(currentId);
+
+            omId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("OM00");
+            int id = Integer.parseInt(split[1]);    //2
+            return "OM00" + ++id;
+
+        }
+        return "OM001";
     }
 
     private void setDate() {
         LocalDate now = LocalDate.now();
         lbldate.setText(String.valueOf(now));
+    }
+
+    @FXML
+    void txtAmountOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,amount);
     }
 
     private void loadCustomerTable() {
@@ -149,7 +187,6 @@ public class OtherMaintainsFromController {
     }
 
     private void clearFields() {
-        omId.setText("");
         omDescription.setText("");
         date.setText("");
         amount.setText("");

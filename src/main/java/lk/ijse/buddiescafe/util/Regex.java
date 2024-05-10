@@ -65,9 +65,9 @@ public class Regex {
     public static boolean setTextColor(TextField location, javafx.scene.control.TextField textField) {
         if (Regex.isTextFieldValid(location, textField.getText())) {
 
-            textField.setStyle("-fx-text-fill: Blue; -fx-background-color: transparent; -fx-border-color: #19460a; -fx-border-width: 0px 0px 2px 0px;");
+            textField.setStyle("-fx-text-fill: Blue; -fx-background-color: transparent; -fx-border-color: #2a2a2a; -fx-border-width: 0px 0px 2px 0px;");
         } else {
-            textField.setStyle("-fx-text-fill: red; -fx-background-color: transparent; -fx-border-color: #19460a; -fx-border-width: 0px 0px 2px 0px;");
+            textField.setStyle("-fx-text-fill: red; -fx-background-color: transparent; -fx-border-color: #2a2a2a; -fx-border-width: 0px 0px 2px 0px;");
 
             return false;
         }
