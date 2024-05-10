@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static javafx.scene.control.TextField.*;
 
 public class LoginFromController {
 
@@ -142,5 +146,13 @@ public class LoginFromController {
 
     }
 
+    @FXML
+    void txtPwOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,password);
+    }
 
+    @FXML
+    void txtUnameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.useName,userName);
+    }
 }
