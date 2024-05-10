@@ -1,5 +1,5 @@
 package lk.ijse.buddiescafe.util;
 
 public enum TextField {
-name,position,address,email,contact,amount,date,qty,nic
+name,address,email,contact,date,nic,qty,amount
 }
