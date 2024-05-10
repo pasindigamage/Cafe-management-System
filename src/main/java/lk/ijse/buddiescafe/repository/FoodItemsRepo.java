@@ -121,4 +121,17 @@ public class FoodItemsRepo {
         return IdList;
     }
 
+    public static String currentId() throws SQLException {
+        String sql = "SELECT id FROM FoodItems ORDER BY id desc LIMIT 1";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        }
+    }
 }

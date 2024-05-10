@@ -8,15 +8,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.FoodItems;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -55,7 +56,7 @@ public class FoodItemFromController {
     private TextField fDescription;
 
     @FXML
-    private TextField fID;
+    private Label fID;
 
     @FXML
     private AnchorPane rootNode1;
@@ -67,9 +68,36 @@ public class FoodItemFromController {
     private JFXButton updateMenu;
 
     public void initialize(){
-
         setCellValueFactory();
         loadEmployeeTable();
+        loadNextOrderId();
+
+        fDescription.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fAmount.requestFocus();
+            }
+        });
+    }
+
+    private void loadNextOrderId() {
+        try {
+            String currentId = FoodItemsRepo.currentId();
+            String nextId = nextId(currentId);
+
+            fID.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("FI00");
+            int id = Integer.parseInt(split[1]);    //2
+            return "FI00" + ++id;
+
+        }
+        return "FI001";
     }
 
     private void loadEmployeeTable() {
@@ -152,7 +180,6 @@ public class FoodItemFromController {
     }
 
     private void clearFields() {
-        fID.setText("");
         fDescription.setText("");
         fAmount.setText("");
     }
@@ -187,6 +214,11 @@ public class FoodItemFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,fAmount);
     }
 
 }

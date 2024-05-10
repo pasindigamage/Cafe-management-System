@@ -4,15 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.Employee;
+import lk.ijse.buddiescafe.repository.AddIngrediansRepo;
 import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.util.Regex;
 
@@ -62,7 +60,7 @@ public class EmployeeFromController {
     private TextField eEmail;
 
     @FXML
-    private TextField eID;
+    private Label eID;
 
     @FXML
     private TextField eName;
@@ -87,7 +85,7 @@ public class EmployeeFromController {
     public void initialize(){
         setCellValueFactory();
         loadEmployeeTable();
-
+        loadNextOrderId();
             ePossition.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.ENTER) {
                     eName.requestFocus();
@@ -112,6 +110,26 @@ public class EmployeeFromController {
         });
     }
 
+    private void loadNextOrderId() {
+        try {
+            String currentId = EmployeeRepo.currentId();
+            String nextId = nextId(currentId);
+
+            eID.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("E00");
+            int id = Integer.parseInt(split[1]);    //2
+            return "E00" + ++id;
+
+        }
+        return "E001";
+    }
 
     private void loadEmployeeTable() {
         ObservableList<Employee> obList = FXCollections.observableArrayList();
@@ -202,7 +220,6 @@ public class EmployeeFromController {
     }
 
     private void clearFields() {
-        eID.setText("");
         eAddress.setText("");
         eContact.setText("");
         eEmail.setText("");

@@ -7,11 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.*;
 import lk.ijse.buddiescafe.model.TM.InventoryTM;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -54,7 +58,7 @@ public class InventoryFromController {
     private JFXButton deleteInventorySupplier;
 
     @FXML
-    private TextField inventoryId;
+    private Label inventoryId;
 
     @FXML
     private Label lblNetTotal;
@@ -82,10 +86,44 @@ public class InventoryFromController {
         getSupplierIds();
         loadInventoryTable();
         setCellValueFactory();
+        loadNextOrderId();
+
+        Description.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                unitPrice.requestFocus();
+            }
+        });
+        unitPrice.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                qty.requestFocus();
+            }
+        });
     }
 
     @FXML
     private Label lblsId;
+
+    private void loadNextOrderId() {
+        try {
+            String currentId = InventoryRepo.currentId();
+            String nextId = nextId(currentId);
+
+            inventoryId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("I00");
+            int id = Integer.parseInt(split[1]);    //2
+            return "I00" + ++id;
+
+        }
+        return "I001";
+    }
+
 
     @FXML
     private TableColumn<?, ?> colSupName;
@@ -176,7 +214,6 @@ public class InventoryFromController {
     }
 
     private void clearFields() {
-        inventoryId.setText("");
         Description.setText("");
         unitPrice.setText("");
         qty.setText("");
@@ -256,8 +293,7 @@ public class InventoryFromController {
 
             if (inventoryIdSearch != null) {
                 inventoryId.setText(inventory.getId());
-               // cmbISupplierId.setValue(inventory.getSupplierId());
-                Description.setText(inventory.getDescription());
+               Description.setText(inventory.getDescription());
                 unitPrice.setText(String.valueOf(inventory.getUnitPrice()));
                 qty.setText(String.valueOf(inventory.getQty()));
                 lblOrderDate.setText(String.valueOf(inventory.getDate()));
@@ -265,5 +301,15 @@ public class InventoryFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,qty);
+    }
+
+    @FXML
+    void txtUnitPriceOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,unitPrice);
     }
 }

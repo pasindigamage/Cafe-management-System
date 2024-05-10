@@ -29,13 +29,12 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="fID" layoutX="36.0" layoutY="106.0" prefHeight="33.0" prefWidth="209.0" promptText="eg:- FI001" />
       <Label layoutX="36.0" layoutY="88.0" text="Food Item Id" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="fAmount" layoutX="36.0" layoutY="249.0" prefHeight="33.0" prefWidth="209.0" promptText="Enter Unit Price (eg:- 100.00)" />
+      <TextField fx:id="fAmount" layoutX="36.0" layoutY="249.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="33.0" prefWidth="209.0" promptText="Enter Unit Price (eg:- 100.00)" />
       <Label layoutX="36.0" layoutY="231.0" text="Amount" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -106,5 +105,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Label fx:id="fID" layoutX="36.0" layoutY="109.0" prefHeight="33.0" prefWidth="209.0" />
    </children>
 </AnchorPane>

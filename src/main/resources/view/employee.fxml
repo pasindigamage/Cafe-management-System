@@ -29,8 +29,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="eID" layoutX="37.0" layoutY="105.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- E001" />
-      <Label layoutX="37.0" layoutY="87.0" text="Employee Id" textFill="#363232">
+      <Label layoutX="37.0" layoutY="87.0" text="Id" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -118,5 +117,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Label fx:id="eID" layoutX="37.0" layoutY="103.0" prefHeight="33.0" prefWidth="198.0" textFill="#363232" />
    </children>
 </AnchorPane>
