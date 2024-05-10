@@ -114,11 +114,19 @@ public class SupplierFromController {
 
     private void loadNextOrderId() {
         try {
-            String currentId = SupplierRepo.currentId();
-            String nextId = nextId(currentId);
+            // Check if sID label is properly initialized
+            if (sID != null) {
+                String currentId = SupplierRepo.currentId();
+                String nextId = nextId(currentId);
 
-            sID.setText(nextId);
+                // Update the text of the sID label
+                sID.setText(nextId);
+            } else {
+                // Log an error or display a message if sID is null
+                System.err.println("Error: sID label is null.");
+            }
         } catch (SQLException e) {
+            // Handle SQL exceptions appropriately
             throw new RuntimeException(e);
         }
     }
