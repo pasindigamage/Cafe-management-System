@@ -19,7 +19,7 @@
             <Image url="@../images/loginbackground.jpeg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91979e" height="509.0" layoutX="397.0" layoutY="90.0" opacity="0.78" stroke="BLACK" strokeType="INSIDE" width="368.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91979e" height="509.0" layoutX="394.0" layoutY="90.0" opacity="0.78" stroke="BLACK" strokeType="INSIDE" width="368.0" />
       <JFXButton fx:id="signIn" alignment="CENTER" buttonType="RAISED" layoutX="449.0" layoutY="449.0" onAction="#letsSignInOnAction" prefHeight="40.0" prefWidth="249.0" style="-fx-background-color: #4D3E3E;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />

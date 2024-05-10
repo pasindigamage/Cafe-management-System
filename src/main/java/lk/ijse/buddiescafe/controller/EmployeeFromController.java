@@ -9,9 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.repository.EmployeeRepo;
+import lk.ijse.buddiescafe.util.Regex;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +87,29 @@ public class EmployeeFromController {
     public void initialize(){
         setCellValueFactory();
         loadEmployeeTable();
+
+            ePossition.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    eName.requestFocus();
+                }
+            });
+            eName.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    eAddress.requestFocus();
+                }
+            });
+
+        eAddress.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                eContact.requestFocus();
+            }
+        });
+
+        eContact.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                eEmail.requestFocus();
+            }
+        });
     }
 
 
@@ -219,4 +246,23 @@ public class EmployeeFromController {
         }
     }
 
+    @FXML
+    void txtAddressOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,eAddress);
+    }
+
+    @FXML
+    void txtContactOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.contact,eContact);
+    }
+
+    @FXML
+    void txtEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.email,eEmail);
+    }
+
+    @FXML
+    void txtNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
+    }
 }

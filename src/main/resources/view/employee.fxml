@@ -35,25 +35,25 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eName" layoutX="37.0" layoutY="237.0" prefHeight="33.0" prefWidth="198.0" promptText="Enter Name With Initials" />
+      <TextField fx:id="eName" layoutX="37.0" layoutY="237.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="Enter Name With Initials" />
       <Label layoutX="37.0" layoutY="219.0" text="Name" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eAddress" layoutX="37.0" layoutY="304.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- No.305,Hapugala,Galle" />
+      <TextField fx:id="eAddress" layoutX="37.0" layoutY="304.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="eg:- No.305,Hapugala,Galle" />
       <Label layoutX="37.0" layoutY="286.0" text="Address" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eContact" layoutX="37.0" layoutY="372.0" prefHeight="33.0" prefWidth="198.0" promptText="+94 XXXXXXXXX" />
+      <TextField fx:id="eContact" layoutX="37.0" layoutY="372.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="+94 XXXXXXXXX" />
       <Label layoutX="37.0" layoutY="354.0" text="Contact" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eEmail" layoutX="37.0" layoutY="443.0" prefHeight="33.0" prefWidth="198.0" promptText="eg:- abc@gmail.com" />
+      <TextField fx:id="eEmail" layoutX="37.0" layoutY="443.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="eg:- abc@gmail.com" />
       <Label layoutX="37.0" layoutY="425.0" text="Email" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />
