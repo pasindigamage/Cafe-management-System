@@ -5,8 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.db.DbConnection;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +33,16 @@ public class ChangePasswordFromController {
     private TextField userName;
 
     public void initialize(){
+        userName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+               employeeId.requestFocus();
+            }
+        });
+        employeeId.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                newPassword.requestFocus();
+            }
+        });
 
     }
     @FXML
@@ -68,5 +81,20 @@ public class ChangePasswordFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    @FXML
+    void txtEidOnKeyReleased(KeyEvent event) {
+        //Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.,userName);
+    }
+
+    @FXML
+    void txtNewPwOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,newPassword);
+    }
+
+    @FXML
+    void txtUnameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.useName,userName);
     }
 }
