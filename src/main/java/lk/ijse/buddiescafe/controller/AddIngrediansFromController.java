@@ -9,14 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.KitchenWare;
-import lk.ijse.buddiescafe.repository.AddIngrediansRepo;
-import lk.ijse.buddiescafe.repository.FoodItemsRepo;
-import lk.ijse.buddiescafe.repository.InventoryRepo;
-import lk.ijse.buddiescafe.repository.KitchenWareRepo;
+import lk.ijse.buddiescafe.repository.*;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -68,8 +67,34 @@ public class AddIngrediansFromController {
         getFoodItemIds();
         setCellValueFactory();
         loadInventoryTable();
+        loadNextOrderId();
     }
 
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,qty);
+    }
+    private void loadNextOrderId() {
+        try {
+            String currentId = AddIngrediansRepo.currentId();
+            String nextId = nextId(currentId);
+
+            lblId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("SP0");
+            int id = Integer.parseInt(split[1]);    //2
+            return "SP0" + ++id;
+
+        }
+        return "SP01";
+    }
 
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -148,7 +173,7 @@ public class AddIngrediansFromController {
     }
 
     @FXML
-    private TextField lblId;
+    private Label lblId;
 
     @FXML
     private TableColumn<?, ?> colId;

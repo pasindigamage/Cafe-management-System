@@ -74,7 +74,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="qty" layoutX="205.0" layoutY="355.0" onAction="#qtyOnAction" prefHeight="33.0" prefWidth="52.0" />
+      <TextField fx:id="qty" layoutX="205.0" layoutY="355.0" onAction="#qtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="33.0" prefWidth="52.0" />
       <JFXComboBox fx:id="cmbFoodItemD" layoutX="103.0" layoutY="171.0" onAction="#cmbFoodItemOnAction" prefHeight="51.0" prefWidth="171.0" promptText="Select Food Item" />
       <JFXButton fx:id="deleteIngredians" buttonType="RAISED" contentDisplay="RIGHT" layoutX="592.0" layoutY="517.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
          <font>
@@ -99,6 +99,10 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="lblId" layoutX="102.0" layoutY="114.0" prefHeight="33.0" prefWidth="171.0" />
+      <Label fx:id="lblId" layoutX="100.0" layoutY="110.0" prefHeight="33.0" prefWidth="171.0" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
