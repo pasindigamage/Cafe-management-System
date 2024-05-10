@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Order;
@@ -18,6 +19,7 @@ import lk.ijse.buddiescafe.model.TM.CartTM;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.OrdersRepo;
 import lk.ijse.buddiescafe.repository.PlaceOrderRepo;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -106,6 +108,11 @@ public class OrderFromController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,txtQty);
     }
 
     private String nextId(String currentId) {
@@ -260,7 +267,7 @@ public class OrderFromController {
 
     @FXML
     void txtQtyOnAction(ActionEvent event) {
-
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,txtQty);
     }
 
 }

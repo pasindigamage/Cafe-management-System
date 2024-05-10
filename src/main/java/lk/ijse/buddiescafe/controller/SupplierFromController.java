@@ -7,16 +7,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.Employee;
 import lk.ijse.buddiescafe.model.Supplier;
+import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
+import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -67,7 +68,7 @@ public class SupplierFromController {
     private TextField sEmail;
 
     @FXML
-    private TextField sID;
+    private Label sID;
 
     @FXML
     private TextField sNIC;
@@ -84,6 +85,52 @@ public class SupplierFromController {
     public void initialize(){
         setCellValueFactory();
         loadEmployeeTable();
+        loadNextOrderId();
+
+            sNIC.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sName.requestFocus();
+            }
+        });
+        sName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sAddress.requestFocus();
+            }
+        });
+
+        sAddress.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sContact.requestFocus();
+            }
+        });
+
+        sContact.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sEmail.requestFocus();
+            }
+        });
+
+    }
+
+    private void loadNextOrderId() {
+        try {
+            String currentId = SupplierRepo.currentId();
+            String nextId = nextId(currentId);
+
+            sID.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("S00");
+            int id = Integer.parseInt(split[1]);    //2
+            return "S00" + ++id;
+
+        }
+        return "S001";
     }
 
     private void loadEmployeeTable() {
@@ -179,7 +226,6 @@ public class SupplierFromController {
     }
 
     private void clearFields() {
-        sID.setText("");
         sNIC.setText("");
         sName.setText("");
         sAddress.setText("");
@@ -221,5 +267,30 @@ public class SupplierFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    @FXML
+    void txtAddressOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,sAddress);
+    }
+
+    @FXML
+    void txtContactOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.contact,sContact);
+    }
+
+    @FXML
+    void txtEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.email,sEmail);
+    }
+
+    @FXML
+    void txtNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,sName);
+    }
+
+    @FXML
+    void txtNicOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.nic,sNIC);
     }
 }

@@ -8,11 +8,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.Supplier;
+import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.repository.KitchenWareRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
+import lk.ijse.buddiescafe.util.Regex;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -49,7 +54,7 @@ public class KitchenWareFromController {
     private JFXButton deleteKitchenWare;
 
     @FXML
-    private TextField kId;
+    private Label kId;
 
     @FXML
     private Label lblNetTotal;
@@ -67,6 +72,34 @@ public class KitchenWareFromController {
         getSupplierIds();
          loadInventoryTable();
          setCellValueFactory();
+         loadNextOrderId();
+
+        Description.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                Qty.requestFocus();
+            }
+        });
+
+    }
+
+    private void loadNextOrderId() {
+        try {
+            String currentId = KitchenWareRepo.currentId();
+            String nextId = nextId(currentId);
+
+            kId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null && currentId.contains("KW00")) {
+            String[] split = currentId.split("KW00");
+            int id = Integer.parseInt(split[1]);
+            return "KW00" + ++id;
+        }
+        return "KW001";
     }
 
     private void setCellValueFactory() {
@@ -126,7 +159,6 @@ public class KitchenWareFromController {
 
             if (kitchenWare != null) {
                 kId.setText(kitchenWare.getId());
-                //sNIC.setText(supplier.getNic());
                 Description.setText(kitchenWare.getDescription());
                 Qty.setText(kitchenWare.getQty());
             }
@@ -159,7 +191,6 @@ public class KitchenWareFromController {
     }
 
     private void clearFields() {
-        kId.setText("");
         Description.setText("");
         cmbISupplierId.setValue("");
         Qty.setText("");
@@ -214,5 +245,10 @@ public class KitchenWareFromController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,Qty);
     }
 }
