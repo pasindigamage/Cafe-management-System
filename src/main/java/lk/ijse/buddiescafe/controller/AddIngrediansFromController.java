@@ -122,29 +122,29 @@ public class AddIngrediansFromController {
         }
     }
 
-   @FXML
+    @FXML
     void btnUpdateOnAction(ActionEvent event) {
-       String foodItemDValue = lblFoodItemID.getText();
-       String ingrediansIDValue = lblInvenID.getText();
-       String qtyText = qty.getText();
-       String id = lblId.getText();
+        String foodItemDValue = lblFoodItemID.getText();
+        String ingrediansIDValue = lblInvenID.getText();
+        String qtyText = qty.getText();
+        String id = lblId.getText();
 
-       if (foodItemDValue == null || ingrediansIDValue == null || qtyText.isEmpty()) {
-           new Alert(Alert.AlertType.ERROR, "Please fill all the fields!").show();
-           return;
-       }
+        if (foodItemDValue == null || ingrediansIDValue == null || qtyText.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill all the fields!").show();
+            return;
+        }
 
-       AddIngredians addIngredians = new AddIngredians(id,foodItemDValue, ingrediansIDValue, qtyText);
+        AddIngredians addIngredians = new AddIngredians(id,foodItemDValue, ingrediansIDValue, qtyText);
 
-       try {
-           boolean isUpdated = AddIngrediansRepo.update(addIngredians);
-           if (isUpdated) {
-               new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Updated!").show();
-               clearFields();
-           }
-       } catch (SQLException e) {
-           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-       }
+        try {
+            boolean isUpdated = AddIngrediansRepo.update(addIngredians);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplement is Updated!").show();
+                clearFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML

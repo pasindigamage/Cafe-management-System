@@ -47,6 +47,21 @@
                   <Font name="Dhurjati" size="48.0" />
                </font>
             </Label>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="102.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/firstlogo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="252.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/second.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="411.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/third.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane layoutY="57.0" prefHeight="593.0" prefWidth="208.0" style="-fx-background-color: #1a120b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1067.0" AnchorPane.topAnchor="57.0">
          <children>
@@ -111,32 +126,5 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </JFXButton>
-      <AnchorPane layoutX="390.0" layoutY="208.0" prefHeight="125.0" prefWidth="130.0" style="-fx-background-color: red; -fx-background-radius: 25;">
-         <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/firstlogo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="538.0" layoutY="354.0" prefHeight="113.0" prefWidth="124.0" style="-fx-background-color: #44bd32; -fx-background-radius: 25;">
-         <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/second.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="697.0" layoutY="481.0" prefHeight="125.0" prefWidth="130.0" style="-fx-background-color: #FFF700; -fx-background-radius: 25;">
-         <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/third.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

@@ -125,7 +125,7 @@ public class FoodItemFromController {
         String descriptionText = fDescription.getText();
         String amountText = fAmount.getText();
 
-       FoodItems foodItems = new FoodItems(idText,descriptionText,amountText);
+        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText);
 
         try {
             boolean isSaved = FoodItemsRepo.save(foodItems);

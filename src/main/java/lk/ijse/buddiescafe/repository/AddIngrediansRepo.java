@@ -81,20 +81,6 @@ public class AddIngrediansRepo {
         }
     }
 
-    public static int currentId() throws SQLException {
-        String sql = "SELECT id FROM IngrediansDetail ORDER BY id LIMIT 1";
-
-        try (Connection connection = DbConnection.getInstance().getConnection();
-             PreparedStatement pstm = connection.prepareStatement(sql);
-             ResultSet resultSet = pstm.executeQuery()) {
-
-            if (resultSet.next()) {
-                return resultSet.getInt(1);
-            }
-            return 0;
-        }
-    }
-
     public static List<AddIngredians> getAll() throws SQLException {
         String sql = " select IngrediansDetail.id, FoodItems.description, " +
                 "Inventory.description, IngrediansDetail.qty " +
@@ -160,5 +146,19 @@ public class AddIngrediansRepo {
             }
         }
         return null;
+    }
+
+    public static String currentId() throws SQLException {
+        String sql = "SELECT id FROM IngrediansDetail ORDER BY id desc LIMIT 1";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        }
     }
 }

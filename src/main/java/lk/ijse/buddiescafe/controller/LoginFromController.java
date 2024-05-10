@@ -148,11 +148,11 @@ public class LoginFromController {
 
     @FXML
     void txtPwOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,password);
+     //   Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,password);
     }
 
     @FXML
     void txtUnameOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.useName,userName);
+       // Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.useName,userName);
     }
 }

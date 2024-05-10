@@ -51,7 +51,7 @@ public class InventoryRepo {
     }
 
     public static Inventory searchByID(String id) throws SQLException {
-        String sql = "SELECT * FROM Inventory WHERE id = ?";
+        String sql = "SELECT * FROM Inventory WHERE description = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, id);
