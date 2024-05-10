@@ -39,6 +39,20 @@ public class LoginFromController {
     @FXML
     private TextField userName;
 
+    public void initialize(){
+        userName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                password.requestFocus();
+            }
+        });
+        password.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                signIn.requestFocus();
+            }
+        });
+
+    }
+
     @FXML
     void letsSignInOnAction (ActionEvent event) throws IOException, SQLException {
         String un = userName.getText();
@@ -94,7 +108,6 @@ public class LoginFromController {
         return signPerson; // Return the retrieved value
     }
 
-
     private void navigateToTheDashboard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/mainDashboard.fxml"));
 
@@ -128,5 +141,6 @@ public class LoginFromController {
         stage.show();
 
     }
+
 
 }

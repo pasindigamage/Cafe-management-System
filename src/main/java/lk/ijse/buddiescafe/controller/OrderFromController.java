@@ -202,10 +202,10 @@ public class OrderFromController {
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
-      //  String userId = signPerson;
+        String userId = signPerson;
         String date = String.valueOf(LocalDate.now());
 
-        var order = new Order(orderId, date);
+        var order = new Order(orderId, userId, date);
 
         List<OrderDetail> odList = new ArrayList<>();
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {

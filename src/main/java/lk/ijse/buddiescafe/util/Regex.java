@@ -35,7 +35,15 @@ public class Regex {
             case amount:
                 filed = "[0-9](.[0-9]*)?";
                 break;
+
+            case useName:
+                filed = "^[a-zA-Z0-9._-]{3,}$";
+                break;
+
+            case password:
+                filed = "^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
         }
+
         Pattern pattern = Pattern.compile(filed);
 
         if (text != null){

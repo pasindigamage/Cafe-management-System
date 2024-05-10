@@ -29,6 +29,9 @@ public class ChangePasswordFromController {
     @FXML
     private TextField userName;
 
+    public void initialize(){
+
+    }
     @FXML
     void cancelOnAction(ActionEvent event) {
         Stage stage = (Stage) cancel.getScene().getWindow();
