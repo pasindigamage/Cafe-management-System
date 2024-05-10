@@ -2,6 +2,8 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.KitchenWare;
 import lk.ijse.buddiescafe.model.KitchenWareMaintains;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,5 +65,19 @@ public class KitchenWareMaintainRepo {
             kitchenWareMaintainsList.add(kitchenWareMaintains);
         }
         return kitchenWareMaintainsList;
+    }
+
+    public static String currentId() throws SQLException {
+        String sql = "SELECT id FROM kitchenWareMaintain ORDER BY id desc LIMIT 1";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        }
     }
 }

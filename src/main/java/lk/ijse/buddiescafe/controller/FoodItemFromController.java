@@ -218,7 +218,7 @@ public class FoodItemFromController {
 
     @FXML
     void txtQtyOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,fAmount);
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,fAmount);
     }
 
 }
