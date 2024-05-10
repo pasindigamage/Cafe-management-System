@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class Order {
     private String id;
+    private String uId;
     private String date;
 }

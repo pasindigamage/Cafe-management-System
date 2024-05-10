@@ -27,9 +27,11 @@ create table FoodItems(
 
 create table Orders(
 	id varchar(10) primary key,
+	userId varchar(10),
 	paymentId int,
 	date date not null,
-	amount decimal(10,2)
+	amount decimal(10,2),
+	foreign key(userId) references User(id) on update cascade on delete cascade
 	);
 
 create table orderDetails(

@@ -44,6 +44,14 @@ public class MainDashboardFromController {
 
     @FXML
     private JFXButton supplier;
+    @FXML
+    private Label first;
+
+    @FXML
+    private Label third;
+
+    @FXML
+    private Label second;
 
     @FXML
     private Label time;
