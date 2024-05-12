@@ -148,12 +148,12 @@ public class InventorySupplierDetailFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("I00");
+            String[] split = currentId.split("IS00");
             int id = Integer.parseInt(split[1]);    //2
-            return "I00" + ++id;
+            return "IS00" + ++id;
 
         }
-        return "I001";
+        return "IS001";
     }
 
 
@@ -218,17 +218,18 @@ public class InventorySupplierDetailFromController {
         try {
             String idText = inventoryId.getText();
             String supplierIdValue = lblsId.getText();
-            String descriptionText = Description.getText();
+            String ingrediansValue = lblInventoryId.getText();
+            //  String descriptionText = Description.getText();
+            String dateText = lblOrderDate.getText();
             Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
             int qtyText = Integer.parseInt(qty.getText());
-            String dateText = lblOrderDate.getText();
 
             // Check if unitPrice is valid
             if (unitPriceText == null || unitPriceText <= 0) {
                 throw new IllegalArgumentException("Invalid unit price.");
             }
 
-            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, descriptionText, unitPriceText, qtyText, dateText);
+            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, ingrediansValue, dateText, unitPriceText, qtyText);
 
             boolean isSaved = InventorySupplierDetailRepo.save(inventoryDetail);
             if (isSaved) {
@@ -250,6 +251,7 @@ public class InventorySupplierDetailFromController {
         qty.setText("");
         inventoryIdSearch.setText("");
         cmbISupplierId.setValue("");
+        cmbIInventoryId.setValue("");
     }
 
     @FXML
@@ -271,7 +273,8 @@ public class InventorySupplierDetailFromController {
         try {
             String idText = inventoryId.getText();
             String supplierIdValue = lblsId.getText();
-            String descriptionText = Description.getText();
+            String ingrediansValue = lblInventoryId.getText();
+            //String descriptionText = Description.getText();
             Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
             int qtyText = Integer.parseInt(qty.getText());
             String dateText = lblOrderDate.getText();
@@ -281,7 +284,7 @@ public class InventorySupplierDetailFromController {
                 throw new IllegalArgumentException("Invalid unit price.");
             }
 
-            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, descriptionText, unitPriceText, qtyText, dateText);
+            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, ingrediansValue, dateText, unitPriceText, qtyText);
 
             boolean isUpdated = InventorySupplierDetailRepo.update(inventoryDetail);
             if (isUpdated) {
@@ -324,7 +327,7 @@ public class InventorySupplierDetailFromController {
 
             if (inventoryIdSearch != null) {
                 inventoryId.setText(inventoryDetail.getId());
-                Description.setText(inventoryDetail.getInventoryId());
+                //Description.setText(inventoryDetail.getInventoryId());
                 unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
                 qty.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));

@@ -61,8 +61,8 @@ public class AddIngrediansFromController {
     public void initialize() {
         getInventoryIds();
         getFoodItemIds();
-        setCellValueFactory();
-        loadInventoryTable();
+        //setCellValueFactory();
+        //loadInventoryTable();
         loadNextOrderId();
     }
 
