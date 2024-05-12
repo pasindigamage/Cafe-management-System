@@ -82,7 +82,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="inventory" layoutX="10.0" layoutY="140.0" onAction="#inventoryOnAction" prefHeight="65.0" prefWidth="208.0" text="INVENTORY" textFill="WHITE">
+                  <JFXButton fx:id="inventoryDetail" layoutX="10.0" layoutY="140.0" onAction="#inventoryOnAction" prefHeight="65.0" prefWidth="208.0" text="INVENTORY" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

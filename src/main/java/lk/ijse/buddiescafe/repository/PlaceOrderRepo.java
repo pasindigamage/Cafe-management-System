@@ -3,7 +3,6 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.PlaceOrder;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class PlaceOrderRepo {
@@ -18,7 +17,7 @@ public class PlaceOrderRepo {
                 if (isOrderSaved) {
                     boolean isOrderDetailSaved = OrderDetailRepo.save(po.getOdList());
                     if (isOrderDetailSaved) {
-                        boolean isItemQtyUpdate = InventoryRepo.updateQty(po.getOdList());
+                        boolean isItemQtyUpdate = InventorySupplierDetailRepo.updateQty(po.getOdList());
                         boolean isSupplimentQtyUpdate = AddIngrediansRepo.updateQty(po.getOdList());
                         if (isItemQtyUpdate && isSupplimentQtyUpdate) {
                             connection.commit();

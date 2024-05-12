@@ -6,21 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.KitchenWare;
+import lk.ijse.buddiescafe.model.InventorySupplierDetail;
 import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class AddIngrediansFromController {
 
@@ -195,9 +191,9 @@ public class AddIngrediansFromController {
     void cmbIngrediansOnAction(ActionEvent event) {
         String ingrediansIDValue = cmbIngrediansID.getValue();
         try {
-            Inventory inventory = InventoryRepo.searchByDescription(ingrediansIDValue);
-            if (inventory != null) {
-                lblInvenID.setText(inventory.getId());
+            InventorySupplierDetail inventoryDetail = InventorySupplierDetailRepo.searchByDescription(ingrediansIDValue);
+            if (inventoryDetail != null) {
+                lblInvenID.setText(inventoryDetail.getId());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

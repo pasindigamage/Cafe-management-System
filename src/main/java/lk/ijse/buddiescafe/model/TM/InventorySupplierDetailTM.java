@@ -3,7 +3,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InventoryTM{
+public class InventorySupplierDetailTM {
     private String id;
     private String description;
     private String supName;
