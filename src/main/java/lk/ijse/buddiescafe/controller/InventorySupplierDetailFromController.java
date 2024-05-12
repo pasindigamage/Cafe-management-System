@@ -1,4 +1,5 @@
 package lk.ijse.buddiescafe.controller;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.*;
 import lk.ijse.buddiescafe.model.TM.InventorySupplierDetailTM;
+import lk.ijse.buddiescafe.repository.InventoryRepo;
 import lk.ijse.buddiescafe.repository.InventorySupplierDetailRepo;
 import lk.ijse.buddiescafe.repository.SupplierRepo;
 import lk.ijse.buddiescafe.util.Regex;
@@ -82,15 +84,12 @@ public class InventorySupplierDetailFromController {
     public void initialize() {
         setDate();
         getSupplierIds();
+        getInventoryIds();
         //loadInventoryTable();
         //setCellValueFactory();
         loadNextOrderId();
 
-        Description.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                unitPrice.requestFocus();
-            }
-        });
+
         unitPrice.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 qty.requestFocus();
@@ -98,8 +97,44 @@ public class InventorySupplierDetailFromController {
         });
     }
 
+    private void getInventoryIds() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        try {
+            List<String> idList = InventoryRepo.getIds();
+
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbIInventoryId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private JFXComboBox<String> cmbIInventoryId;
+
     @FXML
     private Label lblsId;
+
+    @FXML
+    private Label lblInventoryId;
+
+    @FXML
+    void cmbInventoryOnAction(ActionEvent event) {
+  /*      String sid = cmbIInventoryId.getValue();
+        try {
+            Inventory inventory = InventoryRepo.searchByCode(sid);
+            if (inventory != null) {
+                lblInventoryId.setText(inventory.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+*/
+    }
 
     private void loadNextOrderId() {
         try {
@@ -212,7 +247,6 @@ public class InventorySupplierDetailFromController {
     }
 
     private void clearFields() {
-        Description.setText("");
         unitPrice.setText("");
         qty.setText("");
         inventoryIdSearch.setText("");
@@ -291,7 +325,7 @@ public class InventorySupplierDetailFromController {
 
             if (inventoryIdSearch != null) {
                 inventoryId.setText(inventoryDetail.getId());
-               Description.setText(inventoryDetail.getDescription());
+                Description.setText(inventoryDetail.getDescription());
                 unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
                 qty.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));
@@ -304,11 +338,11 @@ public class InventorySupplierDetailFromController {
 
     @FXML
     void txtQtyOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,qty);
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty, qty);
     }
 
     @FXML
     void txtUnitPriceOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,unitPrice);
+        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount, unitPrice);
     }
 }
