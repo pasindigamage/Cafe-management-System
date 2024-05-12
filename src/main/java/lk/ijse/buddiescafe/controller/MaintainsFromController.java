@@ -37,7 +37,7 @@ public class MaintainsFromController {
 
     @FXML
     void btnkitchenWareMaintainsOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/kitchenWare.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/kitchenWareMaintains.fxml"));
         Parent rootNode = loader.load();
         rootNode1.getChildren().clear();
         rootNode1.getChildren().add(rootNode);
