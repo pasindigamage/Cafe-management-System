@@ -297,6 +297,7 @@ public class InventoryFromController {
                 unitPrice.setText(String.valueOf(inventory.getUnitPrice()));
                 qty.setText(String.valueOf(inventory.getQty()));
                 lblOrderDate.setText(String.valueOf(inventory.getDate()));
+                lblsId.setText(inventory.getSupplierId());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

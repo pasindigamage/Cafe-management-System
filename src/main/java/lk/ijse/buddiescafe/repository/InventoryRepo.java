@@ -51,7 +51,7 @@ public class InventoryRepo {
     }
 
     public static Inventory searchByID(String id) throws SQLException {
-        String sql = "SELECT * FROM Inventory WHERE description = ?";
+        String sql = "SELECT * FROM Inventory WHERE id = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, id);
@@ -123,5 +123,26 @@ public class InventoryRepo {
             }
             return null;
         }
+    }
+
+    public static Inventory searchByDescription(String ingrediansIDValue) throws SQLException {
+        String sql = "SELECT * FROM Inventory WHERE description = ?";
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, ingrediansIDValue);
+            try (ResultSet resultSet = pstm.executeQuery()) {
+                if (resultSet.next()) {
+                    return new Inventory(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getDouble(4),
+                            resultSet.getInt(5),
+                            resultSet.getString(6) // Convert java.sql.Date to LocalDate
+                    );
+                }
+            }
+        }
+        return null;
     }
 }

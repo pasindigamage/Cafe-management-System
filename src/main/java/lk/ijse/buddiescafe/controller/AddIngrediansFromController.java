@@ -195,7 +195,7 @@ public class AddIngrediansFromController {
     void cmbIngrediansOnAction(ActionEvent event) {
         String ingrediansIDValue = cmbIngrediansID.getValue();
         try {
-            Inventory inventory = InventoryRepo.searchByID(ingrediansIDValue);
+            Inventory inventory = InventoryRepo.searchByDescription(ingrediansIDValue);
             if (inventory != null) {
                 lblInvenID.setText(inventory.getId());
             }

@@ -147,4 +147,18 @@ public class SupplierRepo {
             return null;
         }
     }
+
+    public static String searchName() throws SQLException {
+        String sql = "SELECT name FROM Supplier where id = ?";
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        }
+    }
 }
