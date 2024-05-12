@@ -3,6 +3,7 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.FoodItems;
 import lk.ijse.buddiescafe.model.Inventory;
+import lk.ijse.buddiescafe.model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -93,5 +94,38 @@ public class InventoryRepo {
             inventoryList.add(inventory);
         }
         return inventoryList;
+    }
+
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT description FROM Inventory";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> IdList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            IdList.add(resultSet.getString(1));
+        }
+        return IdList;
+    }
+
+    public static Inventory searchByCode(String sid) throws SQLException {
+        String sql = "SELECT * FROM Inventory WHERE sid = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, sid);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Inventory(
+                    resultSet.getString(1),
+                    resultSet.getString(2)
+            );
+        }
+        return null;
     }
 }
