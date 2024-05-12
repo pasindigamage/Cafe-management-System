@@ -85,8 +85,8 @@ public class InventorySupplierDetailFromController {
         setDate();
         getSupplierIds();
         getInventoryIds();
-        //loadInventoryTable();
-        //setCellValueFactory();
+        loadInventoryTable();
+        setCellValueFactory();
         loadNextOrderId();
 
 

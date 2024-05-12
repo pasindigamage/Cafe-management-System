@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.FoodItems;
+import lk.ijse.buddiescafe.model.Inventory;
 import lk.ijse.buddiescafe.model.InventorySupplierDetail;
 import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
@@ -61,8 +62,8 @@ public class AddIngrediansFromController {
     public void initialize() {
         getInventoryIds();
         getFoodItemIds();
-        //setCellValueFactory();
-        //loadInventoryTable();
+        setCellValueFactory();
+        loadInventoryTable();
         loadNextOrderId();
     }
 
@@ -71,6 +72,7 @@ public class AddIngrediansFromController {
     void txtQtyOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,qty);
     }
+
     private void loadNextOrderId() {
         try {
             String currentId = AddIngrediansRepo.currentId();
@@ -84,12 +86,12 @@ public class AddIngrediansFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("SP0");
+            String[] split = currentId.split("AI0");
             int id = Integer.parseInt(split[1]);    //2
-            return "SP0" + ++id;
+            return "AI0" + ++id;
 
         }
-        return "SP01";
+        return "AI01";
     }
 
     private void setCellValueFactory() {
@@ -191,9 +193,9 @@ public class AddIngrediansFromController {
     void cmbIngrediansOnAction(ActionEvent event) {
         String ingrediansIDValue = cmbIngrediansID.getValue();
         try {
-            InventorySupplierDetail inventoryDetail = InventorySupplierDetailRepo.searchByDescription(ingrediansIDValue);
-            if (inventoryDetail != null) {
-                lblInvenID.setText(inventoryDetail.getId());
+            Inventory inventory = InventoryRepo.searchByCode(ingrediansIDValue);
+            if (inventory != null) {
+                lblInvenID.setText(inventory.getId());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
