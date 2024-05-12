@@ -72,7 +72,8 @@ public class InventoryRepo {
     }
 
     public static List<InventoryTM> getAll() throws SQLException {
-        String sql = "SELECT Inventory.id, Inventory.description, Inventory.date, Inventory.unitPrice, Inventory.qty, Supplier.name " +
+        String sql = "SELECT Inventory.id, Inventory.description, Supplier.name, Inventory.date, " +
+                "Inventory.unitPrice, Inventory.qty " +
                 "FROM Inventory JOIN Supplier ON Inventory.supplierId = Supplier.id";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql);
