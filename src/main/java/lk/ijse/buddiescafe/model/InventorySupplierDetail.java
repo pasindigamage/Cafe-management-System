@@ -8,7 +8,7 @@ import lombok.*;
 public class InventorySupplierDetail {
     private String id;
     private String supplierId;
-    private String description;
+    private String inventoryId;
     private Double unitPrice;
     private int qty;
     private String date;

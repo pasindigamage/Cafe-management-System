@@ -124,7 +124,7 @@ public class InventorySupplierDetailFromController {
 
     @FXML
     void cmbInventoryOnAction(ActionEvent event) {
-  /*      String sid = cmbIInventoryId.getValue();
+        String sid = cmbIInventoryId.getValue();
         try {
             Inventory inventory = InventoryRepo.searchByCode(sid);
             if (inventory != null) {
@@ -133,7 +133,6 @@ public class InventorySupplierDetailFromController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-*/
     }
 
     private void loadNextOrderId() {
@@ -325,7 +324,7 @@ public class InventorySupplierDetailFromController {
 
             if (inventoryIdSearch != null) {
                 inventoryId.setText(inventoryDetail.getId());
-                Description.setText(inventoryDetail.getDescription());
+                Description.setText(inventoryDetail.getInventoryId());
                 unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
                 qty.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));

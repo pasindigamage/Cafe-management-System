@@ -19,7 +19,7 @@ public class InventorySupplierDetailRepo {
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, inventoryDetail.getId());
             pstm.setString(2, inventoryDetail.getSupplierId());
-            pstm.setString(3, inventoryDetail.getDescription());
+            pstm.setString(3, inventoryDetail.getInventoryId());
             pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
             pstm.setInt(5, inventoryDetail.getQty());
             pstm.setDate(6, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
@@ -32,7 +32,7 @@ public class InventorySupplierDetailRepo {
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, inventoryDetail.getSupplierId());
-            pstm.setString(2, inventoryDetail.getDescription());
+            pstm.setString(2, inventoryDetail.getInventoryId());
             pstm.setDouble(3, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
             pstm.setInt(4, inventoryDetail.getQty());
             pstm.setDate(5, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate

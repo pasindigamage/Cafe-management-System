@@ -113,7 +113,7 @@ public class InventoryRepo {
     }
 
     public static Inventory searchByCode(String sid) throws SQLException {
-        String sql = "SELECT * FROM Inventory WHERE sid = ?";
+        String sql = "SELECT * FROM Inventory WHERE description = ?";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
