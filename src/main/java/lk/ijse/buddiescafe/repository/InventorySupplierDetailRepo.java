@@ -20,22 +20,22 @@ public class InventorySupplierDetailRepo {
             pstm.setString(1, inventoryDetail.getId());
             pstm.setString(2, inventoryDetail.getSupplierId());
             pstm.setString(3, inventoryDetail.getInventoryId());
-            pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-            pstm.setInt(5, inventoryDetail.getQty());
-            pstm.setDate(6, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+            pstm.setDate(4, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+            pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+            pstm.setInt(6, inventoryDetail.getQty());
             return pstm.executeUpdate() > 0;
         }
     }
 
     public static boolean update(InventorySupplierDetail inventoryDetail) throws SQLException {
-        String sql = "UPDATE inventorySupplier SET supplierId = ?, description = ?, unitPrice = ?, qty = ?, date = ? WHERE id = ?";
+        String sql = "UPDATE inventorySupplier SET supplierId = ?, description = ?, date = ?, unitPrice = ?, qty = ? WHERE id = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, inventoryDetail.getSupplierId());
             pstm.setString(2, inventoryDetail.getInventoryId());
-            pstm.setDouble(3, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-            pstm.setInt(4, inventoryDetail.getQty());
-            pstm.setDate(5, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+            pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+            pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+            pstm.setInt(5, inventoryDetail.getQty());
             pstm.setString(6, inventoryDetail.getId());
             return pstm.executeUpdate() > 0;
         }
