@@ -72,11 +72,11 @@ public class InventorySupplierDetailRepo {
     }
 
     public static List<InventorySupplierDetailTM> getAll() throws SQLException {
-        String sql = "SELECT inventorySupplier.id, Inventory.description, Supplier.name," +
+        String sql = "SELECT inventorySupplier.id, FoodItems.description, Supplier.name," +
                 " inventorySupplier.date, inventorySupplier.unitPrice, inventorySupplier.qty" +
-                " FROM Inventory " +
+                " FROM FoodItems " +
                 "Join inventorySupplier " +
-                "ON Inventory.id = inventorySupplier.inventoryId " +
+                "ON FoodItems.id = inventorySupplier.foodItemId " +
                 "JOIN Supplier" +
                 " ON inventorySupplier.supplierId = Supplier.id";
         try (Connection connection = DbConnection.getInstance().getConnection();

@@ -23,7 +23,6 @@ create table Orders(
 	id varchar(10) primary key,
 	userId varchar(10),
 	date date not null,
-	amount decimal(20,2),
 	foreign key(userId) references User(id) on update cascade on delete cascade
 	);
 
@@ -42,20 +41,6 @@ create table orderDetails(
 	foreign key(orderId) references Orders(id) on update cascade on delete cascade
 	);
 
-create table Inventory(
-	id varchar(20) primary key,
-	description varchar(200)
-	);
-
-create table IngrediansDetail(
-	Id varchar(10) primary key,
-	inventoryId varchar(20),
-	foodItemId varchar(20),
-	qty int(10),
-	foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade,
-	foreign key(inventoryId) references Inventory(id) on update cascade on delete cascade
-	);
-
 create table Supplier(
 	id varchar(20) primary key,
 	nic varchar(25) unique,
@@ -68,12 +53,12 @@ create table Supplier(
 create table inventorySupplier(
 	id varchar(10) primary key,
 	supplierId varchar(20),
-	inventoryId varchar(20),
+	foodItemId varchar(20),
 	date date not null,
 	unitPrice decimal(10,2),
 	qty int(10),
 	foreign key(supplierId) references Supplier(id) on update cascade on delete cascade,
-	foreign key(inventoryId) references Inventory(id) on update cascade on delete cascade
+	foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade
 	);
 
 create table KitchenWare(

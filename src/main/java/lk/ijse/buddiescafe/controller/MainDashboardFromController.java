@@ -75,7 +75,7 @@ public class MainDashboardFromController {
 
     @FXML
     void inventoryOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/inventory.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/inventorySupplierDetail.fxml"));
         Pane registerPane = fxmlLoader.load();
         subDashboard.getChildren().clear();
         subDashboard.getChildren().add(registerPane);

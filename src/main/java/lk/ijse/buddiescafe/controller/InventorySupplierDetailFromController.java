@@ -13,9 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.buddiescafe.model.*;
 import lk.ijse.buddiescafe.model.TM.InventorySupplierDetailTM;
-import lk.ijse.buddiescafe.repository.InventoryRepo;
-import lk.ijse.buddiescafe.repository.InventorySupplierDetailRepo;
-import lk.ijse.buddiescafe.repository.SupplierRepo;
+import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.SQLException;
@@ -101,7 +99,7 @@ public class InventorySupplierDetailFromController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<String> idList = InventoryRepo.getIds();
+            List<String> idList = FoodItemsRepo.getIds();
 
             for (String id : idList) {
                 obList.add(id);
@@ -126,9 +124,9 @@ public class InventorySupplierDetailFromController {
     void cmbInventoryOnAction(ActionEvent event) {
         String sid = cmbIInventoryId.getValue();
         try {
-            Inventory inventory = InventoryRepo.searchByCode(sid);
-            if (inventory != null) {
-                lblInventoryId.setText(inventory.getId());
+            FoodItems foodItems = FoodItemsRepo.searchByCode(sid);
+            if (foodItems != null) {
+                lblInventoryId.setText(foodItems.getId());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

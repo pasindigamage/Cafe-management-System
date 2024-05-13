@@ -66,8 +66,8 @@
       <TableView fx:id="tblOrderCart" layoutX="27.0" layoutY="259.0" prefHeight="224.0" prefWidth="846.0">
          <columns>
             <TableColumn fx:id="colInventoryId" prefWidth="55.0" text="ID" />
-            <TableColumn fx:id="colDescription" prefWidth="247.0" text="Inventory" />
-            <TableColumn fx:id="colSupName" prefWidth="193.0" text="Supplier" />
+            <TableColumn fx:id="colDescription" prefWidth="192.0" text="Food Item" />
+            <TableColumn fx:id="colSupName" prefWidth="248.0" text="Supplier" />
             <TableColumn fx:id="colDate" prefWidth="157.0" text="Date" />
             <TableColumn fx:id="colUnitPrice" prefWidth="127.0" text="Unit Price" />
             <TableColumn fx:id="colQty" prefWidth="70.0" text="Qty" />
@@ -121,7 +121,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbIInventoryId" layoutX="448.0" layoutY="176.0" onAction="#cmbInventoryOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Inventory" />
+      <JFXComboBox fx:id="cmbIInventoryId" layoutX="448.0" layoutY="176.0" onAction="#cmbInventoryOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Food Item" />
       <Label fx:id="lblInventoryId" layoutX="365.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
          <font>
             <Font name="System Bold" size="13.0" />
