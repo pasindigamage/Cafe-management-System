@@ -211,8 +211,9 @@ public class OrderFromController {
         String orderId = lblOrderId.getText();
         String userId = signPerson;
         String date = String.valueOf(LocalDate.now());
+        Double amount = Double.valueOf(lblNetTotal.getText());
 
-        var order = new Order(orderId, userId, date);
+        var order = new Order(orderId, userId, date, amount);
 
         List<OrderDetail> odList = new ArrayList<>();
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
