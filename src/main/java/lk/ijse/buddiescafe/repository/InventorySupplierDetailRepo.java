@@ -98,7 +98,7 @@ public class InventorySupplierDetailRepo {
         }
     }
 
-    public static boolean updateQty(List<OrderDetail> odList) {
+  /*  public static boolean updateQty(OrderDetail od) throws SQLException {
         String sql = "UPDATE inventorySupplier SET qty = qty - ? WHERE inventoryId = ? AND foodItemId = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
@@ -106,7 +106,7 @@ public class InventorySupplierDetailRepo {
                 pstm.setInt(1, od.getQty());
                 pstm.setString(2, od.getOrderId());
                 pstm.setString(3, od.getFoodItemId());
-                pstm.addBatch();
+                /*pstm.addBatch();
             }
             int[] affectedRows = pstm.executeBatch();
             for (int affectedRow : affectedRows) {
@@ -120,7 +120,7 @@ public class InventorySupplierDetailRepo {
             return false; // If any exception occurs, return false
         }
     }
-    /*
+     Query for edition
 SELECT (sub1.qty - sub2.multiplied_qty) AS result
 FROM (
     SELECT inventorySupplier.qty
@@ -168,5 +168,25 @@ FROM (
             }
         }
         return null;
+    }
+
+    public static boolean updateQty(List<OrderDetail> odList) throws SQLException{
+        for (OrderDetail od : odList) {
+            if(!updateQty(od)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean updateQty(OrderDetail od) throws SQLException {
+        String sql = "UPDATE items SET qty_on_hand = qty_on_hand - ? WHERE code = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setInt(1, od.getQty());
+        pstm.setString(2, od.getFoodItemId());
+
+        return pstm.executeUpdate() > 0;
     }
 }
