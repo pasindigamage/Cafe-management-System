@@ -231,7 +231,7 @@ public class OrderFromController {
         if(isPlaced) {
             new Alert(Alert.AlertType.CONFIRMATION, "Order placed successfully!").show();
         } else {
-            new Alert(Alert.AlertType.WARNING, "Failed to place order!").show();
+            new Alert(Alert.AlertType.WARNING,"Failed to place order!").show();
         }
     }
 

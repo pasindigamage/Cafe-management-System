@@ -120,6 +120,20 @@ public class InventorySupplierDetailRepo {
             return false; // If any exception occurs, return false
         }
     }
+    /*
+SELECT (sub1.qty - sub2.multiplied_qty) AS result
+FROM (
+    SELECT inventorySupplier.qty
+    FROM inventorySupplier
+    JOIN Inventory ON inventorySupplier.inventoryId = Inventory.id
+    JOIN IngrediansDetail ON Inventory.id = IngrediansDetail.inventoryId
+    WHERE IngrediansDetail.foodItemId = ?
+) AS sub1,
+(
+    SELECT IngrediansDetail.qty * 2 AS multiplied_qty
+    FROM IngrediansDetail
+    WHERE IngrediansDetail.foodItemId = ?
+) AS sub2;*/
 
     public static String currentId() throws SQLException {
         String sql = "SELECT id FROM inventorySupplier ORDER BY id desc LIMIT 1";

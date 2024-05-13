@@ -21,7 +21,7 @@ public class OrderDetailRepo {
         String sql = "INSERT INTO orderDetails (orderId, foodItemId, qty) VALUES (?, ?, ?)"; // Specify column names explicitly
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
         pstm.setString(1, od.getOrderId());
-        pstm.setString(2, od.getItemCode());
+        pstm.setString(2, od.getFoodItemId());
         pstm.setInt(3, od.getQty());
 
         return pstm.executeUpdate() > 0;

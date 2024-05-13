@@ -7,9 +7,10 @@ import java.sql.SQLException;
 
 public class PlaceOrderRepo {
 
-    public static boolean placeOrder(PlaceOrder po) {
+    public static boolean placeOrder(PlaceOrder po) throws SQLException {
+        Connection connection = null;
         try {
-            Connection connection = DbConnection.getInstance().getConnection();
+            connection = DbConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
 
             try {
@@ -18,8 +19,7 @@ public class PlaceOrderRepo {
                     boolean isOrderDetailSaved = OrderDetailRepo.save(po.getOdList());
                     if (isOrderDetailSaved) {
                         boolean isItemQtyUpdate = InventorySupplierDetailRepo.updateQty(po.getOdList());
-                        boolean isSupplimentQtyUpdate = AddIngrediansRepo.updateQty(po.getOdList());
-                        if (isItemQtyUpdate && isSupplimentQtyUpdate) {
+                        if (isItemQtyUpdate) {
                             connection.commit();
                             return true;
                         }
@@ -27,22 +27,12 @@ public class PlaceOrderRepo {
                 }
                 connection.rollback();
                 return false;
-            } finally {
-                connection.setAutoCommit(true);
+            } catch (Exception e) {
+                connection.rollback();
+                return false;
             }
-        } catch (SQLException e) {
-            handleSQLException(e);
-            return false;
-        }
-    }
-
-    private static void handleSQLException(SQLException e) {
-        if (e instanceof com.mysql.cj.jdbc.exceptions.MysqlDataTruncation) {
-            // Handle data truncation error
-            System.err.println("Data truncation error occurred: " + e.getMessage());
-        } else {
-            // Handle other SQL exceptions
-            System.err.println("An SQL error occurred: " + e.getMessage());
+        } finally {
+            connection.setAutoCommit(true);
         }
     }
 }
