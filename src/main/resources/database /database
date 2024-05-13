@@ -23,6 +23,7 @@ create table Orders(
 	id varchar(10) primary key,
 	userId varchar(10),
 	date date not null,
+	amount decimal(20,2),
 	foreign key(userId) references User(id) on update cascade on delete cascade
 	);
 

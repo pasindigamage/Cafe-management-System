@@ -180,7 +180,19 @@ FROM (
     }
 
     private static boolean updateQty(OrderDetail od) throws SQLException {
-        String sql = "UPDATE items SET qty_on_hand = qty_on_hand - ? WHERE code = ?";
+        String sql = "SELECT (sub1.qty - sub2.multiplied_qty) AS result\n" +
+                "FROM (\n" +
+                "    SELECT inventorySupplier.qty\n" +
+                "    FROM inventorySupplier\n" +
+                "    JOIN Inventory ON inventorySupplier.inventoryId = Inventory.id\n" +
+                "    JOIN IngrediansDetail ON Inventory.id = IngrediansDetail.inventoryId\n" +
+                "    WHERE IngrediansDetail.foodItemId = ?\n" +
+                ") AS sub1,\n" +
+                "(\n" +
+                "    SELECT IngrediansDetail.qty * 2 AS multiplied_qty\n" +
+                "    FROM IngrediansDetail\n" +
+                "    WHERE IngrediansDetail.foodItemId = ?\n" +
+                ") AS sub2;";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
