@@ -20,16 +20,15 @@ public class InventorySupplierDetailRepo {
             pstm.setString(1, inventoryDetail.getId());
             pstm.setString(2, inventoryDetail.getSupplierId());
             pstm.setString(3, inventoryDetail.getInventoryId());
-            pstm.setDate(4, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));
-            pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-            pstm.setInt(6, inventoryDetail.getQty());
-              // Assuming getDate returns LocalDate
+            pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+            pstm.setInt(5, inventoryDetail.getQty());
+            pstm.setDate(6, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
             return pstm.executeUpdate() > 0;
         }
     }
 
     public static boolean update(InventorySupplierDetail inventoryDetail) throws SQLException {
-        String sql = "UPDATE inventorySupplier SET supplierId = ?, inventoryId = ?, unitPrice = ?, qty = ?, date = ? WHERE id = ?";
+        String sql = "UPDATE inventorySupplier SET supplierId = ?, description = ?, unitPrice = ?, qty = ?, date = ? WHERE id = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, inventoryDetail.getSupplierId());
@@ -100,19 +99,25 @@ public class InventorySupplierDetailRepo {
     }
 
     public static boolean updateQty(List<OrderDetail> odList) {
-        try (Connection connection = DbConnection.getInstance().getConnection()) {
-            String sql = "UPDATE inventorySupplier SET qty = qty - ? WHERE id = ?";
-            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                for (OrderDetail od : odList) {
-                    pstm.setInt(1, od.getQty());
-                    pstm.setString(2, od.getItemCode());
-                    pstm.executeUpdate();
+        String sql = "UPDATE inventorySupplier SET qty = qty - ? WHERE inventoryId = ? AND foodItemId = ?";
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+            for (OrderDetail od : odList) {
+                pstm.setInt(1, od.getQty());
+                pstm.setString(2, od.getOrderId());
+                pstm.setString(3, od.getFoodItemId());
+                pstm.addBatch();
+            }
+            int[] affectedRows = pstm.executeBatch();
+            for (int affectedRow : affectedRows) {
+                if (affectedRow == 0) {
+                    return false; // If no rows were affected, return false
                 }
             }
-            return true;
+            return true; // If all updates were successful, return true
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return false; // If any exception occurs, return false
         }
     }
 

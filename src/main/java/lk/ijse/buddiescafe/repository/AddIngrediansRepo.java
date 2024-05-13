@@ -111,7 +111,7 @@ public class AddIngrediansRepo {
     public static boolean updateQty(List<OrderDetail> odList) {
         try (Connection connection = DbConnection.getInstance().getConnection()) {
             for (OrderDetail od : odList) {
-                AddIngredians addIngredians = getIngredientByFoodItemId(od.getItemCode());
+                AddIngredians addIngredians = getIngredientByFoodItemId(od.getFoodItemId());
                 if (addIngredians != null) {
                     String sql = "UPDATE IngrediansDetail SET qty = qty - ? WHERE inventoryId = ?";
                     try (PreparedStatement pstm = connection.prepareStatement(sql)) {
