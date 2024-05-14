@@ -36,17 +36,12 @@
             <Image url="@../images/back.png" />
          </image>
       </ImageView>
-      <Label layoutX="41.0" layoutY="119.0" text="ID :">
+      <Label layoutX="46.0" layoutY="118.0" text="DATE : ">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="118.0" text="DATE : ">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblOrderDate" layoutX="430.0" layoutY="116.0" prefHeight="21.0" prefWidth="193.0" textFill="#278d7f">
+      <Label fx:id="lblOrderDate" layoutX="104.0" layoutY="116.0" prefHeight="21.0" prefWidth="193.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -102,11 +97,6 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="inventoryId" layoutX="80.0" layoutY="113.0" prefHeight="26.0" prefWidth="87.0">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
       <JFXComboBox fx:id="cmbIInventoryId" layoutX="596.0" layoutY="176.0" onAction="#cmbInventoryOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Food Item" />
       <Label fx:id="lblInventoryId" layoutX="513.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
          <font>

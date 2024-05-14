@@ -164,7 +164,7 @@ public class InventorySupplierDetailFromController {
     }
 
     private void setCellValueFactory() {
-        colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        //colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -297,15 +297,5 @@ public class InventorySupplierDetailFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-    }
-
-    @FXML
-    void txtQtyOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty, qty);
-    }
-
-    @FXML
-    void txtUnitPriceOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount, unitPrice);
     }
 }
