@@ -62,8 +62,8 @@ public class FoodItemsRepo {
         if (resultSet.next()) {
             String fid = resultSet.getString(1);
             String description = resultSet.getString(2);
-            String amount = resultSet.getString(3);
-            String qty = resultSet.getString(4);
+            double amount = Double.valueOf(resultSet.getString(3));
+            int qty = Integer.parseInt(resultSet.getString(4));
 
 
             foodItems = new FoodItems(fid,description,amount,qty);
@@ -82,8 +82,8 @@ public class FoodItemsRepo {
         while (resultSet.next()) {
             String fid = resultSet.getString(1);
             String description = resultSet.getString(2);
-            String amount = resultSet.getString(3);
-            String qty = resultSet.getString(4);
+            double amount = Double.parseDouble(resultSet.getString(3));
+            int qty = Integer.parseInt(resultSet.getString(4));
 
             FoodItems foodItems = new FoodItems(fid,description,amount,qty);
             foodItemsList.add(foodItems);
@@ -103,8 +103,8 @@ public class FoodItemsRepo {
             return new FoodItems(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
+                    resultSet.getDouble(3),
+                    resultSet.getInt(4)
             );
         }
         return null;
@@ -138,5 +138,28 @@ public class FoodItemsRepo {
             }
             return null;
         }
+
+    }
+
+    public static boolean update1(List<OrderDetail> odList) throws SQLException {
+        for (OrderDetail od : odList) {
+            boolean isUpdateQty = updateQty(od.getFoodItemId(), od.getQty());
+            if(!isUpdateQty) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean updateQty(String Id, int qty) throws SQLException {
+        String sql = "UPDATE FoodItems SET qtyOnHand = qtyOnHand - ? WHERE id = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setInt(1, qty);
+        pstm.setString(2, Id);
+
+        return pstm.executeUpdate() > 0;
     }
 }

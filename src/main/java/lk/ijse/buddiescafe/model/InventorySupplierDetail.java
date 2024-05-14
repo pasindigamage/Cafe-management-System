@@ -9,5 +9,5 @@ public class InventorySupplierDetail {
     private String supplierId;
     private String inventoryId;
     private String date;
-    }
+}
 

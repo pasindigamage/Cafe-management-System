@@ -11,6 +11,7 @@ create table Employee(
 	contact int(10) not null
 	);
 
+
 create table User(
 	id varchar(10) primary key,
 	employeeId varchar(10),
@@ -19,13 +20,14 @@ create table User(
 	foreign key(employeeId) references Employee(id) on update cascade on delete cascade
 	);
 
-create table Orders(
-	id varchar(10) primary key,
-	userId varchar(10),
-	date date not null,
-	amount decimal(10,2),
-	foreign key(userId) references User(id) on update cascade on delete cascade
-	);
+
+CREATE TABLE Orders (
+    id VARCHAR(10) PRIMARY KEY,
+    userId VARCHAR(10),
+    date DATE NOT NULL,
+    Amount DOUBLE(10, 2),
+    FOREIGN KEY (userId) REFERENCES User(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
 
 
 create table FoodItems(
@@ -42,6 +44,7 @@ create table orderDetails(
 	foreign key(foodItemId) references FoodItems(id) on update cascade on delete cascade,
 	foreign key(orderId) references Orders(id) on update cascade on delete cascade
 	);
+
 
 create table Supplier(
 	id varchar(20) primary key,
@@ -76,8 +79,13 @@ create table kitchenWareMaintain(
 	);
 
 create table otherMaintain(
+
 	id varchar(20) primary key,
 	description varchar(50),
 	date date,
 	amount decimal(10,2)
 	);
+
+INSERT INTO Employee VALUES ('E001', 'Pasindi Gamage', 'Owner', 'Galle-Road, Ambalangoda', 'pasi@gmail.com', 773793891);
+
+INSERT INTO User VALUES ('U001', 'E001', 'pasi', '123');

@@ -41,6 +41,9 @@ public class FoodItemFromController {
     private TableColumn<?, ?> colDescription;
 
     @FXML
+    private TextField fooditemSearch;
+
+    @FXML
     private TableColumn<?, ?> colId;
 
     @FXML
@@ -132,8 +135,7 @@ public class FoodItemFromController {
         colQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
     }
 
-    @FXML
-    private TextField fooditemSearch;
+
 
     @FXML
     void IdSearchOnAction(ActionEvent event) {
@@ -145,8 +147,8 @@ public class FoodItemFromController {
             if (foodItems != null) {
                 fID.setText(foodItems.getId());
                 fDescription.setText(foodItems.getDescription());
-                fAmount.setText(foodItems.getUnitPrice());
-                fQty.setText(foodItems.getQtyOnHand());
+                fAmount.setText(String.valueOf(foodItems.getUnitPrice()));
+                fQty.setText(String.valueOf(foodItems.getQtyOnHand()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -157,8 +159,8 @@ public class FoodItemFromController {
     void btnAddOnAction(ActionEvent event) {
         String idText = fID.getText();
         String descriptionText = fDescription.getText();
-        String amountText = fAmount.getText();
-        String qtyText =  fQty.getText();
+        double amountText = Double.parseDouble(fAmount.getText());
+        int qtyText = Integer.parseInt(fQty.getText());
 
         FoodItems foodItems = new FoodItems(idText,descriptionText,amountText,qtyText);
 
@@ -210,8 +212,8 @@ public class FoodItemFromController {
     void btnUpdateOnAction(ActionEvent event) {
         String idText = fID.getText();
         String descriptionText = fDescription.getText();
-        String amountText = fAmount.getText();
-        String qtyText = fQty.getText();
+        double amountText = Double.parseDouble(fAmount.getText());
+        int qtyText = Integer.parseInt(fQty.getText());
 
         FoodItems foodItems = new FoodItems(idText,descriptionText,amountText,qtyText);
 

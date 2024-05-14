@@ -17,12 +17,12 @@ public class InventorySupplierDetailRepo {
         String sql = "INSERT INTO inventorySupplier VALUES(?, ?, ?)";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
-          //  pstm.setString(1, inventoryDetail.getId());
+            //  pstm.setString(1, inventoryDetail.getId());
             pstm.setString(1, inventoryDetail.getSupplierId());
             pstm.setString(2, inventoryDetail.getInventoryId());
             pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
-          //  pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-           // pstm.setInt(6, inventoryDetail.getQty());
+            //  pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+            // pstm.setInt(6, inventoryDetail.getQty());
             return pstm.executeUpdate() > 0;
         }
     }
@@ -34,9 +34,9 @@ public class InventorySupplierDetailRepo {
             pstm.setString(1, inventoryDetail.getSupplierId());
             pstm.setString(2, inventoryDetail.getInventoryId());
             pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
-           // pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-           // pstm.setInt(5, inventoryDetail.getQty());
-          //  pstm.setString(6, inventoryDetail.getId());
+            // pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+            // pstm.setInt(5, inventoryDetail.getQty());
+            //  pstm.setString(6, inventoryDetail.getId());
             return pstm.executeUpdate() > 0;
         }
     }

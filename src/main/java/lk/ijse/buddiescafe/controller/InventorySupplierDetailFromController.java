@@ -85,7 +85,7 @@ public class InventorySupplierDetailFromController {
         getInventoryIds();
         loadInventoryTable();
         setCellValueFactory();
-       // loadNextOrderId();
+        // loadNextOrderId();
 
 
     }
@@ -168,8 +168,8 @@ public class InventorySupplierDetailFromController {
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-       // colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-       // colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        // colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        // colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
     private void setDate() {
         LocalDate now = LocalDate.now();
@@ -289,7 +289,7 @@ public class InventorySupplierDetailFromController {
             if (inventoryIdSearch != null) {
                 //inventoryId.setText(inventoryDetail.getId());
                 //Description.setText(inventoryDetail.getInventoryId());
-               // unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
+                // unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
                 //qty.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));
                 lblsId.setText(inventoryDetail.getSupplierId());

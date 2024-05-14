@@ -32,8 +32,6 @@ import static lk.ijse.buddiescafe.controller.LoginFromController.signPerson;
 
 public class OrderFromController {
 
-    @FXML
-    private JFXButton back;
 
     @FXML
     private JFXButton btnAddToCart;
@@ -88,6 +86,7 @@ public class OrderFromController {
 
     @FXML
     private AnchorPane rootNode;
+    // private ObservableList<CartTM> obList = FXCollections.observableArrayList();
 
     private double netTotal;
 
@@ -97,6 +96,8 @@ public class OrderFromController {
         loadNextOrderId();
         setCashier();
         setCellValueFactory();
+      //  lblUserName.setText("USR001");
+
     }
 
     private void loadNextOrderId() {
@@ -116,18 +117,20 @@ public class OrderFromController {
     }
 
     private String nextId(String currentId) {
-        if (currentId != null) {
-            String[] split = currentId.split("O");
-            int id = Integer.parseInt(split[1]);    //2
-            return "O" + ++id;
-
+        if (currentId != null && currentId.matches("ORD\\d{3}")) {
+            String[] split = currentId.split("ORD");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "ORD" + String.format("%03d", idNum);
         }
-        return "O1";
+        return "ORD001"; // default to "O001" if currentId is null or doesn't match the expected format
     }
 
     private void setCashier(){
         String un = signPerson;
         lblUserName.setText(un);
+   //     lblUserName.setText("USR001");
+
     }
 
     private void setDate() {
@@ -148,7 +151,7 @@ public class OrderFromController {
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
-        String code = lblDescription.getText();
+        String ItemCode = lblDescription.getText();
         String description = cmbItemCode.getValue();
         int qty = Integer.parseInt(txtQty.getText());
         double unitPrice = Double.parseDouble(lblUnitPrice.getText());
@@ -175,7 +178,7 @@ public class OrderFromController {
         });
 
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-            if (code.equals(cartList.get(i).getCode())) {
+            if (ItemCode.equals(cartList.get(i).getCode())) {
                 qty += cartList.get(i).getQty();
                 total = unitPrice * qty;
 
@@ -189,7 +192,16 @@ public class OrderFromController {
             }
         }
 
-        CartTM cartTm = new CartTM(code, description, qty, unitPrice, total, btnRemove);
+        CartTM cartTm = new CartTM(ItemCode, description, qty, unitPrice, total, btnRemove);
+        System.out.println(ItemCode);
+        System.out.println(description);
+
+        System.out.println(qty);
+        System.out.println(unitPrice);
+
+        System.out.println(total);
+        System.out.println(btnRemove);
+
 
         cartList.add(cartTm);
 
@@ -209,11 +221,18 @@ public class OrderFromController {
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
-        String userId = signPerson;
-        String date = String.valueOf(LocalDate.now());
-        Double amount = Double.valueOf(lblNetTotal.getText());
+        String userId = lblUserName.getText();
+        Date date = Date.valueOf(LocalDate.now());
+        double amount = Double.parseDouble(lblNetTotal.getText());
 
         var order = new Order(orderId, userId, date, amount);
+        System.out.println(orderId);
+        System.out.println(userId);
+
+        System.out.println(date);
+        System.out.println(amount);
+
+
 
         List<OrderDetail> odList = new ArrayList<>();
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
@@ -226,10 +245,21 @@ public class OrderFromController {
             );
             odList.add(od);
         }
-
         PlaceOrder po = new PlaceOrder(order, odList);
-        boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+        boolean isPlaced = PlaceOrderRepo.placeOrder(po); //  OrdersRepo.save(order);
+
         if(isPlaced) {
+            loadNextOrderId();
+            cartList.clear();
+            tblOrderCart.setItems(cartList);
+            cmbItemCode.getSelectionModel().clearSelection();
+            lblDescription.setText("");
+            lblNetTotal.setText("");
+            lblUnitPrice.setText("");
+            txtQty.clear();
+
+
+
             new Alert(Alert.AlertType.CONFIRMATION, "Order placed successfully!").show();
         } else {
             new Alert(Alert.AlertType.WARNING,"Failed to place order!").show();
@@ -259,7 +289,7 @@ public class OrderFromController {
             FoodItems foodItems = FoodItemsRepo.searchByCode(itemCodeValue);
             if (foodItems != null) {
                 lblDescription.setText(foodItems.getId());
-                lblUnitPrice.setText(foodItems.getUnitPrice());
+                lblUnitPrice.setText(String.valueOf(foodItems.getUnitPrice()));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

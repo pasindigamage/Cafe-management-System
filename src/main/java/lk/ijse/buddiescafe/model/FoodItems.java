@@ -8,6 +8,6 @@ import lombok.*;
 public class FoodItems {
     private String id;
     private String description;
-    private String unitPrice;
-    private String qtyOnHand;
+    private double unitPrice;
+    private int qtyOnHand;
 }

@@ -1,38 +1,27 @@
 package lk.ijse.buddiescafe.repository;
 
-import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.PlaceOrder;
-import java.sql.Connection;
+
 import java.sql.SQLException;
 
 public class PlaceOrderRepo {
 
-    public static boolean placeOrder(PlaceOrder po) throws SQLException {
-        Connection connection = null;
+    public static boolean placeOrder(PlaceOrder po) {
         try {
-            connection = DbConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
+            boolean isOrderSaved = OrdersRepo.save(po.getOrder());
 
-            try {
-                boolean isOrderSaved = OrdersRepo.save(po.getOrder());
-                if (isOrderSaved) {
-                    boolean isOrderDetailSaved = OrderDetailRepo.save(po.getOdList());
-                    if (isOrderDetailSaved) {
-                        boolean isItemQtyUpdate = InventorySupplierDetailRepo.updateQty(po.getOdList());
-                        if (isItemQtyUpdate) {
-                            connection.commit();
-                            return true;
-                        }
-                    }
+            if (isOrderSaved && OrderDetailRepo.save1(po.getOdList())) {
+                boolean isQtyUpdated = FoodItemsRepo.update1(po.getOdList());
+
+                if (isQtyUpdated) {
+                    return true;
                 }
-                connection.rollback();
-                return false;
-            } catch (Exception e) {
-                connection.rollback();
-                return false;
             }
-        } finally {
-            connection.setAutoCommit(true);
+
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

@@ -24,11 +24,14 @@ OrdersRepo {
     }
 
     public static boolean save(Order order) throws SQLException {
-        String sql = "INSERT INTO Orders (id, userId, date) VALUES (?, ?, ?)";
-        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
-            pstm.setString(1, order.getId());
-            pstm.setString(2, order.getUId());
-            pstm.setDate(3, Date.valueOf(order.getDate()));
+        String sql = "INSERT INTO Orders  VALUES (?, ?, ?, ?)";
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setObject(1, order.getId());
+            pstm.setObject(2, order.getUId());
+            pstm.setObject(3, order.getDate());
+            pstm.setObject(4, order.getAmount());
+
             return pstm.executeUpdate() > 0;
         }
     }
