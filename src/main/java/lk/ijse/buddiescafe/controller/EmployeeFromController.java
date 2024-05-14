@@ -208,6 +208,8 @@ public class EmployeeFromController {
             boolean isSaved = EmployeeRepo.save(employee);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Saved!").show();
+                clearFields();
+                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
