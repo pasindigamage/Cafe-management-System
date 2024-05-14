@@ -158,6 +158,16 @@ public class InventorySupplierDetailFromController {
     @FXML
     private TableColumn<?, ?> colSupName;
 
+    private void loadInventoryTable() {
+        try {
+            List<InventorySupplierDetailTM> inventoryTMList = InventorySupplierDetailRepo.getAll();
+            ObservableList<InventorySupplierDetailTM> obList = FXCollections.observableArrayList(inventoryTMList);
+            tblOrderCart.setItems(obList);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
     private void setCellValueFactory() {
         colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -166,30 +176,6 @@ public class InventorySupplierDetailFromController {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
-
-
-    private void loadInventoryTable() {
-        ObservableList<InventorySupplierDetailTM> obList = FXCollections.observableArrayList();
-
-        try {
-            List<InventorySupplierDetailTM> inventoryTMList = InventorySupplierDetailRepo.getAll();
-            for (InventorySupplierDetailTM inventoryTM : inventoryTMList) {
-                InventorySupplierDetailTM tm = new InventorySupplierDetailTM(
-                        inventoryTM.getId(),
-                        inventoryTM.getDescription(),
-                        inventoryTM.getSupName(),
-                        inventoryTM.getDate(),
-                        inventoryTM.getUnitPrice(),
-                        inventoryTM.getQty()
-                );
-                obList.add(tm);
-            }
-            tblOrderCart.setItems(obList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private void setDate() {
         LocalDate now = LocalDate.now();
         lblOrderDate.setText(String.valueOf(now));
