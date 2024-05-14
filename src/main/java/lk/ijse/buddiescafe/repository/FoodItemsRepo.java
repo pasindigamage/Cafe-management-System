@@ -16,22 +16,24 @@ import java.util.List;
 public class FoodItemsRepo {
     public static boolean save(FoodItems foodItems) throws SQLException {
 
-        String sql ="INSERT INTO FoodItems VALUES(?, ?, ?)";
+        String sql ="INSERT INTO FoodItems VALUES(?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
         pstm.setObject(1, foodItems.getId());
         pstm.setObject(2, foodItems.getDescription());
-        pstm.setObject(3, foodItems.getAmount());
+        pstm.setObject(3, foodItems.getUnitPrice());
+        pstm.setObject(4, foodItems.getQtyOnHand());
 
         return pstm.executeUpdate() > 0;
     }
 
     public static boolean update(FoodItems foodItems) throws SQLException {
-        String sql ="UPDATE FoodItems set description = ?, amount = ? where id =? ";
+        String sql ="UPDATE FoodItems set description = ?, unitPrice = ?, QtyOnHand = ? where id =? ";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
         pstm.setObject(1, foodItems.getDescription());
-        pstm.setObject(2, foodItems.getAmount());
-        pstm.setObject(3, foodItems.getId());
+        pstm.setObject(2, foodItems.getUnitPrice());
+        pstm.setObject(3, foodItems.getQtyOnHand());
+        pstm.setObject(4, foodItems.getId());
 
         return pstm.executeUpdate() > 0;
     }
@@ -61,9 +63,10 @@ public class FoodItemsRepo {
             String fid = resultSet.getString(1);
             String description = resultSet.getString(2);
             String amount = resultSet.getString(3);
+            String qty = resultSet.getString(4);
 
 
-            foodItems = new FoodItems(fid,description,amount);
+            foodItems = new FoodItems(fid,description,amount,qty);
         }
         return foodItems;
     }
@@ -80,8 +83,9 @@ public class FoodItemsRepo {
             String fid = resultSet.getString(1);
             String description = resultSet.getString(2);
             String amount = resultSet.getString(3);
+            String qty = resultSet.getString(4);
 
-            FoodItems foodItems = new FoodItems(fid,description,amount);
+            FoodItems foodItems = new FoodItems(fid,description,amount,qty);
             foodItemsList.add(foodItems);
         }
         return foodItemsList;
@@ -99,7 +103,8 @@ public class FoodItemsRepo {
             return new FoodItems(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3)
+                    resultSet.getString(3),
+                    resultSet.getString(4)
             );
         }
         return null;

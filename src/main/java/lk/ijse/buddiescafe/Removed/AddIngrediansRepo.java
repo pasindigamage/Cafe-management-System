@@ -1,8 +1,6 @@
-package lk.ijse.buddiescafe.repository;
+package lk.ijse.buddiescafe.Removed;
 
 import lk.ijse.buddiescafe.db.DbConnection;
-import lk.ijse.buddiescafe.model.AddIngredians;
-import lk.ijse.buddiescafe.model.KitchenWareMaintains;
 import lk.ijse.buddiescafe.model.OrderDetail;
 
 import java.sql.Connection;

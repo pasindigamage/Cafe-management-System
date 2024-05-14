@@ -14,15 +14,15 @@ import java.util.List;
 
 public class InventorySupplierDetailRepo {
     public static boolean save(InventorySupplierDetail inventoryDetail) throws SQLException {
-        String sql = "INSERT INTO inventorySupplier VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO inventorySupplier VALUES(?, ?, ?)";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
-            pstm.setString(1, inventoryDetail.getId());
-            pstm.setString(2, inventoryDetail.getSupplierId());
-            pstm.setString(3, inventoryDetail.getInventoryId());
-            pstm.setDate(4, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
-            pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-            pstm.setInt(6, inventoryDetail.getQty());
+          //  pstm.setString(1, inventoryDetail.getId());
+            pstm.setString(1, inventoryDetail.getSupplierId());
+            pstm.setString(2, inventoryDetail.getInventoryId());
+            pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+          //  pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+           // pstm.setInt(6, inventoryDetail.getQty());
             return pstm.executeUpdate() > 0;
         }
     }
@@ -34,9 +34,9 @@ public class InventorySupplierDetailRepo {
             pstm.setString(1, inventoryDetail.getSupplierId());
             pstm.setString(2, inventoryDetail.getInventoryId());
             pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
-            pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
-            pstm.setInt(5, inventoryDetail.getQty());
-            pstm.setString(6, inventoryDetail.getId());
+           // pstm.setDouble(4, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
+           // pstm.setInt(5, inventoryDetail.getQty());
+          //  pstm.setString(6, inventoryDetail.getId());
             return pstm.executeUpdate() > 0;
         }
     }
@@ -60,11 +60,8 @@ public class InventorySupplierDetailRepo {
                     return new InventorySupplierDetail(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getString(4),
-                            resultSet.getDouble(5),
-                            resultSet.getInt(6)
-                            );
+                            resultSet.getString(3)
+                    );
                 }
             }
         }
@@ -73,7 +70,7 @@ public class InventorySupplierDetailRepo {
 
     public static List<InventorySupplierDetailTM> getAll() throws SQLException {
         String sql = "SELECT inventorySupplier.id, FoodItems.description, Supplier.name," +
-                " inventorySupplier.date, inventorySupplier.unitPrice, inventorySupplier.qty" +
+                " inventorySupplier.date" +
                 " FROM FoodItems " +
                 "Join inventorySupplier " +
                 "ON FoodItems.id = inventorySupplier.foodItemId " +
@@ -87,10 +84,7 @@ public class InventorySupplierDetailRepo {
                 InventorySupplierDetailTM inventoryTM = new InventorySupplierDetailTM(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),  // Assuming getDate returns LocalDate
-                        resultSet.getString(4),
-                        resultSet.getString(5),
-                        resultSet.getString(6)
+                        resultSet.getString(3)
                 );
                 inventoryTMList.add(inventoryTM);
             }
@@ -159,10 +153,7 @@ FROM (
                     return new InventorySupplierDetail(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getString(4),
-                            resultSet.getDouble(5),
-                            resultSet.getInt(6)
+                            resultSet.getString(3)
                     );
                 }
             }

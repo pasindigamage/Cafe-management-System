@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.controller;
+package lk.ijse.buddiescafe.Removed;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -10,10 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.repository.FoodItemsRepo;
-import lk.ijse.buddiescafe.repository.InventoryRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;

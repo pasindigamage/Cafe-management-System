@@ -7,15 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.repository.EmployeeRepo;
 import lk.ijse.buddiescafe.repository.FoodItemsRepo;
 import lk.ijse.buddiescafe.util.Regex;
 
@@ -79,6 +76,12 @@ public class FoodItemFromController {
         });
     }
 
+    @FXML
+    private TableColumn<?, ?> colQty;
+
+    @FXML
+    private TextField fQty;
+
     private void loadNextOrderId() {
         try {
             String currentId = FoodItemsRepo.currentId();
@@ -109,7 +112,8 @@ public class FoodItemFromController {
                 FoodItems tm = new FoodItems(
                         foodItems.getId(),
                         foodItems.getDescription(),
-                        foodItems.getAmount()
+                        foodItems.getUnitPrice(),
+                        foodItems.getQtyOnHand()
                 );
 
                 obList.add(tm);
@@ -124,7 +128,8 @@ public class FoodItemFromController {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
     }
 
     @FXML
@@ -140,7 +145,8 @@ public class FoodItemFromController {
             if (foodItems != null) {
                 fID.setText(foodItems.getId());
                 fDescription.setText(foodItems.getDescription());
-                fAmount.setText(foodItems.getAmount());
+                fAmount.setText(foodItems.getUnitPrice());
+                fQty.setText(foodItems.getQtyOnHand());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -152,8 +158,9 @@ public class FoodItemFromController {
         String idText = fID.getText();
         String descriptionText = fDescription.getText();
         String amountText = fAmount.getText();
+        String qtyText =  fQty.getText();
 
-        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText);
+        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText,qtyText);
 
         try {
             boolean isSaved = FoodItemsRepo.save(foodItems);
@@ -167,7 +174,7 @@ public class FoodItemFromController {
 
     @FXML
     void btnAnchorpaneChnageOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addIngredians.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/buddiescafe/Removed/addIngredians.fxml"));
         Parent rootNode = loader.load();
         rootNode1.getChildren().clear();
         rootNode1.getChildren().add(rootNode);
@@ -182,6 +189,7 @@ public class FoodItemFromController {
     private void clearFields() {
         fDescription.setText("");
         fAmount.setText("");
+        fQty.setText("");
     }
 
     @FXML
@@ -203,8 +211,9 @@ public class FoodItemFromController {
         String idText = fID.getText();
         String descriptionText = fDescription.getText();
         String amountText = fAmount.getText();
+        String qtyText = fQty.getText();
 
-        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText);
+        FoodItems foodItems = new FoodItems(idText,descriptionText,amountText,qtyText);
 
         try {
             boolean isUpdated = FoodItemsRepo.update(foodItems);

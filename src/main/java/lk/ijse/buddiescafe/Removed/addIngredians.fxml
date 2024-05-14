@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.AddIngrediansFromController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.Removed.AddIngrediansFromController">
    <children>
       <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-4.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/underbg.png" />
+            <Image url="@../../../../../resources/images/underbg.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="515.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/underbg.png" />
+            <Image url="@../../../../../resources/images/underbg.png" />
          </image>
       </ImageView>
       <Label layoutX="21.0" layoutY="18.0" text="SUPPLEMENT FOR EACH FOOD ITEM" textFill="#2c3e50">
@@ -57,7 +57,7 @@
       </TableView>
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="822.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/back.png" />
+            <Image url="@../../../../../resources/images/back.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="733.0" layoutY="518.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">

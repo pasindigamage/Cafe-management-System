@@ -259,7 +259,7 @@ public class OrderFromController {
             FoodItems foodItems = FoodItemsRepo.searchByCode(itemCodeValue);
             if (foodItems != null) {
                 lblDescription.setText(foodItems.getId());
-                lblUnitPrice.setText(foodItems.getAmount());
+                lblUnitPrice.setText(foodItems.getUnitPrice());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

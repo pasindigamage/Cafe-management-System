@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.model;
+package lk.ijse.buddiescafe.Removed;
 
 import lombok.*;
 

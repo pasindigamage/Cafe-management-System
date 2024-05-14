@@ -85,14 +85,9 @@ public class InventorySupplierDetailFromController {
         getInventoryIds();
         loadInventoryTable();
         setCellValueFactory();
-        loadNextOrderId();
+       // loadNextOrderId();
 
 
-        unitPrice.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                qty.requestFocus();
-            }
-        });
     }
 
     private void getInventoryIds() {
@@ -133,7 +128,7 @@ public class InventorySupplierDetailFromController {
         }
     }
 
-    private void loadNextOrderId() {
+   /* private void loadNextOrderId() {
         try {
             String currentId = InventorySupplierDetailRepo.currentId();
             String nextId = nextId(currentId);
@@ -153,7 +148,7 @@ public class InventorySupplierDetailFromController {
         }
         return "IS001";
     }
-
+*/
 
     @FXML
     private TableColumn<?, ?> colSupName;
@@ -173,8 +168,8 @@ public class InventorySupplierDetailFromController {
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+       // colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+       // colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
     private void setDate() {
         LocalDate now = LocalDate.now();
@@ -200,20 +195,11 @@ public class InventorySupplierDetailFromController {
     @FXML
     void btnAddOnAction(ActionEvent event) throws NumberFormatException, IllegalArgumentException {
         try {
-            String idText = inventoryId.getText();
             String supplierIdValue = lblsId.getText();
             String ingrediansValue = lblInventoryId.getText();
-            //  String descriptionText = Description.getText();
             String dateText = lblOrderDate.getText();
-            Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
-            int qtyText = Integer.parseInt(qty.getText());
 
-            // Check if unitPrice is valid
-            if (unitPriceText == null || unitPriceText <= 0) {
-                throw new IllegalArgumentException("Invalid unit price.");
-            }
-
-            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, ingrediansValue, dateText, unitPriceText, qtyText);
+            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(supplierIdValue, ingrediansValue, dateText);
 
             boolean isSaved = InventorySupplierDetailRepo.save(inventoryDetail);
             if (isSaved) {
@@ -231,8 +217,6 @@ public class InventorySupplierDetailFromController {
     }
 
     private void clearFields() {
-        unitPrice.setText("");
-        qty.setText("");
         inventoryIdSearch.setText("");
         cmbISupplierId.setValue("");
         cmbIInventoryId.setValue("");
@@ -255,20 +239,13 @@ public class InventorySupplierDetailFromController {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws NumberFormatException, IllegalArgumentException {
         try {
-            String idText = inventoryId.getText();
             String supplierIdValue = lblsId.getText();
             String ingrediansValue = lblInventoryId.getText();
             //String descriptionText = Description.getText();
-            Double unitPriceText = parseDouble(unitPrice.getText()); // Parse unitPrice
-            int qtyText = Integer.parseInt(qty.getText());
             String dateText = lblOrderDate.getText();
 
-            // Check if unitPrice is valid
-            if (unitPriceText == null || unitPriceText <= 0) {
-                throw new IllegalArgumentException("Invalid unit price.");
-            }
 
-            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(idText, supplierIdValue, ingrediansValue, dateText, unitPriceText, qtyText);
+            InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(supplierIdValue, ingrediansValue, dateText);
 
             boolean isUpdated = InventorySupplierDetailRepo.update(inventoryDetail);
             if (isUpdated) {
@@ -310,10 +287,10 @@ public class InventorySupplierDetailFromController {
             InventorySupplierDetail inventoryDetail = InventorySupplierDetailRepo.searchByID(id);
 
             if (inventoryIdSearch != null) {
-                inventoryId.setText(inventoryDetail.getId());
+                //inventoryId.setText(inventoryDetail.getId());
                 //Description.setText(inventoryDetail.getInventoryId());
-                unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
-                qty.setText(String.valueOf(inventoryDetail.getQty()));
+               // unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
+                //qty.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));
                 lblsId.setText(inventoryDetail.getSupplierId());
             }

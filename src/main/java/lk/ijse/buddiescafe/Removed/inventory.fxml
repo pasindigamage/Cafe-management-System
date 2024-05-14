@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.InventoryFromController">
+<AnchorPane fx:id="rootNode1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.Removed.InventoryFromController">
     <children>
         <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-5.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/underbg.png" />
+                <Image url="@../../../../../resources/images/underbg.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="514.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/underbg.png" />
+                <Image url="@../../../../../resources/images/underbg.png" />
             </image>
         </ImageView>
         <Label layoutX="20.0" layoutY="20.0" text="INVENTORY" textFill="#2c3e50">
@@ -73,7 +73,7 @@
         </TableView>
         <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="821.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/back.png" />
+                <Image url="@../../../../../resources/images/back.png" />
             </image>
         </ImageView>
         <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="759.0" layoutY="517.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">

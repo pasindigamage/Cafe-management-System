@@ -30,47 +30,34 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="qty" layoutX="813.0" layoutY="183.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="24.0" prefWidth="53.0" promptText="eg:- 5" />
       <Group layoutX="604.0" layoutY="3.0" />
       <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="820.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/back.png" />
          </image>
       </ImageView>
-      <Label layoutX="60.0" layoutY="102.0" text="ID :">
+      <Label layoutX="41.0" layoutY="119.0" text="ID :">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="391.0" layoutY="101.0" text="DATE : ">
+      <Label layoutX="372.0" layoutY="118.0" text="DATE : ">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderDate" layoutX="449.0" layoutY="99.0" prefHeight="21.0" prefWidth="193.0" textFill="#278d7f">
+      <Label fx:id="lblOrderDate" layoutX="430.0" layoutY="116.0" prefHeight="21.0" prefWidth="193.0" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbISupplierId" layoutX="133.0" layoutY="176.0" onAction="#cmbSupOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Supplier" />
-      <Label layoutX="678.0" layoutY="157.0" text="Unit Price :">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="814.0" layoutY="157.0" text="Qty">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblOrderCart" layoutX="27.0" layoutY="259.0" prefHeight="224.0" prefWidth="846.0">
+      <JFXComboBox fx:id="cmbISupplierId" layoutX="172.0" layoutY="176.0" onAction="#cmbSupOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Supplier" />
+      <TableView fx:id="tblOrderCart" layoutX="137.0" layoutY="259.0" prefHeight="224.0" prefWidth="652.0">
          <columns>
             <TableColumn fx:id="colInventoryId" prefWidth="55.0" text="ID" />
             <TableColumn fx:id="colDescription" prefWidth="192.0" text="Food Item" />
             <TableColumn fx:id="colSupName" prefWidth="248.0" text="Supplier" />
             <TableColumn fx:id="colDate" prefWidth="157.0" text="Date" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="127.0" text="Unit Price" />
-            <TableColumn fx:id="colQty" prefWidth="70.0" text="Qty" />
          </columns>
       </TableView>
       <JFXButton fx:id="deleteInventorySupplier" buttonType="RAISED" contentDisplay="RIGHT" layoutX="635.0" layoutY="539.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
@@ -97,7 +84,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="unitPrice" layoutX="678.0" layoutY="183.0" onKeyReleased="#txtUnitPriceOnKeyReleased" prefHeight="24.0" prefWidth="94.0" promptText="eg:- 100.00" />
       <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="774.0" layoutY="538.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -112,17 +98,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblsId" layoutX="52.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
+      <Label fx:id="lblsId" layoutX="91.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="inventoryId" layoutX="99.0" layoutY="96.0" prefHeight="26.0" prefWidth="87.0">
+      <Label fx:id="inventoryId" layoutX="80.0" layoutY="113.0" prefHeight="26.0" prefWidth="87.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbIInventoryId" layoutX="448.0" layoutY="176.0" onAction="#cmbInventoryOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Food Item" />
-      <Label fx:id="lblInventoryId" layoutX="365.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
+      <JFXComboBox fx:id="cmbIInventoryId" layoutX="596.0" layoutY="176.0" onAction="#cmbInventoryOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Food Item" />
+      <Label fx:id="lblInventoryId" layoutX="513.0" layoutY="180.0" prefHeight="24.0" prefWidth="60.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

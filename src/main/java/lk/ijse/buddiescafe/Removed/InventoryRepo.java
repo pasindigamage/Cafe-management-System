@@ -1,9 +1,6 @@
-package lk.ijse.buddiescafe.repository;
+package lk.ijse.buddiescafe.Removed;
 
 import lk.ijse.buddiescafe.db.DbConnection;
-import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

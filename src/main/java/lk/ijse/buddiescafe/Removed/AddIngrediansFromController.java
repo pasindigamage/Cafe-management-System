@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.controller;
+package lk.ijse.buddiescafe.Removed;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -9,10 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.buddiescafe.model.AddIngredians;
 import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Inventory;
-import lk.ijse.buddiescafe.model.InventorySupplierDetail;
 import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
 
