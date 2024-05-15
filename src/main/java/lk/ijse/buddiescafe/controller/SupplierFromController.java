@@ -213,22 +213,13 @@ public class SupplierFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
                 loadNextOrderId();
                 clearFields();
+                loadEmployeeTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-    }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
@@ -252,6 +243,9 @@ public class SupplierFromController {
             boolean isDeleted = SupplierRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted!").show();
+                loadNextOrderId();
+                loadEmployeeTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -273,6 +267,9 @@ public class SupplierFromController {
             boolean isUpdated = SupplierRepo.update(supplier);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
+                clearFields();
+                loadEmployeeTable();
+                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

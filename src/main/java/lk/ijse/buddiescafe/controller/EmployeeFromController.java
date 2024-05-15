@@ -249,6 +249,7 @@ public class EmployeeFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
                 clearFields();
                 loadEmployeeTable();
+                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -272,6 +273,7 @@ public class EmployeeFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Updated!").show();
                 clearFields();
                 loadEmployeeTable();
+                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
