@@ -96,11 +96,6 @@
             <TableColumn fx:id="colContact" prefWidth="98.0" text="Contact" />
          </columns>
       </TableView>
-      <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="821.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/back.png" />
-         </image>
-      </ImageView>
       <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="759.0" layoutY="524.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
