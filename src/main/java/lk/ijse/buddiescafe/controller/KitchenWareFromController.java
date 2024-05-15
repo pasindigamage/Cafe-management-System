@@ -70,8 +70,8 @@ public class KitchenWareFromController {
 
     public void initialize() {
         getSupplierIds();
-         loadInventoryTable();
-         setCellValueFactory();
+         //loadInventoryTable();
+        // setCellValueFactory();
          loadNextOrderId();
 
         Description.setOnKeyPressed(event -> {

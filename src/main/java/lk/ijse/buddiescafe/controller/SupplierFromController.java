@@ -211,6 +211,8 @@ public class SupplierFromController {
             boolean isSaved = SupplierRepo.save(supplier);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
+                loadNextOrderId();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

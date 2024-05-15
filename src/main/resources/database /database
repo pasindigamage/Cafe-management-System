@@ -65,9 +65,11 @@ create table inventorySupplier(
 
 create table KitchenWare(
 	id varchar(20) primary key,
+	supplierId varchar(20),
 	description varchar(25),
-	qty int(20)
-	);
+	qty int(20),
+	foreign key(supplierId) references Supplier(id) on update cascade on delete cascade
+    );
 
 create table kitchenWareMaintain(
 	id varchar(20) primary key,
