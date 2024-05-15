@@ -70,8 +70,8 @@ public class KitchenWareFromController {
 
     public void initialize() {
         getSupplierIds();
-         //loadInventoryTable();
-        // setCellValueFactory();
+         loadInventoryTable();
+         setCellValueFactory();
          loadNextOrderId();
 
         Description.setOnKeyPressed(event -> {
@@ -179,6 +179,9 @@ public class KitchenWareFromController {
             boolean isSaved = KitchenWareRepo.save(kitchenWare);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare is Saved!").show();
+                loadNextOrderId();
+                clearFields();
+                loadInventoryTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

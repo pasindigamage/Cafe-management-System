@@ -59,7 +59,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="359.0" layoutY="93.0" text="ORDER ID:">
+      <Label layoutX="359.0" layoutY="93.0" text="ORDER ID :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -90,7 +90,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="426.0" layoutY="149.0" text="Unit Price:">
+      <Label layoutX="426.0" layoutY="149.0" text="Unit Price :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -100,7 +100,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="629.0" layoutY="149.0" text="Qty">
+      <Label layoutX="629.0" layoutY="149.0" text="Qty :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
