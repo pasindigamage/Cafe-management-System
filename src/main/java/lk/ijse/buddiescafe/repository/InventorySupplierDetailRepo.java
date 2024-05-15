@@ -5,10 +5,7 @@ import lk.ijse.buddiescafe.model.InventorySupplierDetail;
 import lk.ijse.buddiescafe.model.OrderDetail;
 import lk.ijse.buddiescafe.model.TM.InventorySupplierDetailTM;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +15,9 @@ public class InventorySupplierDetailRepo {
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             //  pstm.setString(1, inventoryDetail.getId());
-            pstm.setString(1, inventoryDetail.getSupplierId());
-            pstm.setString(2, inventoryDetail.getInventoryId());
-            pstm.setDate(3, java.sql.Date.valueOf(String.valueOf(inventoryDetail.getDate())));  // Assuming getDate returns LocalDate
+            pstm.setObject(1, inventoryDetail.getSupplierId());
+            pstm.setObject(2, inventoryDetail.getInventoryId());
+            pstm.setObject(3, inventoryDetail.getDate());  // Assuming getDate returns LocalDate
             //  pstm.setDouble(5, inventoryDetail.getUnitPrice());  // Corrected to setDouble for unitPrice
             // pstm.setInt(6, inventoryDetail.getQty());
             return pstm.executeUpdate() > 0;
@@ -42,7 +39,7 @@ public class InventorySupplierDetailRepo {
     }
 
     public static boolean delete(String id) throws SQLException {
-        String sql = "DELETE FROM inventorySupplier WHERE id = ?";
+        String sql = "DELETE FROM inventorySupplier WHERE foodItemId = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, id);
@@ -60,7 +57,7 @@ public class InventorySupplierDetailRepo {
                     return new InventorySupplierDetail(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3)
+                            resultSet.getDate(3)
                     );
                 }
             }
@@ -68,28 +65,19 @@ public class InventorySupplierDetailRepo {
         return null;
     }
 
-    public static List<InventorySupplierDetailTM> getAll() throws SQLException {
-        String sql = "SELECT inventorySupplier.id, FoodItems.description, Supplier.name," +
-                " inventorySupplier.date" +
-                " FROM FoodItems " +
-                "Join inventorySupplier " +
-                "ON FoodItems.id = inventorySupplier.foodItemId " +
-                "JOIN Supplier" +
-                " ON inventorySupplier.supplierId = Supplier.id";
-        try (Connection connection = DbConnection.getInstance().getConnection();
-             PreparedStatement pstm = connection.prepareStatement(sql);
-             ResultSet resultSet = pstm.executeQuery()) {
-            List<InventorySupplierDetailTM> inventoryTMList = new ArrayList<>();
-            while (resultSet.next()) {
-                InventorySupplierDetailTM inventoryTM = new InventorySupplierDetailTM(
-                        resultSet.getString(1),
-                        resultSet.getString(2),
-                        resultSet.getString(3)
-                );
-                inventoryTMList.add(inventoryTM);
-            }
-            return inventoryTMList;
+    public static List<InventorySupplierDetail> getAll() throws SQLException {
+        String sql = "SELECT * FROM inventorySupplier";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+        List<InventorySupplierDetail> InventorySupplierDetailList = new ArrayList<>();
+        while (resultSet.next()) {
+            String supID = resultSet.getString(1);
+            String foodID = resultSet.getString(2);
+            Date date = Date.valueOf(resultSet.getString(3));
+
+            InventorySupplierDetailList.add(new InventorySupplierDetail(supID,foodID,date));
         }
+        return InventorySupplierDetailList;
     }
 
   /*  public static boolean updateQty(OrderDetail od) throws SQLException {
@@ -153,7 +141,7 @@ FROM (
                     return new InventorySupplierDetail(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3)
+                            resultSet.getDate(3)
                     );
                 }
             }

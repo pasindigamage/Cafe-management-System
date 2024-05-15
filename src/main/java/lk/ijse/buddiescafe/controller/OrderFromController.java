@@ -10,15 +10,11 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.buddiescafe.model.FoodItems;
-import lk.ijse.buddiescafe.model.Order;
-import lk.ijse.buddiescafe.model.OrderDetail;
-import lk.ijse.buddiescafe.model.PlaceOrder;
+import lk.ijse.buddiescafe.model.*;
 import lk.ijse.buddiescafe.model.TM.CartTM;
-import lk.ijse.buddiescafe.repository.FoodItemsRepo;
-import lk.ijse.buddiescafe.repository.OrdersRepo;
-import lk.ijse.buddiescafe.repository.PlaceOrderRepo;
+import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
 
 import java.sql.Date;
@@ -28,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static lk.ijse.buddiescafe.controller.LoginFromController.getSignPersonID;
 import static lk.ijse.buddiescafe.controller.LoginFromController.signPerson;
 
 public class OrderFromController {
@@ -96,7 +93,7 @@ public class OrderFromController {
         loadNextOrderId();
         setCashier();
         setCellValueFactory();
-      //  lblUserName.setText("USR001");
+     // setCashier();
 
     }
 
@@ -132,6 +129,8 @@ public class OrderFromController {
    //     lblUserName.setText("USR001");
 
     }
+
+
 
     private void setDate() {
         LocalDate now = LocalDate.now();
@@ -218,10 +217,11 @@ public class OrderFromController {
         lblNetTotal.setText(String.valueOf(netTotal));
     }
 
+
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
-        String userId = lblUserName.getText();
+        String userId = getSignPersonID;
         Date date = Date.valueOf(LocalDate.now());
         double amount = Double.parseDouble(lblNetTotal.getText());
 
@@ -301,4 +301,7 @@ public class OrderFromController {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,txtQty);
     }
 
+    public void userIdSearchOnAction(MouseEvent mouseEvent) {
+
+    }
 }

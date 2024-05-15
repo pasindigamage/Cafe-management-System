@@ -16,6 +16,7 @@ import lk.ijse.buddiescafe.model.TM.InventorySupplierDetailTM;
 import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -71,8 +72,15 @@ public class InventorySupplierDetailFromController {
     private AnchorPane rootNode;
 
     @FXML
-    private TableView<InventorySupplierDetailTM> tblOrderCart;
+    private TableView<InventorySupplierDetail> tblOrderCart;
+    @FXML
+    private JFXComboBox<String> cmbIInventoryId;
 
+    @FXML
+    private Label lblsId;
+
+    @FXML
+    private Label lblInventoryId;
     @FXML
     private TextField unitPrice;
 
@@ -87,6 +95,8 @@ public class InventorySupplierDetailFromController {
         setCellValueFactory();
         // loadNextOrderId();
 
+        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        });
 
     }
 
@@ -106,14 +116,7 @@ public class InventorySupplierDetailFromController {
         }
     }
 
-    @FXML
-    private JFXComboBox<String> cmbIInventoryId;
 
-    @FXML
-    private Label lblsId;
-
-    @FXML
-    private Label lblInventoryId;
 
     @FXML
     void cmbInventoryOnAction(ActionEvent event) {
@@ -154,19 +157,31 @@ public class InventorySupplierDetailFromController {
     private TableColumn<?, ?> colSupName;
 
     private void loadInventoryTable() {
+        ObservableList<InventorySupplierDetail> obList = FXCollections.observableArrayList();
+
         try {
-            List<InventorySupplierDetailTM> inventoryTMList = InventorySupplierDetailRepo.getAll();
-            ObservableList<InventorySupplierDetailTM> obList = FXCollections.observableArrayList(inventoryTMList);
+            List<InventorySupplierDetail> inventorySupplierDetailList = InventorySupplierDetailRepo.getAll();
+            for (InventorySupplierDetail inventorySupplierDetail : inventorySupplierDetailList) {
+                InventorySupplierDetail tm = new InventorySupplierDetail(
+                        inventorySupplierDetail.getSupplierId(),
+                        inventorySupplierDetail.getInventoryId(),
+                        inventorySupplierDetail.getDate()
+
+                );
+
+                obList.add(tm);
+            }
+
             tblOrderCart.setItems(obList);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new RuntimeException(e);
         }
     }
 
     private void setCellValueFactory() {
         //colInventoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
+        colSupName.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         // colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         // colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -197,12 +212,15 @@ public class InventorySupplierDetailFromController {
         try {
             String supplierIdValue = lblsId.getText();
             String ingrediansValue = lblInventoryId.getText();
-            String dateText = lblOrderDate.getText();
+            Date dateText = Date.valueOf(lblOrderDate.getText());
 
             InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(supplierIdValue, ingrediansValue, dateText);
 
             boolean isSaved = InventorySupplierDetailRepo.save(inventoryDetail);
             if (isSaved) {
+                tblOrderCart.getItems().add(inventoryDetail);
+
+
                 new Alert(Alert.AlertType.CONFIRMATION, "Inventory Saved!").show();
             }
         } catch (SQLException e) {
@@ -224,15 +242,31 @@ public class InventorySupplierDetailFromController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = inventoryId.getText();
+        ObservableList<InventorySupplierDetail> selectedInventorySupplierDetail = tblOrderCart.getSelectionModel().getSelectedItems();
+        if (selectedInventorySupplierDetail.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select InventorySupplierDetail(s) to delete!").show();
+            return;
+        }
 
-        try {
-            boolean isDeleted = InventorySupplierDetailRepo.delete(id);
-            if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Inventory Deleted!").show();
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected InventorySupplierDetail(s)?");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.showAndWait();
+
+        if (confirmationAlert.getResult() == ButtonType.OK) {
+            try {
+                for (InventorySupplierDetail inventorySupplierDetail : selectedInventorySupplierDetail) {
+                    boolean isDeleted = InventorySupplierDetailRepo.delete(inventorySupplierDetail.getInventoryId());
+                    if (isDeleted) {
+                        tblOrderCart.getItems().remove(inventorySupplierDetail);
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Failed to delete inventorySupplierDetail: " + inventorySupplierDetail.getInventoryId()).show();
+                    }
+                }
+                new Alert(Alert.AlertType.CONFIRMATION, "inventorySupplierDetail(s) deleted successfully!").show();
+                clearFields();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Error occurred while deleting inventorySupplierDetail(s): " + e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -242,7 +276,7 @@ public class InventorySupplierDetailFromController {
             String supplierIdValue = lblsId.getText();
             String ingrediansValue = lblInventoryId.getText();
             //String descriptionText = Description.getText();
-            String dateText = lblOrderDate.getText();
+            Date dateText = Date.valueOf(lblOrderDate.getText());
 
 
             InventorySupplierDetail inventoryDetail = new InventorySupplierDetail(supplierIdValue, ingrediansValue, dateText);

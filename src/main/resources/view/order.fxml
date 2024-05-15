@@ -54,7 +54,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblUserName" layoutX="142.0" layoutY="96.0" textFill="#278d7f">
+      <Label fx:id="lblUserName" layoutX="142.0" layoutY="96.0" onDragDetected="#userIdSearchOnAction" textFill="#278d7f">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

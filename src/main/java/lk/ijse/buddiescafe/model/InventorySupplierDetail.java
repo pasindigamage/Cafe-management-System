@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.model;
 import lombok.*;
 
+import java.sql.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -8,6 +10,5 @@ import lombok.*;
 public class InventorySupplierDetail {
     private String supplierId;
     private String inventoryId;
-    private String date;
+    private Date date;
 }
-

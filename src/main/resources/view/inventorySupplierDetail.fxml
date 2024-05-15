@@ -49,7 +49,6 @@
       <JFXComboBox fx:id="cmbISupplierId" layoutX="172.0" layoutY="176.0" onAction="#cmbSupOnAction" prefHeight="24.0" prefWidth="183.0" promptText="Select Supplier" />
       <TableView fx:id="tblOrderCart" layoutX="137.0" layoutY="259.0" prefHeight="224.0" prefWidth="652.0">
          <columns>
-            <TableColumn fx:id="colInventoryId" prefWidth="55.0" text="ID" />
             <TableColumn fx:id="colDescription" prefWidth="192.0" text="Food Item" />
             <TableColumn fx:id="colSupName" prefWidth="248.0" text="Supplier" />
             <TableColumn fx:id="colDate" prefWidth="157.0" text="Date" />

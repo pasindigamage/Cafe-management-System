@@ -93,6 +93,26 @@ public class LoginFromController {
         }
     }
 
+    public static String getSignPersonID;
+    private String getUserId(String un) throws SQLException{
+        String sql = "SELECT id FROM User WHERE userName = ?";
+
+        getSignPersonID = null;
+
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setString(1, un); // Set the parameter
+
+            try (ResultSet resultSet = pstm.executeQuery()) {
+                if (resultSet.next()) { // Check if there's at least one row
+                    getSignPersonID = resultSet.getString(1); // Retrieve the value from the first column
+                }
+            }
+        }
+        return getSignPersonID;
+    }
+
     private String getUserName(String un) throws SQLException {
         String sql = "SELECT Employee.name FROM User JOIN Employee ON User.employeeId = Employee.id WHERE userName = ?";
 

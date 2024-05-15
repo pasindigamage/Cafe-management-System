@@ -168,6 +168,8 @@ public class FoodItemFromController {
             boolean isSaved = FoodItemsRepo.save(foodItems);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Saved!").show();
+                clearFields();
+                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
