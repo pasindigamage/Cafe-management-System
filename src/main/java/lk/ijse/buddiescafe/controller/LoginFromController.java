@@ -52,7 +52,7 @@ public class LoginFromController {
                 signIn.requestFocus();
             }
         });
-setGreetings();
+        setGreetings();
     }
 
     @FXML
