@@ -10,14 +10,14 @@
    <children>
       <AnchorPane fx:id="LoadAncorPane2" prefHeight="380.0" prefWidth="755.0" style="-fx-background-color: Transparent;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a120b" height="380.0" stroke="#ee0a0a" strokeType="INSIDE" width="755.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a120b" height="380.0" stroke="#e5e5cb" strokeType="INSIDE" width="755.0" />
             <Label fx:id="lblTopic" layoutX="46.0" layoutY="28.0" prefHeight="84.0" prefWidth="696.0" text="BUDDIES CAFE" textFill="#d5cea3">
                <font>
                   <Font name="System Bold" size="51.0" />
                </font>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff3cd" height="380.0" layoutX="24.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff3cd" height="11.0" layoutY="334.0" stroke="#ff926b" strokeType="INSIDE" width="755.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff3cd" height="11.0" layoutY="334.0" stroke="#3c2a21" strokeType="INSIDE" width="755.0" />
             <Label fx:id="LblLoading" layoutX="624.0" layoutY="293.0" prefHeight="28.0" prefWidth="97.0" text="Loading..." textFill="#e4e4e4">
                <font>
                   <Font size="19.0" />
