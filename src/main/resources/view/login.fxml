@@ -55,16 +55,7 @@
             <Font size="12.0" />
          </font>
       </Hyperlink>
-      <Label layoutX="38.0" layoutY="205.0" prefHeight="47.0" prefWidth="398.0" text="Manage your cafe effortlessly with our intuitive platform." textFill="#e5e5cb" />
-      <Label layoutX="37.0" layoutY="234.0" prefHeight="47.0" prefWidth="352.0" text="Log in to streamline your operations, track sales, " textFill="#e5e5cb" />
-      <Label layoutX="38.0" layoutY="264.0" prefHeight="47.0" prefWidth="249.0" text="and enhance customer satisfaction." textFill="#e5e5cb" />
-      <Label layoutX="35.0" layoutY="298.0" prefHeight="47.0" prefWidth="204.0" text=" Let's brew success together!" textFill="#e5e5cb" />
-      <Label layoutX="114.0" layoutY="354.0" prefHeight="47.0" prefWidth="187.0" text="Enjoy your experience" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="33.0" layoutY="67.0" prefHeight="63.0" prefWidth="500.0" text="WELCOME TO BUDDIES CAFE">
+      <Label fx:id="time" layoutX="33.0" layoutY="67.0" prefHeight="63.0" prefWidth="500.0" text="WELCOME TO BUDDIES CAFE">
          <font>
             <Font name="Kalapi" size="27.0" />
          </font>

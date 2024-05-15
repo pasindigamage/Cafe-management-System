@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.Removed;
+package Removed;
 
 import lombok.*;
 

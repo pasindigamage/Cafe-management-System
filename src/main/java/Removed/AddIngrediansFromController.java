@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.Removed;
+package Removed;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;

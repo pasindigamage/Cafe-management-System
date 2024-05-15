@@ -10,13 +10,28 @@
 
 <AnchorPane fx:id="mainDashboard" prefHeight="650.0" prefWidth="1275.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.MainDashboardFromController">
    <children>
+      <ImageView fitHeight="168.0" fitWidth="540.0" layoutX="994.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="168.0" fitWidth="540.0" layoutX="721.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="181.0" fitWidth="310.0" layoutX="422.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="181.0" fitWidth="520.0" layoutX="125.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/underbg.png" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="subDashboard" layoutX="237.0" layoutY="26.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="23.0" layoutY="57.0" prefHeight="52.0" prefWidth="649.0" text="WELCOME TO BUDDIES CAFE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
             <Label fx:id="time" layoutX="23.0" layoutY="14.0" prefHeight="52.0" prefWidth="273.0" text="good morning......!!!!!!">
                <font>
                   <Font size="18.0" />
@@ -42,7 +57,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="527.0" layoutY="335.0" prefHeight="95.0" prefWidth="347.0" text="TOP PERFORMANCE">
+            <Label layoutX="536.0" layoutY="306.0" prefHeight="95.0" prefWidth="347.0" text="TOP PERFORMANCE">
                <font>
                   <Font name="Dhurjati" size="48.0" />
                </font>

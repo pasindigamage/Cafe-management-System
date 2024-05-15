@@ -108,6 +108,14 @@ public class EmployeeFromController {
                 eEmail.requestFocus();
             }
         });
+
+        eEmail.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                addEmployee.requestFocus();
+            }
+        });
+
+
     }
 
     private void loadNextOrderId() {
@@ -210,6 +218,7 @@ public class EmployeeFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Saved!").show();
                 clearFields();
                 loadNextOrderId();
+                loadEmployeeTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -238,6 +247,8 @@ public class EmployeeFromController {
             boolean isDeleted = EmployeeRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
+                clearFields();
+                loadEmployeeTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -259,6 +270,8 @@ public class EmployeeFromController {
             boolean isUpdated = EmployeeRepo.update(employee);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Updated!").show();
+                clearFields();
+                loadEmployeeTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

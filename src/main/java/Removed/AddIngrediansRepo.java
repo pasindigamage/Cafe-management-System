@@ -1,4 +1,4 @@
-package lk.ijse.buddiescafe.Removed;
+package Removed;
 
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.OrderDetail;

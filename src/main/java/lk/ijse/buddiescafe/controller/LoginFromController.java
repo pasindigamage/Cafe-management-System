@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import static javafx.scene.control.TextField.*;
@@ -54,7 +52,16 @@ public class LoginFromController {
                 signIn.requestFocus();
             }
         });
+setGreetings();
+    }
 
+    @FXML
+    private Label time;
+
+    private void setGreetings() {
+        LocalTime currentTime = LocalTime.now();
+        String greeting = (currentTime.getHour() < 12) ? "Good Morning !!!" :currentTime.getHour() < 18 ? "Good Afternoon !!!" : "Good Evening !!!";
+        time.setText(greeting);
     }
 
     @FXML
