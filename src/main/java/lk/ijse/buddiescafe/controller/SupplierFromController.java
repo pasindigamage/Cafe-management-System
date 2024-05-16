@@ -87,7 +87,7 @@ public class SupplierFromController {
         loadEmployeeTable();
         loadNextOrderId();
 
-            sNIC.setOnKeyPressed(event -> {
+        sNIC.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 sName.requestFocus();
             }
@@ -109,7 +109,18 @@ public class SupplierFromController {
                 sEmail.requestFocus();
             }
         });
+        tblEmployee.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                sNIC.setText(String.valueOf(newSelection.getNic()));
+                sName.setText(newSelection.getName());
+                sAddress.setText(String.valueOf(newSelection.getCompanyAddress()));
+                sContact.setText(String.valueOf(newSelection.getContact()));
+                sEmail.setText(String.valueOf(newSelection.getEmail()));
 
+
+
+            }
+        });
     }
 
     private void loadNextOrderId() {
@@ -133,12 +144,12 @@ public class SupplierFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("S00");
-            int id = Integer.parseInt(split[1]);    //2
-            return "S00" + ++id;
-
+            String[] split = currentId.split("SU");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "SU" + String.format("%03d", idNum);
         }
-        return "S001";
+        return "SU001";
     }
 
     private void loadEmployeeTable() {
@@ -208,13 +219,14 @@ public class SupplierFromController {
         Supplier supplier = new Supplier(idText,nicText,nameText,addressText,emailText,contactText);
 
         try {
-            boolean isSaved = SupplierRepo.save(supplier);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
-                loadNextOrderId();
-                clearFields();
-                loadEmployeeTable();
-            }
+            if (isValied()){   boolean isSaved = SupplierRepo.save(supplier);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
+                    loadNextOrderId();
+                    clearFields();
+                    loadEmployeeTable();
+                }}
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -269,13 +281,21 @@ public class SupplierFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
                 clearFields();
                 loadEmployeeTable();
-                loadNextOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,sAddress)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.contact,sContact)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.email,sEmail)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,sName)) return false;
+        //  if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.nic,sNIC)) return false;
 
+
+        return true;
+    }
     @FXML
     void txtAddressOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,sAddress);
@@ -298,6 +318,6 @@ public class SupplierFromController {
 
     @FXML
     void txtNicOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.nic,sNIC);
+        //Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.nic,sNIC);
     }
 }

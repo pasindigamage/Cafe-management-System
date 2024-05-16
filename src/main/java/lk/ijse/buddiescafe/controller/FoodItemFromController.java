@@ -69,12 +69,20 @@ public class FoodItemFromController {
 
     public void initialize(){
         setCellValueFactory();
-        loadEmployeeTable();
+        loadFoodTable();
         loadNextOrderId();
 
         fDescription.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 fAmount.requestFocus();
+            }
+        });
+        tblMenu.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                fAmount.setText(String.valueOf(newSelection.getUnitPrice()));
+                fDescription.setText(newSelection.getDescription());
+                fQty.setText(String.valueOf(newSelection.getQtyOnHand()));
+
             }
         });
     }
@@ -98,15 +106,15 @@ public class FoodItemFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("FI00");
-            int id = Integer.parseInt(split[1]);    //2
-            return "FI00" + ++id;
-
+            String[] split = currentId.split("F");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "F" + String.format("%03d", idNum);
         }
-        return "FI001";
+        return "F001";
     }
 
-    private void loadEmployeeTable() {
+    private void loadFoodTable() {
         ObservableList<FoodItems> obList = FXCollections.observableArrayList();
 
         try {
@@ -170,6 +178,7 @@ public class FoodItemFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Saved!").show();
                 clearFields();
                 loadNextOrderId();
+                loadFoodTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -204,6 +213,7 @@ public class FoodItemFromController {
             boolean isDeleted = FoodItemsRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Deleted!").show();
+                loadFoodTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -223,12 +233,18 @@ public class FoodItemFromController {
             boolean isUpdated = FoodItemsRepo.update(foodItems);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Updated!").show();
+                loadFoodTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,fAmount)) return false;
 
+
+        return true;
+    }
     @FXML
     void txtQtyOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,fAmount);

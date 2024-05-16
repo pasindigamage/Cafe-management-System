@@ -87,15 +87,15 @@ public class EmployeeFromController {
         loadNextOrderId();
 
         ePossition.setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.ENTER) {
-                    eName.requestFocus();
-                }
-            });
-            eName.setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.ENTER) {
-                    eAddress.requestFocus();
-                }
-            });
+            if (event.getCode() == KeyCode.ENTER) {
+                eName.requestFocus();
+            }
+        });
+        eName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                eAddress.requestFocus();
+            }
+        });
 
         eAddress.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -115,13 +115,21 @@ public class EmployeeFromController {
             }
         });
 
-
+        tblEmployee.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                eName.setText(newSelection.getName());
+                eAddress.setText(newSelection.getAddress());
+                ePossition.setText(newSelection.getPosition());
+                eContact.setText(newSelection.getContact());
+                eEmail.setText(newSelection.getEmail());
+            }
+        });
     }
 
     private void loadNextOrderId() {
         try {
             String currentId = EmployeeRepo.currentId();
-            String nextId = nextId(currentId);
+            String nextId = generateNextEmployeeId(currentId);
 
             eID.setText(nextId);
         } catch (SQLException e) {
@@ -129,12 +137,12 @@ public class EmployeeFromController {
         }
     }
 
-    private String nextId(String currentId) {
+    private String generateNextEmployeeId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("E00");
-            int id = Integer.parseInt(split[1]);    //2
-            return "E00" + ++id;
-
+            String[] split = currentId.split("E");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "E" + String.format("%03d", idNum);
         }
         return "E001";
     }
@@ -213,13 +221,14 @@ public class EmployeeFromController {
         Employee employee = new Employee(id,name,position,address,email,contact);
 
         try {
-            boolean isSaved = EmployeeRepo.save(employee);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee Saved!").show();
-                clearFields();
-                loadNextOrderId();
-                loadEmployeeTable();
-            }
+            if(isValied()){boolean isSaved = EmployeeRepo.save(employee);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Employee Saved!").show();
+                    clearFields();
+                    loadNextOrderId();
+                    loadEmployeeTable();
+                }}
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -279,7 +288,14 @@ public class EmployeeFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+    public boolean isValied(){
+        if (! Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,eAddress)) return false;
+        if (! Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.contact,eContact)) return false;
+        if (! Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.email,eEmail)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName)) return false;
 
+        return true;
+    }
     @FXML
     void txtAddressOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.address,eAddress);

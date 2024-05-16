@@ -19,6 +19,7 @@ import lk.ijse.buddiescafe.repository.otherMaintainRepo;
 import lk.ijse.buddiescafe.util.Regex;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -87,7 +88,15 @@ public class OtherMaintainsFromController {
                 amount.requestFocus();
             }
         });
+        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                omDescription.setText(newSelection.getDescription());
+                amount.setText(String.valueOf(newSelection.getAmount()));
 
+
+
+            }
+        });
     }
 
     private void loadNextOrderId() {
@@ -103,10 +112,10 @@ public class OtherMaintainsFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("OM00");
-            int id = Integer.parseInt(split[1]);    //2
-            return "OM00" + ++id;
-
+            String[] split = currentId.split("OM");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "OM" + String.format("%03d", idNum);
         }
         return "OM001";
     }
@@ -155,15 +164,17 @@ public class OtherMaintainsFromController {
     void btnAddOnAction(ActionEvent event) {
         String idText = omId.getText();
         String descriptionText = omDescription.getText();
-        String dateText = date.getText();
+        Date date = Date.valueOf(LocalDate.now());
         String amountText = amount.getText();
 
-        OtherMaintains otherMaintains = new OtherMaintains(idText,descriptionText,dateText,amountText);
+        OtherMaintains otherMaintains = new OtherMaintains(idText,descriptionText,date,amountText);
 
         try {
             boolean isSaved = otherMaintainRepo.save(otherMaintains);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Saved!").show();
+                loadNextOrderId();
+                loadCustomerTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -200,6 +211,8 @@ public class OtherMaintainsFromController {
             boolean isDeleted = otherMaintainRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Removed!").show();
+                loadCustomerTable();
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -210,15 +223,17 @@ public class OtherMaintainsFromController {
     void btnUpdateOnAction(ActionEvent event) {
         String idText = omId.getText();
         String descriptionText = omDescription.getText();
-        String dateText= date.getText();
+        Date date = Date.valueOf(LocalDate.now());
         String amountText = amount.getText();
 
-        OtherMaintains otherMaintains = new OtherMaintains(idText,descriptionText,dateText,amountText);
+        OtherMaintains otherMaintains = new OtherMaintains(idText,descriptionText,date,amountText);
 
         try {
             boolean isUpdated = otherMaintainRepo.update(otherMaintains);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Maintain is Updated!").show();
+                loadCustomerTable();
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

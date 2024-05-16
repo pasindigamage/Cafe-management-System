@@ -95,9 +95,16 @@ public class InventorySupplierDetailFromController {
         setCellValueFactory();
         // loadNextOrderId();
 
-        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-        });
 
+        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+
+                cmbISupplierId.setValue(newSelection.getSupplierId());
+                cmbIInventoryId.setValue(newSelection.getInventoryId());
+
+
+            }
+        });
     }
 
     private void getInventoryIds() {
@@ -222,6 +229,8 @@ public class InventorySupplierDetailFromController {
 
 
                 new Alert(Alert.AlertType.CONFIRMATION, "Inventory Saved!").show();
+                loadInventoryTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -236,6 +245,8 @@ public class InventorySupplierDetailFromController {
 
     private void clearFields() {
         inventoryIdSearch.setText("");
+        lblInventoryId.setText("");
+        lblsId.setText("");
         cmbISupplierId.setValue("");
         cmbIInventoryId.setValue("");
     }
@@ -264,6 +275,7 @@ public class InventorySupplierDetailFromController {
                 }
                 new Alert(Alert.AlertType.CONFIRMATION, "inventorySupplierDetail(s) deleted successfully!").show();
                 clearFields();
+                loadInventoryTable();
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Error occurred while deleting inventorySupplierDetail(s): " + e.getMessage()).show();
             }
@@ -284,6 +296,8 @@ public class InventorySupplierDetailFromController {
             boolean isUpdated = InventorySupplierDetailRepo.update(inventoryDetail);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Inventory Updated!").show();
+                loadInventoryTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -93,7 +93,7 @@ public class OrderFromController {
         loadNextOrderId();
         setCashier();
         setCellValueFactory();
-     // setCashier();
+        // setCashier();
 
     }
 
@@ -126,7 +126,7 @@ public class OrderFromController {
     private void setCashier(){
         String un = signPerson;
         lblUserName.setText(un);
-   //     lblUserName.setText("USR001");
+        //     lblUserName.setText("USR001");
 
     }
 
@@ -295,7 +295,11 @@ public class OrderFromController {
             throw new RuntimeException(e);
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,txtQty)) return false;
 
+        return true;
+    }
     @FXML
     void txtQtyOnAction(ActionEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,txtQty);
@@ -304,4 +308,40 @@ public class OrderFromController {
     public void userIdSearchOnAction(MouseEvent mouseEvent) {
 
     }
+
+    /*
+
+// .............Jasper report for Join Query
+
+
+SELECT Orders.id AS OrderID,
+       Orders.userId AS UserID,
+       Orders.date AS OrderDate,
+       Orders.Amount AS OrderAmount,
+       FoodItems.id AS FoodItemID,
+       FoodItems.description AS Description,
+       FoodItems.unitPrice AS UnitPrice,
+       orderDetails.qty AS QuantityOrdered
+FROM Orders
+INNER JOIN orderDetails ON Orders.id = orderDetails.orderId
+INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id;
+
+
+//.........get last Id For jasper Report
+
+
+SELECT Orders.id AS OrderID,
+       Orders.userId AS UserID,
+       Orders.date AS OrderDate,
+       Orders.Amount AS OrderAmount,
+       FoodItems.id AS FoodItemID,
+       FoodItems.description AS Description,
+       FoodItems.unitPrice AS UnitPrice,
+       orderDetails.qty AS QuantityOrdered
+FROM Orders
+INNER JOIN orderDetails ON Orders.id = orderDetails.orderId
+INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id
+WHERE Orders.id = (SELECT MAX(id) FROM Orders);
+
+*/
 }

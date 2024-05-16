@@ -70,16 +70,23 @@ public class KitchenWareFromController {
 
     public void initialize() {
         getSupplierIds();
-         loadInventoryTable();
-         setCellValueFactory();
-         loadNextOrderId();
+        //     loadInventoryTable();
+        setCellValueFactory();
+        loadNextOrderId();
 
         Description.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 Qty.requestFocus();
             }
         });
+        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                Description.setText(newSelection.getDescription());
+                Qty.setText(newSelection.getQty());
+                cmbISupplierId.setValue(newSelection.getSupplierId());
 
+            }
+        });
     }
 
     private void loadNextOrderId() {
@@ -94,12 +101,14 @@ public class KitchenWareFromController {
     }
 
     private String nextId(String currentId) {
-        if (currentId != null && currentId.contains("KW00")) {
-            String[] split = currentId.split("KW00");
-            int id = Integer.parseInt(split[1]);
-            return "KW00" + ++id;
+        if (currentId != null) {
+            String[] split = currentId.split("KW");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "KW" + String.format("%03d", idNum);
         }
         return "KW001";
+
     }
 
     private void setCellValueFactory() {
@@ -249,7 +258,14 @@ public class KitchenWareFromController {
             throw new RuntimeException(e);
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,Qty)) return false;
+        //  if (!) return false;
+        //  if (!) return false;
+        //  if (!) return false;
 
+        return true;
+    }
     @FXML
     void txtQtyOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.qty,Qty);

@@ -35,7 +35,7 @@ public class ChangePasswordFromController {
     public void initialize(){
         userName.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-               employeeId.requestFocus();
+                employeeId.requestFocus();
             }
         });
         employeeId.setOnKeyPressed(event -> {
@@ -57,7 +57,11 @@ public class ChangePasswordFromController {
         String eid = employeeId.getText();
         String newPw = newPassword.getText();
 
-        savePassword(uname, eid, newPw);
+        if(isValied()) {
+            savePassword(uname, eid, newPw);
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Password update failed. User not found").show();
+        }
     }
 
     private void savePassword(String uname, String eid, String newPw) {
@@ -82,7 +86,14 @@ public class ChangePasswordFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,newPassword)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.useName,userName)) return false;
+        //  if (!) return false;
+        // if (!) return false;
 
+        return true;
+    }
     @FXML
     void txtEidOnKeyReleased(KeyEvent event) {
         //Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.,userName);

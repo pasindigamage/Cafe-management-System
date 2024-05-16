@@ -4,10 +4,7 @@ import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.OtherMaintains;
 import lk.ijse.buddiescafe.model.Supplier;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +55,7 @@ public class otherMaintainRepo {
         while (resultSet.next()) {
             String omid = resultSet.getString(1);
             String omdescription = resultSet.getString(2);
-            String date = resultSet.getString(3);
+            Date date = Date.valueOf(resultSet.getString(3));
             String amount = resultSet.getString(4);
 
             OtherMaintains otherMaintains = new OtherMaintains(omid,omdescription,date,amount);

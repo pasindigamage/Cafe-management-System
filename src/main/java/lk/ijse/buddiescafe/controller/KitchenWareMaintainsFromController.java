@@ -92,7 +92,16 @@ public class KitchenWareMaintainsFromController {
                 amount.requestFocus();
             }
         });
+        tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                kmDescription.setText(newSelection.getDescription());
+                amount.setText(String.valueOf(newSelection.getAmount()));
+                cmbIKitchenWareId.setValue(newSelection.getKitchenWareId());
 
+
+
+            }
+        });
     }
     private void loadNextOrderId() {
         try {
@@ -107,10 +116,10 @@ public class KitchenWareMaintainsFromController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("KWM00");
-            int id = Integer.parseInt(split[1]);    //2
-            return "KWM00" + ++id;
-
+            String[] split = currentId.split("KWM");
+            int idNum = Integer.parseInt(split[1]);
+            idNum++;
+            return "KWM" + String.format("%03d", idNum);
         }
         return "KWM001";
     }
@@ -160,6 +169,9 @@ public class KitchenWareMaintainsFromController {
             boolean isSaved = KitchenWareMaintainRepo.save(kitchenWareMaintains);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare Maintain is Saved!").show();
+                loadNextOrderId();
+                loadInventoryTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -190,6 +202,8 @@ public class KitchenWareMaintainsFromController {
             boolean isDeleted = KitchenWareMaintainRepo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare Maintain is Deleted!").show();
+                loadInventoryTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -213,6 +227,8 @@ public class KitchenWareMaintainsFromController {
             boolean isUpdated = KitchenWareMaintainRepo.update(kitchenWareMaintains);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare Maintain is Updated!").show();
+                loadInventoryTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -247,7 +263,14 @@ public class KitchenWareMaintainsFromController {
             throw new RuntimeException(e);
         }
     }
-
+    //    public boolean isValied(){
+//        if (!) return false;
+//        if (!) return false;
+//        if (!) return false;
+//        if (!) return false;
+//
+//        return true;
+//    }
     @FXML
     void txtAmountOnKeyReleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.amount,amount);

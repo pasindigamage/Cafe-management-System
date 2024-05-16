@@ -65,7 +65,13 @@ public class RegisterFromController {
         String uid = userId.getText();
         String uname = userName.getText();
         String pw = password.getText();
+        if(isValied()){
             saveUser(eid, uid, uname, pw);
+
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
+        }
+
     }
 
     private void saveUser(String eid, String uid, String uname, String pw) {
@@ -87,10 +93,15 @@ public class RegisterFromController {
             new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
         }
     }
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.password,password)) return false;
+        if (!Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,userName)) return false;
 
+        return true;
+    }
     @FXML
     void txtEmployeeIdOnKeyReleased(KeyEvent event) {
-       // Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
+        // Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
     }
 
     @FXML
@@ -100,7 +111,7 @@ public class RegisterFromController {
 
     @FXML
     void txtUserIdOnKeyReleased(KeyEvent event) {
-    //    Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
+        //    Regex.setTextColor(lk.ijse.buddiescafe.util.TextField.name,eName);
     }
 
     @FXML

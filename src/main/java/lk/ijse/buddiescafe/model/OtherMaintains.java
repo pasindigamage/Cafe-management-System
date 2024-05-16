@@ -1,6 +1,8 @@
 package lk.ijse.buddiescafe.model;
 import lombok.*;
 
+import java.sql.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -8,6 +10,6 @@ import lombok.*;
 public class OtherMaintains {
     private String id;
     private String description;
-    private String date;
+    private Date date;
     private String amount;
 }

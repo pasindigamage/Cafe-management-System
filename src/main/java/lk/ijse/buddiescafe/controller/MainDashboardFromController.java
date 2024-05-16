@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -14,12 +15,17 @@ import java.io.IOException;
 import java.time.LocalTime;
 
 public class MainDashboardFromController {
+    @FXML
+    private JFXButton home;
+
+    @FXML
+    private Label time111;
 
     @FXML
     private JFXButton employee;
 
     @FXML
-    private JFXButton inventory;
+    private JFXButton inventoryDetail;
 
     @FXML
     private JFXButton kitchenware;
@@ -55,9 +61,31 @@ public class MainDashboardFromController {
 
     @FXML
     private Label time;
+
     public void initialize(){
         setGreetings();
+        addHoverHandlers(employee);
+        addHoverHandlers(menu);
+        addHoverHandlers(order);
+        addHoverHandlers(maintain);
+        addHoverHandlers(logout);
+        addHoverHandlers(kitchenware);
+        addHoverHandlers(inventoryDetail);
+        addHoverHandlers(supplier);
+
+
     }
+
+
+    private void addHoverHandlers(Button button) {// button Animation
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color: Black; -fx-text-fill: white; ");
+        });
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  transparent; -fx-text-fill: white;");
+        });
+    }
+
 
     private void setGreetings() {
         LocalTime currentTime = LocalTime.now();
