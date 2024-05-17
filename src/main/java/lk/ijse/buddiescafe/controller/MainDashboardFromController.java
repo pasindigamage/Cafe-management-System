@@ -63,7 +63,7 @@ public class MainDashboardFromController {
     private Label time;
 
     public void initialize(){
-        setGreetings();
+        //setGreetings();
         addHoverHandlers(employee);
         addHoverHandlers(menu);
         addHoverHandlers(order);

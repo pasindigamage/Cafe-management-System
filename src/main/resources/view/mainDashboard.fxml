@@ -30,53 +30,33 @@
             <Image url="@../images/underbg.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="subDashboard" layoutX="237.0" layoutY="26.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane fx:id="subDashboard" layoutX="237.0" layoutY="27.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #000000;">
          <children>
-            <Label fx:id="time" layoutX="23.0" layoutY="14.0" prefHeight="52.0" prefWidth="273.0" text="good morning......!!!!!!">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="248.0" fitWidth="291.0" layoutX="551.0" layoutY="109.0" opacity="0.28" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="614.0" fitWidth="1000.0" layoutX="-1.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/logo-removebg.png" />
+                  <Image url="@../images/loginbackground.jpeg" />
                </image>
             </ImageView>
-            <Label fx:id="first" layoutX="235.0" layoutY="220.0" prefHeight="52.0" prefWidth="273.0" text="Cappucino">
+            <Label fx:id="first" layoutX="153.0" layoutY="166.0" prefHeight="52.0" prefWidth="273.0" text="Cappucino">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="second" layoutX="233.0" layoutY="353.0" prefHeight="52.0" prefWidth="273.0" text="Avacado Smoothi">
+            <Label fx:id="second" layoutX="153.0" layoutY="300.0" prefHeight="52.0" prefWidth="273.0" text="Avacado Smoothi">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="time111" layoutX="243.0" layoutY="495.0" prefHeight="52.0" prefWidth="273.0" text="Chocolate Ice Coffee">
+            <Label fx:id="time111" layoutX="150.0" layoutY="437.0" prefHeight="52.0" prefWidth="273.0" text="Chocolate Ice Coffee">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="536.0" layoutY="306.0" prefHeight="95.0" prefWidth="347.0" text="TOP PERFORMANCE">
+            <Label layoutX="60.0" layoutY="28.0" prefHeight="95.0" prefWidth="347.0" text="TOP PERFORMANCE">
                <font>
                   <Font name="Dhurjati" size="48.0" />
                </font>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="102.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/firstlogo.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="107.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/second.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="118.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/third.png" />
-               </image>
-            </ImageView>
          </children></AnchorPane>
       <AnchorPane layoutY="57.0" prefHeight="593.0" prefWidth="126.0" style="-fx-background-color: #1a120b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1149.0" AnchorPane.topAnchor="57.0">
          <children>
