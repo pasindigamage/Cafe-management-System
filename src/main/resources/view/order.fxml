@@ -14,18 +14,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.OrderFromController">
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.OrderFromController">
    <children>
-      <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="513.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
       <Label layoutX="20.0" layoutY="24.0" text="ORDER" textFill="#2c3e50">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -33,14 +23,6 @@
       </Label>
       <TextField fx:id="txtQty" layoutX="628.0" layoutY="175.0" onAction="#txtQtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="33.0" prefWidth="66.0" />
       <JFXButton fx:id="placeButton" buttonType="RAISED" contentDisplay="RIGHT" layoutX="769.0" layoutY="552.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: FF926B;" text="Place Order" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="RIGHT" layoutX="741.0" layoutY="169.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: #4D3E3E;" text="Add to cart" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -105,14 +87,14 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tblOrderCart" layoutX="39.0" layoutY="264.0" prefHeight="256.0" prefWidth="817.0">
+      <TableView fx:id="tblOrderCart" layoutX="39.0" layoutY="264.0" prefHeight="256.0" prefWidth="925.0">
          <columns>
             <TableColumn fx:id="colItemCode" prefWidth="79.0" text="Code" />
             <TableColumn fx:id="colDescription" prefWidth="252.0" text="Description" />
             <TableColumn fx:id="colUnitPrice" prefWidth="179.0" text="Unit Price" />
-            <TableColumn fx:id="colQty" prefWidth="79.0" text="Qty" />
-            <TableColumn fx:id="colTotal" prefWidth="130.0" text="Total" />
-            <TableColumn fx:id="colAction" prefWidth="97.0" text="Action" />
+            <TableColumn fx:id="colQty" prefWidth="100.0" text="Qty" />
+            <TableColumn fx:id="colTotal" prefWidth="158.0" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="156.0" text="Action" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="13.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="107.0" />
@@ -122,10 +104,25 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="145.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="208.0" />
-      <Label fx:id="lblNetTotal" layoutX="166.0" layoutY="561.0" prefHeight="26.0" prefWidth="121.0" textFill="#b51313">
+      <Label fx:id="lblNetTotal" layoutX="161.0" layoutY="561.0" prefHeight="26.0" prefWidth="121.0" textFill="#b51313">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="RIGHT" layoutX="814.0" layoutY="177.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: #4D3E3E;" text="Add to Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/orders.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -13,31 +13,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareFromController">
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareFromController">
    <children>
-      <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="513.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
       <Label layoutX="20.0" layoutY="24.0" text="KITCHENWARE" textFill="#2c3e50">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
       <Group layoutX="604.0" layoutY="3.0" />
-      <JFXComboBox fx:id="cmbISupplierId" layoutX="53.0" layoutY="197.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="195.0" promptText="Select Supplier" />
-      <TableView fx:id="tblOrderCart" layoutX="303.0" layoutY="108.0" prefHeight="379.0" prefWidth="554.0">
+      <JFXComboBox fx:id="cmbISupplierId" layoutX="53.0" layoutY="233.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="195.0" promptText="Select Supplier" />
+      <TableView fx:id="tblOrderCart" layoutX="307.0" layoutY="108.0" prefHeight="379.0" prefWidth="645.0">
          <columns>
             <TableColumn fx:id="colKitchenWareId" prefWidth="105.0" text="ID" />
-            <TableColumn fx:id="colSupplierId" prefWidth="140.0" text="Supplier " />
-            <TableColumn fx:id="colDescription" prefWidth="195.0" text="Description" />
-            <TableColumn fx:id="colQty" prefWidth="113.0" text="Qty" />
+            <TableColumn fx:id="colSupplierId" prefWidth="191.0" text="Supplier " />
+            <TableColumn fx:id="colDescription" prefWidth="262.0" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="86.0" text="Qty" />
          </columns>
       </TableView>
       <Label fx:id="lblNetTotal" layoutX="115.0" layoutY="559.0" textFill="#b51313">
@@ -45,46 +35,14 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="deleteKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="562.0" layoutY="519.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="updateKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="414.0" layoutY="519.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="addKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="263.0" layoutY="519.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="Add" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="702.0" layoutY="519.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <TextField fx:id="Description" layoutX="52.0" layoutY="295.0" prefHeight="33.0" prefWidth="195.0" promptText="About KitchenWare" />
-      <Label layoutX="52.0" layoutY="269.0" text="Description" textFill="#363232">
+      <TextField fx:id="Description" layoutX="52.0" layoutY="331.0" prefHeight="33.0" prefWidth="195.0" promptText="About KitchenWare" />
+      <Label layoutX="52.0" layoutY="305.0" text="Description" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="Qty" layoutX="53.0" layoutY="375.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="33.0" prefWidth="56.0" promptText="eg:- 5" />
-      <Label layoutX="53.0" layoutY="352.0" text="Qty" textFill="#363232">
+      <TextField fx:id="Qty" layoutX="122.0" layoutY="409.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="33.0" prefWidth="56.0" promptText="eg:- 5" />
+      <Label layoutX="53.0" layoutY="418.0" text="Qty" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -94,17 +52,77 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="kitchenWareIdSearch" layoutX="616.0" layoutY="40.0" onAction="#IdSearchOnAction" prefHeight="26.0" prefWidth="155.0" promptText="Enter KitchenWare Id" />
-      <Label layoutX="787.0" layoutY="45.0" text="Seacrch Here" textFill="#363232">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblsId" layoutX="54.0" layoutY="171.0" prefHeight="24.0" prefWidth="60.0" />
+      <Label fx:id="lblsId" layoutX="54.0" layoutY="186.0" prefHeight="24.0" prefWidth="60.0" />
       <Label fx:id="kId" layoutX="84.0" layoutY="113.0" prefHeight="40.0" prefWidth="155.0" textFill="#363232">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <JFXButton fx:id="deleteKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="463.0" layoutY="538.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/dalete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="updateKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="296.0" layoutY="538.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FF926B;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="addKitchenWare" buttonType="RAISED" contentDisplay="RIGHT" layoutX="48.0" layoutY="538.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4D3E3E;" text="  Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="clear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="876.0" layoutY="538.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/clear.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TextField fx:id="kitchenWareIdSearch" layoutX="784.0" layoutY="41.0" onAction="#IdSearchOnAction" prefHeight="26.0" prefWidth="147.0" promptText="Seacrch Here" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="904.0" layoutY="42.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/search-icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

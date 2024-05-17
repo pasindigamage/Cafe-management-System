@@ -77,6 +77,12 @@ public class FoodItemFromController {
                 fAmount.requestFocus();
             }
         });
+
+        fAmount.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fQty.requestFocus();
+            }
+        });
         tblMenu.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 fAmount.setText(String.valueOf(newSelection.getUnitPrice()));
@@ -203,6 +209,7 @@ public class FoodItemFromController {
         fDescription.setText("");
         fAmount.setText("");
         fQty.setText("");
+        loadNextOrderId();
     }
 
     @FXML

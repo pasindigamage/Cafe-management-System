@@ -192,6 +192,7 @@ public class KitchenWareMaintainsFromController {
         kmDescription.setText("");
         amount.setText("");
         cmbIKitchenWareId.setValue("");
+        loadNextOrderId();
     }
 
     @FXML

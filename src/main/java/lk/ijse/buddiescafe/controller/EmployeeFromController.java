@@ -246,6 +246,7 @@ public class EmployeeFromController {
         ePossition.setText("");
         eName.setText("");
         eIDSearch.setText("");
+        loadNextOrderId();
     }
 
     @FXML

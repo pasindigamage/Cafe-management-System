@@ -8,23 +8,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareMaintainsFromController">
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.KitchenWareMaintainsFromController">
    <children>
-      <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="513.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
       <Label layoutX="20.0" layoutY="24.0" text="KITCHENWARE MAINTAINS" textFill="#2c3e50">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -32,13 +20,13 @@
       </Label>
       <Group layoutX="604.0" layoutY="3.0" />
       <JFXComboBox fx:id="cmbIKitchenWareId" layoutX="29.0" layoutY="206.0" onAction="#cmbItemOnAction" prefHeight="33.0" prefWidth="157.0" promptText="Select KitchenWare " />
-      <TableView fx:id="tblOrderCart" layoutX="249.0" layoutY="102.0" prefHeight="386.0" prefWidth="618.0">
+      <TableView fx:id="tblOrderCart" layoutX="249.0" layoutY="102.0" prefHeight="386.0" prefWidth="714.0">
          <columns>
             <TableColumn fx:id="colKitchenWareMaintainId" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="colKitchenWareId" prefWidth="135.0" text="Kitchenware ID" />
-            <TableColumn fx:id="colDescription" prefWidth="182.0" text="Description" />
-            <TableColumn fx:id="colDate" prefWidth="118.0" text="Date" />
-            <TableColumn fx:id="colAmount" prefWidth="106.0" text="Amount" />
+            <TableColumn fx:id="colKitchenWareId" prefWidth="167.0" text="Kitchenware ID" />
+            <TableColumn fx:id="colDescription" prefWidth="209.0" text="Description" />
+            <TableColumn fx:id="colDate" prefWidth="153.0" text="Date" />
+            <TableColumn fx:id="colAmount" prefWidth="109.0" text="Amount" />
          </columns>
       </TableView>
       <JFXButton fx:id="deleteKitchenWareMaintains" buttonType="RAISED" contentDisplay="RIGHT" layoutX="562.0" layoutY="531.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: FFC38B;" text="Delete" textFill="WHITE">

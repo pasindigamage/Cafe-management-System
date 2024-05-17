@@ -208,6 +208,8 @@ public class KitchenWareFromController {
         Qty.setText("");
         kitchenWareIdSearch.setText("");
         cmbISupplierId.setValue("");
+        lblsId.setText("");
+        loadNextOrderId();
     }
 
     @FXML

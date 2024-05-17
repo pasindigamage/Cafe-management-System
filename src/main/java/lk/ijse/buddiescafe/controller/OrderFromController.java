@@ -268,6 +268,7 @@ public class OrderFromController {
 
 
             new Alert(Alert.AlertType.CONFIRMATION, "Order placed successfully!").show();
+            loadNextOrderId();
         } else {
             new Alert(Alert.AlertType.WARNING,"Failed to place order!").show();
         }
