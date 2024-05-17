@@ -9,30 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.MaintainsFromController">
+<AnchorPane fx:id="rootNode1" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.buddiescafe.controller.MaintainsFromController">
    <children>
-      <ImageView fitHeight="312.0" fitWidth="918.0" layoutX="-6.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="231.0" fitWidth="446.0" layoutX="513.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/underbg.png" />
-         </image>
-      </ImageView>
       <Label layoutX="30.0" layoutY="23.0" text="MAINTAINS" textFill="#2c3e50">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Group layoutX="604.0" layoutY="3.0" />
-      <ImageView fitHeight="9.0" fitWidth="14.0" layoutX="820.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/back.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="kitchenWareMaintains" buttonType="RAISED" contentDisplay="RIGHT" layoutX="272.0" layoutY="192.0" onAction="#btnkitchenWareMaintainsOnAction" prefHeight="50.0" prefWidth="322.0" style="-fx-background-color: FFC38B;" text="KITCHENWARE MAINTAINS" textFill="WHITE">
+      <JFXButton fx:id="kitchenWareMaintains" buttonType="RAISED" contentDisplay="RIGHT" layoutX="356.0" layoutY="210.0" onAction="#btnkitchenWareMaintainsOnAction" prefHeight="50.0" prefWidth="322.0" style="-fx-background-color: FFC38B;" text="KITCHENWARE MAINTAINS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -40,7 +24,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="OtherMaintains" buttonType="RAISED" contentDisplay="RIGHT" layoutX="272.0" layoutY="302.0" onAction="#btnOtherMaintainsOnAction" prefHeight="50.0" prefWidth="322.0" style="-fx-background-color: FF926B;" text="OTHER MAINTAINS" textFill="WHITE">
+      <JFXButton fx:id="OtherMaintains" buttonType="RAISED" contentDisplay="RIGHT" layoutX="356.0" layoutY="320.0" onAction="#btnOtherMaintainsOnAction" prefHeight="50.0" prefWidth="322.0" style="-fx-background-color: FF926B;" text="OTHER MAINTAINS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

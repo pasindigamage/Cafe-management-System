@@ -338,7 +338,7 @@ public class InventorySupplierDetailFromController {
                 //inventoryId.setText(inventoryDetail.getId());
                 //Description.setText(inventoryDetail.getInventoryId());
                 // unitPrice.setText(String.valueOf(inventoryDetail.getUnitPrice()));
-                //qty.setText(String.valueOf(inventoryDetail.getQty()));
+                //qtyinventoryIdSearch.setText(String.valueOf(inventoryDetail.getQty()));
                 lblOrderDate.setText(String.valueOf(inventoryDetail.getDate()));
                 lblsId.setText(inventoryDetail.getSupplierId());
             }

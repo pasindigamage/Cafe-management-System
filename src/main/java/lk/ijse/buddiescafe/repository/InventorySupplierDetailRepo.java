@@ -48,7 +48,7 @@ public class InventorySupplierDetailRepo {
     }
 
     public static InventorySupplierDetail searchByID(String id) throws SQLException {
-        String sql = "SELECT * FROM inventorySupplier WHERE id = ?";
+        String sql = "SELECT * FROM inventorySupplier WHERE date = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, id);

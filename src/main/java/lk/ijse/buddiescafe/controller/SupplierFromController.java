@@ -245,6 +245,7 @@ public class SupplierFromController {
         sEmail.setText("");
         sContact.setText("");
         sIDSearch.setText("");
+        loadNextOrderId();
     }
 
     @FXML

@@ -70,7 +70,7 @@ public class KitchenWareFromController {
 
     public void initialize() {
         getSupplierIds();
-        //     loadInventoryTable();
+        loadInventoryTable();
         setCellValueFactory();
         loadNextOrderId();
 
