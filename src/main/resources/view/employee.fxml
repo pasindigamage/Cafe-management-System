@@ -23,7 +23,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="eName" layoutX="37.0" layoutY="237.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="Enter Name With Initials" />
+      <TextField fx:id="eName" layoutX="37.0" layoutY="237.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="33.0" prefWidth="198.0" promptText="Enter Full Name " />
       <Label layoutX="37.0" layoutY="219.0" text="Name" textFill="#363232">
          <font>
             <Font name="System Bold" size="12.0" />

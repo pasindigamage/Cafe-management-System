@@ -12,10 +12,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.*;
 import lk.ijse.buddiescafe.model.TM.CartTM;
 import lk.ijse.buddiescafe.repository.*;
 import lk.ijse.buddiescafe.util.Regex;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -219,7 +225,7 @@ public class OrderFromController {
 
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException {
         String orderId = lblOrderId.getText();
         String userId = getSignPersonID;
         Date date = Date.valueOf(LocalDate.now());
@@ -249,6 +255,7 @@ public class OrderFromController {
         boolean isPlaced = PlaceOrderRepo.placeOrder(po); //  OrdersRepo.save(order);
 
         if(isPlaced) {
+            printBill();
             loadNextOrderId();
             cartList.clear();
             tblOrderCart.setItems(cartList);
@@ -308,7 +315,31 @@ public class OrderFromController {
     public void userIdSearchOnAction(MouseEvent mouseEvent) {
 
     }
+    public void printBill() throws JRException {
 
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/report/Cafe_Report.jrxml");
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT Orders.id AS OrderID,\n" +
+                "       Orders.userId AS UserID,\n" +
+                "       Orders.date AS OrderDate,\n" +
+                "       Orders.Amount AS OrderAmount,\n" +
+                "       FoodItems.id AS FoodItemID,\n" +
+                "       FoodItems.description AS Description,\n" +
+                "       FoodItems.unitPrice AS UnitPrice,\n" +
+                "       orderDetails.qty AS QuantityOrdered\n" +
+                "FROM Orders\n" +
+                "INNER JOIN orderDetails ON Orders.id = orderDetails.orderId\n" +
+                "INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id\n" +
+                "WHERE Orders.id = (SELECT MAX(id) FROM Orders);");
+        jasperDesign.setQuery(jrDesignQuery);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+    }
     /*
 
 // .............Jasper report for Join Query
