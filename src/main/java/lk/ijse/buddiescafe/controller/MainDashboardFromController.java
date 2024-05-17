@@ -1,6 +1,9 @@
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainDashboardFromController {
+    @FXML
+    private Label date;
     @FXML
     private JFXButton home;
 
@@ -72,10 +80,26 @@ public class MainDashboardFromController {
         addHoverHandlers(kitchenware);
         addHoverHandlers(inventoryDetail);
         addHoverHandlers(supplier);
+        setDate();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> { // set current Time
+            LocalTime currentTime = LocalTime.now();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = currentTime.format(formatter);
+
+            time.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
 
 
     }
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        date.setText(String.valueOf(now));
 
+    }
 
     private void addHoverHandlers(Button button) {// button Animation
         button.setOnMouseEntered(event -> {
