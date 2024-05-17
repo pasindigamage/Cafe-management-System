@@ -94,9 +94,11 @@ public class KitchenWareMaintainsFromController {
         });
         tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
+                lblKId.setText(newSelection.getKitchenWareId());
                 kmDescription.setText(newSelection.getDescription());
                 amount.setText(String.valueOf(newSelection.getAmount()));
                 cmbIKitchenWareId.setValue(newSelection.getKitchenWareId());
+                kmId.setText(newSelection.getId());
 
 
 
@@ -202,13 +204,19 @@ public class KitchenWareMaintainsFromController {
         try {
             boolean isDeleted = KitchenWareMaintainRepo.delete(id);
             if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare Maintain is Deleted!").show();
-                loadInventoryTable();
-                clearFields();
+                KitchenWareMaintains kitchenWareMaintains = (KitchenWareMaintains) tblOrderCart.getSelectionModel().getSelectedItem();
+                if (kitchenWareMaintains != null) {
+                    tblOrderCart.getItems().remove(kitchenWareMaintains);
+                    new Alert(Alert.AlertType.CONFIRMATION, "kitchenWareMaintains Deleted!").show();
+                    clearFields();
+                    loadInventoryTable();
+                }
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete kitchenWareMaintains!").show();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();        }
+
     }
 
     @FXML
@@ -227,12 +235,21 @@ public class KitchenWareMaintainsFromController {
         try {
             boolean isUpdated = KitchenWareMaintainRepo.update(kitchenWareMaintains);
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "KitchenWare Maintain is Updated!").show();
-                loadInventoryTable();
-                clearFields();
+                KitchenWareMaintains selectedItem = (KitchenWareMaintains) tblOrderCart.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    int selectedIndex = tblOrderCart.getItems().indexOf(selectedItem);
+                    tblOrderCart.getItems().set(selectedIndex, selectedItem);
+                    new Alert(Alert.AlertType.CONFIRMATION, "kitchenWareMaintains updated successfully!").show();
+                    clearFields();
+                    loadInventoryTable();
+
+                }
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to update kitchenWareMaintains!").show();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Error occurred while updating kitchenWareMaintains: " + e.getMessage()).show();
         }
     }
 

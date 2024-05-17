@@ -56,10 +56,10 @@
       <TableView fx:id="tblEmployee" layoutX="283.0" layoutY="96.0" prefHeight="398.0" prefWidth="684.0">
          <columns>
             <TableColumn fx:id="colId" prefWidth="58.0" text="ID" />
-            <TableColumn fx:id="colName" prefWidth="120.0" text="Name" />
-            <TableColumn fx:id="colAddress" prefWidth="211.0" text="Address" />
-            <TableColumn fx:id="colMail" prefWidth="173.0" text="Email" />
-            <TableColumn fx:id="colContact" prefWidth="121.0" text="Contact" />
+            <TableColumn fx:id="colName" prefWidth="155.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="199.0" text="Address" />
+            <TableColumn fx:id="colMail" prefWidth="165.0" text="Email" />
+            <TableColumn fx:id="colContact" prefWidth="106.0" text="Contact" />
          </columns>
       </TableView>
       <Label fx:id="sID" layoutX="63.0" layoutY="101.0" prefHeight="33.0" prefWidth="167.0" textFill="#363232">

@@ -249,6 +249,7 @@ public class InventorySupplierDetailFromController {
         lblsId.setText("");
         cmbISupplierId.setValue("");
         cmbIInventoryId.setValue("");
+        loadInventoryTable();
     }
 
     @FXML

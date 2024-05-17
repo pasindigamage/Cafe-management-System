@@ -221,6 +221,7 @@ public class FoodItemFromController {
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Deleted!").show();
                 loadFoodTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -241,6 +242,7 @@ public class FoodItemFromController {
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Menu Item is Updated!").show();
                 loadFoodTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
