@@ -128,7 +128,7 @@ INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id;]]>
 				<text><![CDATA[OrderDate]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="194" y="0" width="69" height="30" uuid="2adc00a6-e6cf-4083-8544-ab1d317de6a0">
+				<reportElement x="172" y="0" width="69" height="30" uuid="2adc00a6-e6cf-4083-8544-ab1d317de6a0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="17f9aee1-b035-4fc1-8393-0b94351414b8"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -177,7 +177,7 @@ INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id;]]>
 				<textFieldExpression><![CDATA[$F{OrderDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="194" y="0" width="69" height="30" uuid="1876fa2e-008f-46ca-8812-a503c42d8e67">
+				<reportElement x="172" y="0" width="69" height="30" uuid="1876fa2e-008f-46ca-8812-a503c42d8e67">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="17f9aee1-b035-4fc1-8393-0b94351414b8"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -255,13 +255,20 @@ INNER JOIN FoodItems ON orderDetails.foodItemId = FoodItems.id;]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="90" splitType="Stretch">
 			<staticText>
 				<reportElement x="220" y="10" width="112" height="30" uuid="f12723d6-ee46-4321-9dd4-daa84916f8a8"/>
 				<textElement>
 					<font fontName="C059" size="18" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Thank You!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="60" width="594" height="30" uuid="ccff89e9-22cf-4537-9b7c-51b625dd4802"/>
+				<textElement textAlignment="Center">
+					<font fontName="C059" size="15" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Come visit Buddies Cafe, and let's become friends over a cup of coffee!]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

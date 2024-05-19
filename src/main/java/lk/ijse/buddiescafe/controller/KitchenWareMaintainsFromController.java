@@ -127,7 +127,6 @@ public class KitchenWareMaintainsFromController {
     }
 
     private void setCellValueFactory() {
-
         colKitchenWareMaintainId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colKitchenWareId.setCellValueFactory(new PropertyValueFactory<>("kitchenWareId"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -157,6 +156,7 @@ public class KitchenWareMaintainsFromController {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String idText = kmId.getText();

@@ -25,7 +25,7 @@ public class InventorySupplierDetailRepo {
     }
 
     public static boolean update(InventorySupplierDetail inventoryDetail) throws SQLException {
-        String sql = "UPDATE inventorySupplier SET supplierId = ?, description = ?, date = ?, unitPrice = ?, qty = ? WHERE id = ?";
+        String sql = "UPDATE inventorySupplier SET supplierId = ?,  date = ? WHERE foodItemId = ?";
         try (Connection connection = DbConnection.getInstance().getConnection();
              PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, inventoryDetail.getSupplierId());

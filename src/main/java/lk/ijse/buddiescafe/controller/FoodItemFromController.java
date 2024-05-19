@@ -210,6 +210,7 @@ public class FoodItemFromController {
         fAmount.setText("");
         fQty.setText("");
         loadNextOrderId();
+        fooditemSearch.setText("");
     }
 
     @FXML

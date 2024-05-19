@@ -14,13 +14,30 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.buddiescafe.db.DbConnection;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class MainDashboardFromController {
+    @FXML
+    private Label first;
+
+    @FXML
+    private Label second;
+
+    @FXML
+    private Label three11;
+    @FXML
+    private Label three1;
+    @FXML
+    private Label three;
     @FXML
     private Label date;
     @FXML
@@ -58,14 +75,7 @@ public class MainDashboardFromController {
 
     @FXML
     private JFXButton supplier;
-    @FXML
-    private Label first;
 
-    @FXML
-    private Label third;
-
-    @FXML
-    private Label second;
 
     @FXML
     private Label time;
@@ -81,6 +91,7 @@ public class MainDashboardFromController {
         addHoverHandlers(inventoryDetail);
         addHoverHandlers(supplier);
         setDate();
+        displayTopPerformingFoodItems();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> { // set current Time
             LocalTime currentTime = LocalTime.now();
@@ -116,7 +127,38 @@ public class MainDashboardFromController {
         String greeting = (currentTime.getHour() < 12) ? "Good Morning !!!" :currentTime.getHour() < 18 ? "Good Afternoon !!!" : "Good Evening !!!";
         time.setText(greeting);
     }
+    private void displayTopPerformingFoodItems() {
+        String query = "SELECT fi.description AS foodDescription, SUM(od.qty) AS totalQuantityOrdered " +
+                "FROM orderDetails od " +
+                "JOIN FoodItems fi ON od.foodItemId = fi.id " +
+                "GROUP BY fi.description " +
+                "ORDER BY totalQuantityOrdered DESC " +
+                "LIMIT 5";
 
+        try (Connection connection = DbConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                first.setText(resultSet.getString("foodDescription") + " - " + resultSet.getInt("totalQuantityOrdered"));
+            }
+            if (resultSet.next()) {
+                second.setText(resultSet.getString("foodDescription") + " - " + resultSet.getInt("totalQuantityOrdered"));
+            }
+            if (resultSet.next()) {
+                three.setText(resultSet.getString("foodDescription") + " - " + resultSet.getInt("totalQuantityOrdered"));
+            }
+            if (resultSet.next()) {
+                three1.setText(resultSet.getString("foodDescription") + " - " + resultSet.getInt("totalQuantityOrdered"));
+            }
+            if (resultSet.next()) {
+                three11.setText(resultSet.getString("foodDescription") + " - " + resultSet.getInt("totalQuantityOrdered"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     void employeeOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/employee.fxml"));

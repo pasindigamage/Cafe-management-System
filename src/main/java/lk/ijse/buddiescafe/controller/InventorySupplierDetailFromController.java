@@ -1,3 +1,8 @@
+
+
+
+
+
 package lk.ijse.buddiescafe.controller;
 
 import com.jfoenix.controls.JFXButton;
@@ -99,8 +104,11 @@ public class InventorySupplierDetailFromController {
         tblOrderCart.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
 
-                cmbISupplierId.setValue(newSelection.getSupplierId());
-                cmbIInventoryId.setValue(newSelection.getInventoryId());
+//                cmbISupplierId.setValue(newSelection.getSupplierId());
+//                cmbIInventoryId.setValue(newSelection.getInventoryId());
+                lblInventoryId.setText(newSelection.getInventoryId());
+                lblsId.setText(newSelection.getSupplierId());
+
 
 
             }
