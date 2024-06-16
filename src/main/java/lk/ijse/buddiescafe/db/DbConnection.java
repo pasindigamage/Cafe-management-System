@@ -42,7 +42,7 @@ public class DbConnection {
         return connection;
     }
 
-    public void closeConnection() {
+    /*public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
@@ -50,5 +50,5 @@ public class DbConnection {
         } catch (SQLException e) {
             throw new RuntimeException("Failed to close database connection", e);
         }
-    }
+    }*/
 }
