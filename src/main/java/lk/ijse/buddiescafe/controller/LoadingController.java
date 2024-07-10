@@ -33,8 +33,6 @@ public class LoadingController {
     @FXML
     private Label lblTopic;
 
-    private String fullTitle ="KD.AIRCON INDUSTRIES";
-    private int currentIndex = 0;
     @FXML
     private ProgressBar progressBar;
 

@@ -3,7 +3,6 @@ package lk.ijse.buddiescafe.repository;
 import lk.ijse.buddiescafe.db.DbConnection;
 import lk.ijse.buddiescafe.model.InventorySupplierDetail;
 import lk.ijse.buddiescafe.model.OrderDetail;
-import lk.ijse.buddiescafe.model.TM.InventorySupplierDetailTM;
 
 import java.sql.*;
 import java.util.ArrayList;
