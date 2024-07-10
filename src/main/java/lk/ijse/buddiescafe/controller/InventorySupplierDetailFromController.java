@@ -85,6 +85,7 @@ public class InventorySupplierDetailFromController {
 
     @FXML
     private Label lblInventoryId;
+
     @FXML
     private TextField unitPrice;
 
